@@ -26,10 +26,11 @@ class GoalModel: Identifiable {
     var createAt = Date()
     var updateAt = Date()
     var deleteAt: Date?
+    var streak: Int
 
-    var noteHistory: [Date: Int] = [:]
+    var lastLog: Date?
 
-    init(id: UUID = UUID(), title: String, body: String, days: Set<Int>, startDate: Date = Date(), folder: FolderModel? = nil, notes: [NoteModel], reminders: [ReminderModel], isReminder: Bool = false, createAt: Date = Date(), updateAt: Date = Date(), deleteAt: Date? = nil, noteHistory: [Date: Int]) {
+    init(id: UUID = UUID(), title: String, body: String, days: Set<Int>, startDate: Date = Date(), folder: FolderModel? = nil, notes: [NoteModel], reminders: [ReminderModel], isReminder: Bool = false, createAt: Date = Date(), updateAt: Date = Date(), deleteAt: Date? = nil, streak: Int, lastLog: Date) {
         self.id = id
         self.title = title
         self.body = body
@@ -42,6 +43,7 @@ class GoalModel: Identifiable {
         self.createAt = createAt
         self.updateAt = updateAt
         self.deleteAt = deleteAt
-        self.noteHistory = noteHistory
+        self.streak = streak
+        self.lastLog = lastLog
     }
 }
