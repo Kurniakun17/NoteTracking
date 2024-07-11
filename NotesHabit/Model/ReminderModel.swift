@@ -15,9 +15,9 @@ class ReminderModel: Identifiable {
     var createdDate = Date()
     var updatedDate = Date()
     var deletedDate: Date?
-    var goal: GoalModel?
+    var goal: HabitModel?
     
-    init(id: UUID = UUID(), time: Date, createdDate: Date = Date(), updatedDate: Date = Date(), deletedDate: Date? = nil, goal: GoalModel? = nil) {
+    init(id: UUID = UUID(), time: Date, createdDate: Date = Date(), updatedDate: Date = Date(), deletedDate: Date? = nil, goal: HabitModel? = nil) {
         self.id = id
         self.time = time
         self.createdDate = createdDate
