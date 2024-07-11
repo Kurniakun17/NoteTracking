@@ -25,12 +25,6 @@ struct ContentView: View {
                     Image(systemName: "star")
                     Text("Habits")
                 }
-            SettingView()
-                .tabItem{
-                    Image(systemName: "gear.circle")
-                    Text("Setting")
-                }
-            
         }
     }
 }
