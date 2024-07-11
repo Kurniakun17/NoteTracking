@@ -1,7 +1,38 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "📅 %lld" : {
+
+    },
+    "📅 10 " : {
+
+    },
+    "🔥 %lld" : {
+
+    },
+    "🔥 10 hari" : {
+
+    },
+    "All Habit" : {
+
+    },
     "Calendar" : {
+
+    },
+    "Favorites" : {
 
     },
     "Habits" : {
@@ -13,7 +44,25 @@
     "Home" : {
 
     },
+    "K" : {
+
+    },
+    "No activities for this date" : {
+
+    },
+    "R" : {
+
+    },
+    "S" : {
+
+    },
     "Search" : {
+
+    },
+    "Select a date" : {
+
+    },
+    "tes habit" : {
 
     }
   },
