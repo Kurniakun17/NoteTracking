@@ -46,5 +46,5 @@ struct CardHabitView: View {
 }
 
 //#Preview {
-//    CardHabitView()
+//    CardHabitView(habit: HabitMockData.habit1)
 //}
