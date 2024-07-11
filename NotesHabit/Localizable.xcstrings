@@ -1,7 +1,21 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Calendar" : {
 
+    },
+    "Habits" : {
+
+    },
+    "Hello, World!" : {
+
+    },
+    "Home" : {
+
+    },
+    "Search" : {
+
+    }
   },
   "version" : "1.0"
 }

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C18E78BF2C3ECDD300847A25 /* RichTextKit in Frameworks */ = {isa = PBXBuildFile; productRef = C18E78BE2C3ECDD300847A25 /* RichTextKit */; };
+		C18E78CD2C3F19CC00847A25 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78CC2C3F19CC00847A25 /* HomeView.swift */; };
+		C18E78CF2C3F19D800847A25 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78CE2C3F19D800847A25 /* CalendarView.swift */; };
+		C18E78D12C3F19E000847A25 /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78D02C3F19E000847A25 /* HabitsView.swift */; };
+		C18E78D32C3F1A1D00847A25 /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78D22C3F1A1D00847A25 /* CalenderView.swift */; };
+		C18E78D52C3F1D9600847A25 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78D42C3F1D9600847A25 /* SearchView.swift */; };
+		C18E78D82C3F1E1700847A25 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78D72C3F1E1700847A25 /* SearchBar.swift */; };
+		C18E78DA2C3F6DDE00847A25 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78D92C3F6DDE00847A25 /* SettingView.swift */; };
 		F63FFB462C3E5D7700EB8778 /* NotesHabitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB452C3E5D7700EB8778 /* NotesHabitApp.swift */; };
 		F63FFB482C3E5D7700EB8778 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB472C3E5D7700EB8778 /* ContentView.swift */; };
 		F63FFB4A2C3E5D7900EB8778 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F63FFB492C3E5D7900EB8778 /* Assets.xcassets */; };
@@ -19,6 +27,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C18E78CC2C3F19CC00847A25 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C18E78CE2C3F19D800847A25 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		C18E78D02C3F19E000847A25 /* HabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
+		C18E78D22C3F1A1D00847A25 /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
+		C18E78D42C3F1D9600847A25 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		C18E78D72C3F1E1700847A25 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		C18E78D92C3F6DDE00847A25 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		F63FFB422C3E5D7700EB8778 /* NotesHabit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesHabit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F63FFB452C3E5D7700EB8778 /* NotesHabitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesHabitApp.swift; sourceTree = "<group>"; };
 		F63FFB472C3E5D7700EB8778 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,12 +51,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C18E78BF2C3ECDD300847A25 /* RichTextKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C18E78D62C3F1D9B00847A25 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				C18E78D72C3F1E1700847A25 /* SearchBar.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		F63FFB392C3E5D7700EB8778 = {
 			isa = PBXGroup;
 			children = (
@@ -65,7 +89,6 @@
 				F63FFB542C3E5DB400EB8778 /* Model */,
 				F63FFB532C3E5DAD00EB8778 /* View */,
 				F63FFB452C3E5D7700EB8778 /* NotesHabitApp.swift */,
-				F63FFB472C3E5D7700EB8778 /* ContentView.swift */,
 				F63FFB492C3E5D7900EB8778 /* Assets.xcassets */,
 				F63FFB4B2C3E5D7900EB8778 /* Preview Content */,
 				F63FFB5E2C3E62FE00EB8778 /* Localizable.xcstrings */,
@@ -84,6 +107,14 @@
 		F63FFB532C3E5DAD00EB8778 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C18E78D62C3F1D9B00847A25 /* Component */,
+				F63FFB472C3E5D7700EB8778 /* ContentView.swift */,
+				C18E78CC2C3F19CC00847A25 /* HomeView.swift */,
+				C18E78CE2C3F19D800847A25 /* CalendarView.swift */,
+				C18E78D02C3F19E000847A25 /* HabitsView.swift */,
+				C18E78D22C3F1A1D00847A25 /* CalenderView.swift */,
+				C18E78D42C3F1D9600847A25 /* SearchView.swift */,
+				C18E78D92C3F6DDE00847A25 /* SettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -122,6 +153,9 @@
 			dependencies = (
 			);
 			name = NotesHabit;
+			packageProductDependencies = (
+				C18E78BE2C3ECDD300847A25 /* RichTextKit */,
+			);
 			productName = NotesHabit;
 			productReference = F63FFB422C3E5D7700EB8778 /* NotesHabit.app */;
 			productType = "com.apple.product-type.application";
@@ -151,6 +185,9 @@
 				id,
 			);
 			mainGroup = F63FFB392C3E5D7700EB8778;
+			packageReferences = (
+				C18E78BD2C3ECDD300847A25 /* XCRemoteSwiftPackageReference "RichTextKit" */,
+			);
 			productRefGroup = F63FFB432C3E5D7700EB8778 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -179,11 +216,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				F63FFB482C3E5D7700EB8778 /* ContentView.swift in Sources */,
+				C18E78CD2C3F19CC00847A25 /* HomeView.swift in Sources */,
+				C18E78CF2C3F19D800847A25 /* CalendarView.swift in Sources */,
+				C18E78D12C3F19E000847A25 /* HabitsView.swift in Sources */,
 				F63FFB572C3E5E1100EB8778 /* NoteModel.swift in Sources */,
+				C18E78D82C3F1E1700847A25 /* SearchBar.swift in Sources */,
 				F63FFB592C3E5E1900EB8778 /* GoalModel.swift in Sources */,
 				F63FFB5B2C3E5E2200EB8778 /* FolderModel.swift in Sources */,
+				C18E78DA2C3F6DDE00847A25 /* SettingView.swift in Sources */,
 				F63FFB462C3E5D7700EB8778 /* NotesHabitApp.swift in Sources */,
+				C18E78D32C3F1A1D00847A25 /* CalenderView.swift in Sources */,
 				F63FFB5D2C3E5EA300EB8778 /* ReminderModel.swift in Sources */,
+				C18E78D52C3F1D9600847A25 /* SearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +433,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C18E78BD2C3ECDD300847A25 /* XCRemoteSwiftPackageReference "RichTextKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielsaidi/RichTextKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C18E78BE2C3ECDD300847A25 /* RichTextKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C18E78BD2C3ECDD300847A25 /* XCRemoteSwiftPackageReference "RichTextKit" */;
+			productName = RichTextKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F63FFB3A2C3E5D7700EB8778 /* Project object */;
 }
