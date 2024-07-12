@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F6391DCC2C40CA620030566F /* EditNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6391DCB2C40CA620030566F /* EditNoteView.swift */; };
+		F6391DCE2C40CF820030566F /* RichTextKit in Frameworks */ = {isa = PBXBuildFile; productRef = F6391DCD2C40CF820030566F /* RichTextKit */; };
+		F6391DD02C40CF9C0030566F /* RichEditorSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F6391DCF2C40CF9C0030566F /* RichEditorSwiftUI */; };
 		F63FFB462C3E5D7700EB8778 /* NotesHabitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB452C3E5D7700EB8778 /* NotesHabitApp.swift */; };
 		F63FFB482C3E5D7700EB8778 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB472C3E5D7700EB8778 /* ContentView.swift */; };
 		F63FFB4A2C3E5D7900EB8778 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F63FFB492C3E5D7900EB8778 /* Assets.xcassets */; };
@@ -18,8 +20,6 @@
 		F63FFB5D2C3E5EA300EB8778 /* ReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB5C2C3E5EA300EB8778 /* ReminderModel.swift */; };
 		F63FFB5F2C3E62FE00EB8778 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F63FFB5E2C3E62FE00EB8778 /* Localizable.xcstrings */; };
 		F63FFB612C3F52B400EB8778 /* AddNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB602C3F52B400EB8778 /* AddNoteView.swift */; };
-		F63FFB642C3F531A00EB8778 /* RichEditorSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F63FFB632C3F531A00EB8778 /* RichEditorSwiftUI */; };
-		F63FFB672C3F548F00EB8778 /* RichTextKit in Frameworks */ = {isa = PBXBuildFile; productRef = F63FFB662C3F548F00EB8778 /* RichTextKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F63FFB672C3F548F00EB8778 /* RichTextKit in Frameworks */,
-				F63FFB642C3F531A00EB8778 /* RichEditorSwiftUI in Frameworks */,
+				F6391DCE2C40CF820030566F /* RichTextKit in Frameworks */,
+				F6391DD02C40CF9C0030566F /* RichEditorSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,8 +133,8 @@
 			);
 			name = NotesHabit;
 			packageProductDependencies = (
-				F63FFB632C3F531A00EB8778 /* RichEditorSwiftUI */,
-				F63FFB662C3F548F00EB8778 /* RichTextKit */,
+				F6391DCD2C40CF820030566F /* RichTextKit */,
+				F6391DCF2C40CF9C0030566F /* RichEditorSwiftUI */,
 			);
 			productName = NotesHabit;
 			productReference = F63FFB422C3E5D7700EB8778 /* NotesHabit.app */;
@@ -430,15 +430,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F63FFB632C3F531A00EB8778 /* RichEditorSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F63FFB622C3F531A00EB8778 /* XCRemoteSwiftPackageReference "rich-editor-swiftui" */;
-			productName = RichEditorSwiftUI;
-		};
-		F63FFB662C3F548F00EB8778 /* RichTextKit */ = {
+		F6391DCD2C40CF820030566F /* RichTextKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F63FFB652C3F548F00EB8778 /* XCRemoteSwiftPackageReference "RichTextKit" */;
 			productName = RichTextKit;
+		};
+		F6391DCF2C40CF9C0030566F /* RichEditorSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F63FFB622C3F531A00EB8778 /* XCRemoteSwiftPackageReference "rich-editor-swiftui" */;
+			productName = RichEditorSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

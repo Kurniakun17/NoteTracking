@@ -69,11 +69,10 @@ struct ContentView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                     
-                    
                     List {
                         ForEach(notes, id: \.self) {
                             note in
-                            NavigationLink(destination: EmptyView()) {
+                            NavigationLink(destination: EditNoteView(note: note, title: note.title, bodyText: note.body)) {
                                 VStack(alignment: .leading, spacing: 4) {
                                     HStack {
                                         Image(systemName: "folder")
@@ -94,45 +93,16 @@ struct ContentView: View {
                                     }
                                 }
                             }
+                            .swipeActions(edge: .leading) {
+                                Button(action: {}) {
+                                    Image(systemName: "heart")
+                                }
+                                .tint(.red)
+                            }
                         }
                     }
                     .listStyle(.plain)
                     .transition(AnyTransition.scale)
-                    
-                    VStack(spacing: 0) {
-                        if !notes.isEmpty {
-                            ForEach(notes, id: \.self) {
-                                note in
-                                VStack(spacing: 0) {
-                                    VStack(alignment: .leading, spacing: 4) {
-                                        HStack {
-                                            Image(systemName: "folder")
-                                                .font(.callout)
-                                            Text("Notes")
-                                                .font(.callout)
-                                        }
-                                        Text(note.title)
-                                            .font(.title3)
-                                            .fontWeight(.semibold)
-                                        HStack(spacing: 12) {
-                                            Text("11.08")
-                                                .fontWeight(.semibold)
-                                                .font(.caption)
-                                            Text(note.body)
-                                                .font(.caption)
-                                                .lineLimit(1)
-                                        }
-                                    }
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 16)
-                                    .background(.gray.opacity(0.2))
-                                    .transition(AnyTransition.scale)
-                                }
-                            }
-                        }
-                    }
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
                 .padding(.horizontal, 20)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -169,6 +139,8 @@ struct ContentView: View {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: NoteModel.self, configurations: config)
+        
+        container.mainContext.insert(NoteModel(title: "title", body: "Body"))
             
         return ContentView()
             .modelContainer(container)

@@ -5,16 +5,16 @@
 //  Created by Kurnia Kharisma Agung Samiadjie on 11/07/24.
 //
 
-import RichEditorSwiftUI
-import RichTextKit
+//import RichEditorSwiftUI
+//import RichTextKit
 import SwiftData
 import SwiftUI
 
 struct AddNoteView: View {
-    @ObservedObject var state: RichEditorState = .init(input: "HelloWorld")
+//    @ObservedObject var state: RichEditorState = .init(input: "HelloWorld")
 
-    @State var text = NSAttributedString(string: "Hai")
-    @StateObject var context = RichTextContext()
+//    @State var text = NSAttributedString(string: "Hai")
+//    @StateObject var context = RichTextContext()
     @State var title = ""
     @State var habit: String = "Empty"
     @State var bodyText: String = ""
@@ -63,7 +63,6 @@ struct AddNoteView: View {
 
                 Spacer()
             }
-            .onChange(of: text) {}
         })
         .navigationBarTitleDisplayMode(.inline)
         .onChange(of: title) {
