@@ -7,7 +7,7 @@ class HabitModel: Identifiable {
     var title: String
     var body: String
     var days: Set<Int>
-    var startDate: Date
+    var startDate = Date()
     var folder: FolderModel?
     var emoji: String
 
@@ -25,7 +25,7 @@ class HabitModel: Identifiable {
 
     var lastLog: Date?
 
-    init(id: UUID = UUID(), title: String, body: String, days: Set<Int>, startDate: Date, folder: FolderModel? = nil, emoji: String, notes: [NoteModel], time: Date? = nil, isReminder: Bool = false, createAt: Date = Date(), updateAt: Date = Date(), deleteAt: Date? = nil, streak: Int = 0, lastLog: Date? = nil) {
+    init(id: UUID = UUID(), title: String, body: String, days: Set<Int>, startDate: Date = Date(), folder: FolderModel? = nil, emoji: String, notes: [NoteModel] = [], time: Date? = nil, isReminder: Bool = false, createAt: Date = Date(), updateAt: Date = Date(), deleteAt: Date? = nil, streak: Int = 0, lastLog: Date? = nil) {
         self.id = id
         self.title = title
         self.body = body
