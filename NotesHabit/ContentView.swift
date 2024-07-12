@@ -99,6 +99,12 @@ struct ContentView: View {
                                 }
                                 .tint(.red)
                             }
+                            .swipeActions(edge: .trailing) {
+                                Button(action: {}) {
+                                    Image(systemName: "trash")
+                                }
+                                .tint(.red)
+                            }
                         }
                     }
                     .listStyle(.plain)
