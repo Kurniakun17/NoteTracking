@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F6391DCC2C40CA620030566F /* EditNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6391DCB2C40CA620030566F /* EditNoteView.swift */; };
 		F63FFB462C3E5D7700EB8778 /* NotesHabitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB452C3E5D7700EB8778 /* NotesHabitApp.swift */; };
 		F63FFB482C3E5D7700EB8778 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB472C3E5D7700EB8778 /* ContentView.swift */; };
 		F63FFB4A2C3E5D7900EB8778 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F63FFB492C3E5D7900EB8778 /* Assets.xcassets */; };
@@ -16,9 +17,13 @@
 		F63FFB5B2C3E5E2200EB8778 /* FolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB5A2C3E5E2200EB8778 /* FolderModel.swift */; };
 		F63FFB5D2C3E5EA300EB8778 /* ReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB5C2C3E5EA300EB8778 /* ReminderModel.swift */; };
 		F63FFB5F2C3E62FE00EB8778 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F63FFB5E2C3E62FE00EB8778 /* Localizable.xcstrings */; };
+		F63FFB612C3F52B400EB8778 /* AddNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB602C3F52B400EB8778 /* AddNoteView.swift */; };
+		F63FFB642C3F531A00EB8778 /* RichEditorSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F63FFB632C3F531A00EB8778 /* RichEditorSwiftUI */; };
+		F63FFB672C3F548F00EB8778 /* RichTextKit in Frameworks */ = {isa = PBXBuildFile; productRef = F63FFB662C3F548F00EB8778 /* RichTextKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F6391DCB2C40CA620030566F /* EditNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteView.swift; sourceTree = "<group>"; };
 		F63FFB422C3E5D7700EB8778 /* NotesHabit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesHabit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F63FFB452C3E5D7700EB8778 /* NotesHabitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesHabitApp.swift; sourceTree = "<group>"; };
 		F63FFB472C3E5D7700EB8778 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -29,6 +34,7 @@
 		F63FFB5A2C3E5E2200EB8778 /* FolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderModel.swift; sourceTree = "<group>"; };
 		F63FFB5C2C3E5EA300EB8778 /* ReminderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderModel.swift; sourceTree = "<group>"; };
 		F63FFB5E2C3E62FE00EB8778 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		F63FFB602C3F52B400EB8778 /* AddNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F63FFB672C3F548F00EB8778 /* RichTextKit in Frameworks */,
+				F63FFB642C3F531A00EB8778 /* RichEditorSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +92,8 @@
 		F63FFB532C3E5DAD00EB8778 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F63FFB602C3F52B400EB8778 /* AddNoteView.swift */,
+				F6391DCB2C40CA620030566F /* EditNoteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -122,6 +132,10 @@
 			dependencies = (
 			);
 			name = NotesHabit;
+			packageProductDependencies = (
+				F63FFB632C3F531A00EB8778 /* RichEditorSwiftUI */,
+				F63FFB662C3F548F00EB8778 /* RichTextKit */,
+			);
 			productName = NotesHabit;
 			productReference = F63FFB422C3E5D7700EB8778 /* NotesHabit.app */;
 			productType = "com.apple.product-type.application";
@@ -151,6 +165,10 @@
 				id,
 			);
 			mainGroup = F63FFB392C3E5D7700EB8778;
+			packageReferences = (
+				F63FFB622C3F531A00EB8778 /* XCRemoteSwiftPackageReference "rich-editor-swiftui" */,
+				F63FFB652C3F548F00EB8778 /* XCRemoteSwiftPackageReference "RichTextKit" */,
+			);
 			productRefGroup = F63FFB432C3E5D7700EB8778 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -181,6 +199,8 @@
 				F63FFB482C3E5D7700EB8778 /* ContentView.swift in Sources */,
 				F63FFB572C3E5E1100EB8778 /* NoteModel.swift in Sources */,
 				F63FFB592C3E5E1900EB8778 /* GoalModel.swift in Sources */,
+				F63FFB612C3F52B400EB8778 /* AddNoteView.swift in Sources */,
+				F6391DCC2C40CA620030566F /* EditNoteView.swift in Sources */,
 				F63FFB5B2C3E5E2200EB8778 /* FolderModel.swift in Sources */,
 				F63FFB462C3E5D7700EB8778 /* NotesHabitApp.swift in Sources */,
 				F63FFB5D2C3E5EA300EB8778 /* ReminderModel.swift in Sources */,
@@ -389,6 +409,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F63FFB622C3F531A00EB8778 /* XCRemoteSwiftPackageReference "rich-editor-swiftui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/canopas/rich-editor-swiftui.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		F63FFB652C3F548F00EB8778 /* XCRemoteSwiftPackageReference "RichTextKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielsaidi/RichTextKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F63FFB632C3F531A00EB8778 /* RichEditorSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F63FFB622C3F531A00EB8778 /* XCRemoteSwiftPackageReference "rich-editor-swiftui" */;
+			productName = RichEditorSwiftUI;
+		};
+		F63FFB662C3F548F00EB8778 /* RichTextKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F63FFB652C3F548F00EB8778 /* XCRemoteSwiftPackageReference "RichTextKit" */;
+			productName = RichTextKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F63FFB3A2C3E5D7700EB8778 /* Project object */;
 }

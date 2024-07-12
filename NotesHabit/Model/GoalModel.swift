@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class GoalModel: Identifiable {
+class HabitModel: Identifiable {
     var id = UUID()
     var title: String
     var body: String
