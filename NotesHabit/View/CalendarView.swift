@@ -28,8 +28,8 @@ struct TopBarCalendar: View {
                     .font(.system(size: 18))
                     .padding(.bottom, 6)
                 
-//                Divider()
-//                    .padding(.bottom, -10)
+                Divider()
+                    .padding(.bottom, 6)
                 
                 if let dayGoals = goalsForSelectedDate() {
                     List {
@@ -55,12 +55,11 @@ struct TopBarCalendar: View {
                             
                         }
                     }
+                    .listStyle(PlainListStyle())
                     .listRowInsets(EdgeInsets())
                     .listRowSeparator(.visible)
                     .background(.white)
                 } else {
-                    Divider()
-                    
                     Text("No activities for this date")
                         .foregroundColor(.gray)
                         .padding()
