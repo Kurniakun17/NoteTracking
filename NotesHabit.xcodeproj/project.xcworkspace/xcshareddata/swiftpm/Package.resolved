@@ -1,4 +1,5 @@
 {
+  "originHash" : "a47d4b978970043cf2ea502bec64b4c446b199a92143b66dd51f0f5184a99f41",
   "pins" : [
     {
       "identity" : "richtextkit",
@@ -10,5 +11,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
