@@ -30,6 +30,7 @@ struct DeletedHabitView: View {
     }
     
     var deletedGoals: [HabitModel] {
+        // Show Habit with deleteAt
         return goalsContent.filter { $0.deleteAt != nil }
     }
 }

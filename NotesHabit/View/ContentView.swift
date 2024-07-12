@@ -20,11 +20,11 @@ struct ContentView: View {
                     Image(systemName: "calendar")
                     Text("Calendar")
                 }
-            HabitsView()
-                .tabItem {
-                    Image(systemName: "star")
-                    Text("Habits")
-                }
+//            HabitsView()
+//                .tabItem {
+//                    Image(systemName: "star")
+//                    Text("Habits")
+//                }
         }
     }
 }

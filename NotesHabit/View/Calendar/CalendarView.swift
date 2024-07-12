@@ -28,12 +28,13 @@ struct TopBarCalendar: View {
                     .font(.system(size: 18))
                     .padding(.bottom, 6)
                 
-                Divider()
-                    .padding(.bottom, 6)
+//                Divider()
+//                    .padding(.bottom, 6)
                 
                 if let dayGoals = goalsForSelectedDate() {
                     List {
                         ForEach(dayGoals) { goal in
+                            // Only show Habit with empty deleteAt
                             if goal.deleteAt == nil {
                                 GoalCard(goal: goal)
                                     .padding(.horizontal, -10)
@@ -56,7 +57,9 @@ struct TopBarCalendar: View {
                             }
                         }
                     }
-                    .listStyle(PlainListStyle())
+                    
+                    
+//                    .listStyle(PlainListStyle())
                     .listRowInsets(EdgeInsets())
                     .listRowSeparator(.visible)
                     .background(.white)
