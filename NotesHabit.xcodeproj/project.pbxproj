@@ -12,7 +12,6 @@
 		408CBE522C3FF939006539DB /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CBE512C3FF939006539DB /* DatePickerView.swift */; };
 		408CBE542C3FF948006539DB /* GoalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CBE532C3FF948006539DB /* GoalCardView.swift */; };
 		408CBE562C3FF952006539DB /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CBE552C3FF952006539DB /* MonthView.swift */; };
-		C18E78BF2C3ECDD300847A25 /* RichTextKit in Frameworks */ = {isa = PBXBuildFile; productRef = C18E78BE2C3ECDD300847A25 /* RichTextKit */; };
 		C18E78CD2C3F19CC00847A25 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78CC2C3F19CC00847A25 /* HomeView.swift */; };
 		C18E78CF2C3F19D800847A25 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78CE2C3F19D800847A25 /* CalendarView.swift */; };
 		C18E78D12C3F19E000847A25 /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78D02C3F19E000847A25 /* HabitsView.swift */; };
@@ -22,7 +21,6 @@
 		C18E78DA2C3F6DDE00847A25 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78D92C3F6DDE00847A25 /* SettingView.swift */; };
 		C18E78DC2C3F727200847A25 /* CardHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78DB2C3F727200847A25 /* CardHabitView.swift */; };
 		F6391DCC2C40CA620030566F /* EditNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6391DCB2C40CA620030566F /* EditNoteView.swift */; };
-		F6391DCE2C40CF820030566F /* RichTextKit in Frameworks */ = {isa = PBXBuildFile; productRef = F6391DCD2C40CF820030566F /* RichTextKit */; };
 		F63FFB462C3E5D7700EB8778 /* NotesHabitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB452C3E5D7700EB8778 /* NotesHabitApp.swift */; };
 		F63FFB482C3E5D7700EB8778 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB472C3E5D7700EB8778 /* ContentView.swift */; };
 		F63FFB4A2C3E5D7900EB8778 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F63FFB492C3E5D7900EB8778 /* Assets.xcassets */; };
@@ -31,7 +29,6 @@
 		F63FFB592C3E5E1900EB8778 /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB582C3E5E1900EB8778 /* HabitModel.swift */; };
 		F63FFB5B2C3E5E2200EB8778 /* FolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB5A2C3E5E2200EB8778 /* FolderModel.swift */; };
 		F63FFB5D2C3E5EA300EB8778 /* ReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB5C2C3E5EA300EB8778 /* ReminderModel.swift */; };
-		F63FFB5F2C3E62FE00EB8778 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F63FFB5E2C3E62FE00EB8778 /* Localizable.xcstrings */; };
 		F63FFB612C3F52B400EB8778 /* AddNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB602C3F52B400EB8778 /* AddNoteView.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +56,6 @@
 		F63FFB582C3E5E1900EB8778 /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
 		F63FFB5A2C3E5E2200EB8778 /* FolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderModel.swift; sourceTree = "<group>"; };
 		F63FFB5C2C3E5EA300EB8778 /* ReminderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderModel.swift; sourceTree = "<group>"; };
-		F63FFB5E2C3E62FE00EB8778 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F63FFB602C3F52B400EB8778 /* AddNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,7 +103,6 @@
 				F63FFB452C3E5D7700EB8778 /* NotesHabitApp.swift */,
 				F63FFB492C3E5D7900EB8778 /* Assets.xcassets */,
 				F63FFB4B2C3E5D7900EB8778 /* Preview Content */,
-				F63FFB5E2C3E62FE00EB8778 /* Localizable.xcstrings */,
 			);
 			path = NotesHabit;
 			sourceTree = "<group>";
@@ -227,7 +222,6 @@
 			files = (
 				F63FFB4D2C3E5D7900EB8778 /* Preview Assets.xcassets in Resources */,
 				F63FFB4A2C3E5D7900EB8778 /* Assets.xcassets in Resources */,
-				F63FFB5F2C3E62FE00EB8778 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +242,7 @@
 				408CBE522C3FF939006539DB /* DatePickerView.swift in Sources */,
 				C18E78D82C3F1E1700847A25 /* SearchBar.swift in Sources */,
 				F63FFB592C3E5E1900EB8778 /* HabitModel.swift in Sources */,
-				F63FFB592C3E5E1900EB8778 /* GoalModel.swift in Sources */,
+				F63FFB592C3E5E1900EB8778 /* HabitModel.swift in Sources */,
 				F63FFB612C3F52B400EB8778 /* AddNoteView.swift in Sources */,
 				F6391DCC2C40CA620030566F /* EditNoteView.swift in Sources */,
 				F63FFB5B2C3E5E2200EB8778 /* FolderModel.swift in Sources */,
