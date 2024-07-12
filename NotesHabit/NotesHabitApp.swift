@@ -13,5 +13,6 @@ struct NotesHabitApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: [HabitModel.self, NoteModel.self, FolderModel.self])
     }
 }

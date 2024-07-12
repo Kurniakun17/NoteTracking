@@ -1,7 +1,28 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld" : {
+
+    },
+    "Add" : {
+
+    },
+    "Add emoji" : {
+
+    },
+    "Add Habit" : {
+
+    },
+    "Add Habit Title" : {
+
+    },
     "Calendar" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Descriptions" : {
 
     },
     "Habits" : {

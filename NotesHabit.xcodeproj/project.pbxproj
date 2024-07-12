@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C18E78BF2C3ECDD300847A25 /* RichTextKit in Frameworks */ = {isa = PBXBuildFile; productRef = C18E78BE2C3ECDD300847A25 /* RichTextKit */; };
 		C18E78CD2C3F19CC00847A25 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78CC2C3F19CC00847A25 /* HomeView.swift */; };
 		C18E78CF2C3F19D800847A25 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78CE2C3F19D800847A25 /* CalendarView.swift */; };
 		C18E78D12C3F19E000847A25 /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78D02C3F19E000847A25 /* HabitsView.swift */; };
@@ -53,7 +52,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C18E78BF2C3ECDD300847A25 /* RichTextKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +155,6 @@
 			);
 			name = NotesHabit;
 			packageProductDependencies = (
-				C18E78BE2C3ECDD300847A25 /* RichTextKit */,
 			);
 			productName = NotesHabit;
 			productReference = F63FFB422C3E5D7700EB8778 /* NotesHabit.app */;
@@ -448,14 +445,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		C18E78BE2C3ECDD300847A25 /* RichTextKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C18E78BD2C3ECDD300847A25 /* XCRemoteSwiftPackageReference "RichTextKit" */;
-			productName = RichTextKit;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F63FFB3A2C3E5D7700EB8778 /* Project object */;
 }
