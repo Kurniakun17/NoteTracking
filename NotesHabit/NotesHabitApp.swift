@@ -14,7 +14,6 @@ struct NotesHabitApp: App {
             ContentView()
                 
         }
-        .modelContainer(for: [NoteModel.self, HabitModel.self, FolderModel.self,
-                              ReminderModel.self])
+        .modelContainer(for: [NoteModel.self, HabitModel.self, FolderModel.self])
     }
 }
