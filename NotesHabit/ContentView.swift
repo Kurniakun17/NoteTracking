@@ -101,7 +101,7 @@ struct ContentView: View {
                             }
                             .swipeActions(edge: .trailing) {
                                 Button(action: {}) {
-                                    Image(systemName: "trash")
+                                    Image(systemName: "heart")
                                 }
                                 .tint(.red)
                             }
