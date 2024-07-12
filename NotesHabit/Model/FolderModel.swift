@@ -16,10 +16,10 @@ class FolderModel: Identifiable {
     @Relationship(deleteRule: .cascade, inverse: \NoteModel.folder)
     var notes: [NoteModel] = []
 
-    @Relationship(deleteRule: .cascade, inverse: \GoalModel.folder)
-    var goals: [GoalModel] = []
+    @Relationship(deleteRule: .cascade, inverse: \HabitModel.folder)
+    var goals: [HabitModel] = []
 
-    init(id: UUID = UUID(), title: String, notes: [NoteModel], goals: [GoalModel]) {
+    init(id: UUID = UUID(), title: String, notes: [NoteModel], goals: [HabitModel]) {
         self.id = id
         self.title = title
         self.notes = notes
