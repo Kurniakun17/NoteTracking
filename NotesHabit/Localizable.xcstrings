@@ -1,7 +1,45 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Calendar" : {
+    "11.08" : {
+
+    },
+    "20" : {
+
+    },
+    "90%" : {
+
+    },
+    "Add New Notes" : {
+
+    },
+    "All Notes" : {
+
+    },
+    "Consistency rate" : {
+
+    },
+    "Create new" : {
+
+    },
+    "Day Streak" : {
+
+    },
+    "Habit" : {
+
+    },
+    "Learn Swift UI 30 Minutes" : {
+
+    },
+    "Notes" : {
+
+    },
+    "Recent notes" : {
+
+    },
+    "Title" : {
+
+    }    "Calendar" : {
 
     },
     "Habits" : {
