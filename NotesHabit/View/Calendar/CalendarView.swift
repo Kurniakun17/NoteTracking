@@ -13,7 +13,7 @@ struct TopBarCalendar: View {
     }()
     
     // Sample goals data
-    let goalsContent: [HabitModel] = [
+    @State private var goalsContent: [HabitModel] = [
         HabitModel(title: "Morning Routines", body: "Personal", days: [2, 4, 6], startDate: Date(), emoji: "🌅", notes: [], streak: 5, lastLog: Date()),
         HabitModel(title: "SwiftUI Learn", body: "Personal > Study", days: [1, 3, 5], startDate: Date(), emoji: "📚", notes: [], time: Date(), streak: 10, lastLog: Date()),
         HabitModel(title: "Learn Figma", body: "Personal > Study", days: [1, 3, 5], startDate: Date(), emoji: "🎨", notes: [], time: Date(), streak: 10, lastLog: Date())
@@ -28,13 +28,10 @@ struct TopBarCalendar: View {
                     .font(.system(size: 18))
                     .padding(.bottom, 6)
                 
-                Divider()
-                    .padding(.bottom, 6)
-                
-                if let dayGoals = goalsForSelectedDate() {
+                let dayGoals = goalsForSelectedDate().filter { $0.deleteAt == nil }
+                if !dayGoals.isEmpty {
                     List {
                         ForEach(dayGoals) { goal in
-                            
                             GoalCard(goal: goal)
                                 .padding(.horizontal, -10)
                                 .swipeActions(edge: .leading) {
@@ -48,21 +45,24 @@ struct TopBarCalendar: View {
                                 .swipeActions(edge: .trailing) {
                                     Button(role: .destructive) {
                                         // Add delete action here
+                                        goal.deleteAt = Date()
                                     } label: {
                                         Image(systemName: "trash.fill")
                                     }
                                 }
-                            
                         }
                     }
-                    .listStyle(PlainListStyle())
-                    .listRowInsets(EdgeInsets())
-                    .listRowSeparator(.visible)
-                    .background(.white)
                 } else {
-                    Text("No activities for this date")
+                    Divider()
+                        .padding(.bottom, 6)
+                    
+                    Spacer()
+                    
+                    Text("No habits scheduled for this date")
                         .foregroundColor(.gray)
                         .padding()
+                    
+                    Spacer()
                 }
             }
             .background(Color(.systemBackground))
@@ -90,7 +90,6 @@ struct TopBarCalendar: View {
     var weekView: some View {
         VStack(spacing: 20) {
             HStack {
-                
                 Text("Calendar")
                     .font(.system(size: 40, weight: .bold))
                     .foregroundColor(.red)
@@ -98,10 +97,8 @@ struct TopBarCalendar: View {
                 Spacer()
                 
                 HStack(spacing: 25) {
-                    
                     Button(action: {
                         showDatePicker = true
-                        
                     }) {
                         Image(systemName: "calendar")
                             .foregroundColor(.red)
@@ -111,7 +108,6 @@ struct TopBarCalendar: View {
                         // Handle add action
                     }) {
                         Image(systemName: "plus")
-                        
                             .foregroundColor(.red)
                     }
                 }
@@ -167,18 +163,6 @@ struct TopBarCalendar: View {
         return dateFormatter.string(from: date)
     }
     
-    func monthString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "LLLL"
-        return dateFormatter.string(from: selectedDate)
-    }
-    
-    func yearString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy"
-        return dateFormatter.string(from: selectedDate)
-    }
-    
     func isDateSelected(index: Int) -> Bool {
         let date = dateForIndex(index)
         return calendar.isDate(date, inSameDayAs: selectedDate)
@@ -187,17 +171,12 @@ struct TopBarCalendar: View {
     func selectDate(index: Int) {
         let date = dateForIndex(index)
         selectedDate = date
+        currentWeekOffset = 0
     }
     
     func dateForIndex(_ index: Int) -> Date {
         let startOfWeek = calendar.date(byAdding: .day, value: currentWeekOffset * 7, to: getStartOfWeek(for: selectedDate))!
         return calendar.date(byAdding: .day, value: index, to: startOfWeek)!
-    }
-    
-    func dateString(from date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter.string(from: date)
     }
     
     func getStartOfWeek(for date: Date) -> Date {
@@ -216,7 +195,7 @@ struct TopBarCalendar: View {
         currentWeekOffset = daysBetween / 7
     }
     
-    func goalsForSelectedDate() -> [HabitModel]? {
+    func goalsForSelectedDate() -> [HabitModel] {
         let selectedDayOfWeek = calendar.component(.weekday, from: selectedDate)
         return goalsContent.filter { goal in
             guard goal.days.contains(selectedDayOfWeek) else { return false }
@@ -244,4 +223,3 @@ struct CalendarView: View {
         fatalError("Error")
     }
 }
-
