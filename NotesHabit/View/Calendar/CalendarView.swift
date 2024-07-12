@@ -28,45 +28,41 @@ struct TopBarCalendar: View {
                     .font(.system(size: 18))
                     .padding(.bottom, 6)
                 
-//                Divider()
-//                    .padding(.bottom, 6)
-                
-                if let dayGoals = goalsForSelectedDate() {
+                let dayGoals = goalsForSelectedDate().filter { $0.deleteAt == nil }
+                if !dayGoals.isEmpty {
                     List {
                         ForEach(dayGoals) { goal in
-                            // Only show Habit with empty deleteAt
-                            if goal.deleteAt == nil {
-                                GoalCard(goal: goal)
-                                    .padding(.horizontal, -10)
-                                    .swipeActions(edge: .leading) {
-                                        Button {
-                                            // Add favorite action here
-                                        } label: {
-                                            Image(systemName: "heart.fill")
-                                        }
-                                        .tint(.red)
+                            GoalCard(goal: goal)
+                                .padding(.horizontal, -10)
+                                .swipeActions(edge: .leading) {
+                                    Button {
+                                        // Add favorite action here
+                                    } label: {
+                                        Image(systemName: "heart.fill")
                                     }
-                                    .swipeActions(edge: .trailing) {
-                                        Button(role: .destructive) {
-                                            // Add delete action here
-                                            goal.deleteAt = Date()
-                                        } label: {
-                                            Image(systemName: "trash.fill")
-                                        }
+                                    .tint(.red)
+                                }
+                                .swipeActions(edge: .trailing) {
+                                    Button(role: .destructive) {
+                                        // Add delete action here
+                                        goal.deleteAt = Date()
+                                    } label: {
+                                        Image(systemName: "trash.fill")
                                     }
-                            }
+                                }
                         }
                     }
-                    
-                    
-//                    .listStyle(PlainListStyle())
-                    .listRowInsets(EdgeInsets())
-                    .listRowSeparator(.visible)
-                    .background(.white)
                 } else {
-                    Text("No activities for this date")
+                    Divider()
+                        .padding(.bottom, 6)
+                    
+                    Spacer()
+                    
+                    Text("No habits scheduled for this date")
                         .foregroundColor(.gray)
                         .padding()
+                    
+                    Spacer()
                 }
             }
             .background(Color(.systemBackground))
@@ -175,6 +171,7 @@ struct TopBarCalendar: View {
     func selectDate(index: Int) {
         let date = dateForIndex(index)
         selectedDate = date
+        currentWeekOffset = 0
     }
     
     func dateForIndex(_ index: Int) -> Date {
@@ -198,7 +195,7 @@ struct TopBarCalendar: View {
         currentWeekOffset = daysBetween / 7
     }
     
-    func goalsForSelectedDate() -> [HabitModel]? {
+    func goalsForSelectedDate() -> [HabitModel] {
         let selectedDayOfWeek = calendar.component(.weekday, from: selectedDate)
         return goalsContent.filter { goal in
             guard goal.days.contains(selectedDayOfWeek) else { return false }
@@ -206,7 +203,6 @@ struct TopBarCalendar: View {
         }
     }
 }
-
 
 struct CalendarView: View {
     var body: some View {
@@ -227,4 +223,3 @@ struct CalendarView: View {
         fatalError("Error")
     }
 }
-
