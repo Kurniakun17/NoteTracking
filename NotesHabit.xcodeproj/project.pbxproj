@@ -19,6 +19,10 @@
 		C18E78D52C3F1D9600847A25 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78D42C3F1D9600847A25 /* SearchView.swift */; };
 		C18E78D82C3F1E1700847A25 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78D72C3F1E1700847A25 /* SearchBar.swift */; };
 		C18E78DC2C3F727200847A25 /* CardHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78DB2C3F727200847A25 /* CardHabitView.swift */; };
+		C1FBD94C2C4171340059A12F /* CardHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FBD94B2C4171330059A12F /* CardHomeView.swift */; };
+		C1FBD94F2C4182ED0059A12F /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FBD94E2C4182ED0059A12F /* HabitDetailView.swift */; };
+		C1FBD9512C4190290059A12F /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FBD9502C4190290059A12F /* Footer.swift */; };
+		C1FBD9532C419BAB0059A12F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FBD9522C419BAB0059A12F /* MenuView.swift */; };
 		F6391DCC2C40CA620030566F /* EditNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6391DCB2C40CA620030566F /* EditNoteView.swift */; };
 		F63FFB462C3E5D7700EB8778 /* NotesHabitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB452C3E5D7700EB8778 /* NotesHabitApp.swift */; };
 		F63FFB482C3E5D7700EB8778 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB472C3E5D7700EB8778 /* ContentView.swift */; };
@@ -44,6 +48,10 @@
 		C18E78D42C3F1D9600847A25 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		C18E78D72C3F1E1700847A25 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		C18E78DB2C3F727200847A25 /* CardHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHabitView.swift; sourceTree = "<group>"; };
+		C1FBD94B2C4171330059A12F /* CardHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHomeView.swift; sourceTree = "<group>"; };
+		C1FBD94E2C4182ED0059A12F /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
+		C1FBD9502C4190290059A12F /* Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
+		C1FBD9522C419BAB0059A12F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		F6391DCB2C40CA620030566F /* EditNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteView.swift; sourceTree = "<group>"; };
 		F63FFB422C3E5D7700EB8778 /* NotesHabit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesHabit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F63FFB452C3E5D7700EB8778 /* NotesHabitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesHabitApp.swift; sourceTree = "<group>"; };
@@ -93,8 +101,21 @@
 			isa = PBXGroup;
 			children = (
 				C18E78D72C3F1E1700847A25 /* SearchBar.swift */,
+				C1FBD94B2C4171330059A12F /* CardHomeView.swift */,
+				C1FBD9502C4190290059A12F /* Footer.swift */,
+				C1FBD9522C419BAB0059A12F /* MenuView.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		C1FBD94D2C4182D40059A12F /* Habit View */ = {
+			isa = PBXGroup;
+			children = (
+				C18E78D02C3F19E000847A25 /* HabitsView.swift */,
+				C18E78DB2C3F727200847A25 /* CardHabitView.swift */,
+				C1FBD94E2C4182ED0059A12F /* HabitDetailView.swift */,
+			);
+			path = "Habit View";
 			sourceTree = "<group>";
 		};
 		F63FFB392C3E5D7700EB8778 = {
@@ -143,9 +164,8 @@
 				4015BBF12C40F9FF00415C7A /* Calendar */,
 				4015BBE72C404EC800415C7A /* AddPhotos.swift */,
 				4015BBE92C404EE600415C7A /* PhotoPicker.swift */,
-				C18E78D02C3F19E000847A25 /* HabitsView.swift */,
+				C1FBD94D2C4182D40059A12F /* Habit View */,
 				C18E78D42C3F1D9600847A25 /* SearchView.swift */,
-				C18E78DB2C3F727200847A25 /* CardHabitView.swift */,
 				4015BBF02C40F9ED00415C7A /* Notes */,
 			);
 			path = View;
@@ -251,14 +271,18 @@
 				4015BBEC2C40D8E900415C7A /* DeletedHabitView.swift in Sources */,
 				C18E78CF2C3F19D800847A25 /* CalendarView.swift in Sources */,
 				C18E78D12C3F19E000847A25 /* HabitsView.swift in Sources */,
+				C1FBD9512C4190290059A12F /* Footer.swift in Sources */,
 				408CBE542C3FF948006539DB /* GoalCardView.swift in Sources */,
 				F63FFB572C3E5E1100EB8778 /* NoteModel.swift in Sources */,
 				408CBE522C3FF939006539DB /* DatePickerView.swift in Sources */,
 				C18E78D82C3F1E1700847A25 /* SearchBar.swift in Sources */,
 				F63FFB592C3E5E1900EB8778 /* HabitModel.swift in Sources */,
+				C1FBD94C2C4171340059A12F /* CardHomeView.swift in Sources */,
 				F63FFB592C3E5E1900EB8778 /* HabitModel.swift in Sources */,
+				C1FBD9532C419BAB0059A12F /* MenuView.swift in Sources */,
 				F63FFB612C3F52B400EB8778 /* AddNoteView.swift in Sources */,
 				F6391DCC2C40CA620030566F /* EditNoteView.swift in Sources */,
+				C1FBD94F2C4182ED0059A12F /* HabitDetailView.swift in Sources */,
 				F63FFB5B2C3E5E2200EB8778 /* FolderModel.swift in Sources */,
 				408CBE562C3FF952006539DB /* MonthView.swift in Sources */,
 				4015BBEA2C404EE600415C7A /* PhotoPicker.swift in Sources */,

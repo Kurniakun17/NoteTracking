@@ -18,9 +18,7 @@ struct HabitsView: View {
                 VStack(alignment: .leading, spacing: 5) {
                     SearchBar()
                     ForEach(habits){habit in
-                        Text(habit.title)
-                        Text(habit.emoji)
-                        Text(habit.body)
+                        GoalCard(goal: habit)
                     }
                     Spacer()
                 }
@@ -41,14 +39,6 @@ struct HabitsView: View {
         }
     }
 }
-
-//var id = UUID()
-//var title: String
-//var body: String
-//var days: Set<Int>
-//var startDate = Date()
-//var folder: FolderModel?
-//var emoji: String
 
 
 struct ModalView: View {
@@ -74,37 +64,6 @@ struct ModalView: View {
                         TextField("Add emoji", text: $selectedEmoji)
                         TextField("Descriptions", text: $descriptions)
                     }
-                    
-//                    Section(header: Text("Start Date")) {
-//                        DatePicker("", selection: $startDate, displayedComponents: .date)
-//                            .datePickerStyle(GraphicalDatePickerStyle())
-//                    }
-//                    
-//                    Section(header: Text("Repeat")) {
-//                        HStack {
-//                            ForEach(0..<daysOfWeek.count) { index in
-//                                Button(action: {
-//                                    repeatDays[index].toggle()
-//                                }) {
-//                                    Text(daysOfWeek[index])
-//                                        .foregroundColor(repeatDays[index] ? .white : .primary)
-//                                        .frame(width: 30, height: 30)
-//                                        .background(repeatDays[index] ? Color.red : Color.clear)
-//                                        .cornerRadius(15)
-//                                        .overlay(
-//                                            Circle()
-//                                                .stroke(Color.red, lineWidth: 1)
-//                                        )
-//                                }
-//                            }
-//                        }
-//                    }
-//                    
-//                    Section {
-//                        Toggle(isOn: $remindersEnabled) {
-//                            Text("Reminders")
-//                        }
-//                    }
                 }
             }
             .navigationBarTitle("Add Habit", displayMode: .inline)
