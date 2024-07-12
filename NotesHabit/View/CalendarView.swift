@@ -13,7 +13,7 @@ struct TopBarCalendar: View {
     }()
     
     // Sample goals data
-    let goalsContent: [HabitModel] = [
+    @State private var goalsContent: [HabitModel] = [
         HabitModel(title: "Morning Routines", body: "Personal", days: [2, 4, 6], startDate: Date(), emoji: "🌅", notes: [], streak: 5, lastLog: Date()),
         HabitModel(title: "SwiftUI Learn", body: "Personal > Study", days: [1, 3, 5], startDate: Date(), emoji: "📚", notes: [], time: Date(), streak: 10, lastLog: Date()),
         HabitModel(title: "Learn Figma", body: "Personal > Study", days: [1, 3, 5], startDate: Date(), emoji: "🎨", notes: [], time: Date(), streak: 10, lastLog: Date())
@@ -34,25 +34,26 @@ struct TopBarCalendar: View {
                 if let dayGoals = goalsForSelectedDate() {
                     List {
                         ForEach(dayGoals) { goal in
-                            
-                            GoalCard(goal: goal)
-                                .padding(.horizontal, -10)
-                                .swipeActions(edge: .leading) {
-                                    Button {
-                                        // Add favorite action here
-                                    } label: {
-                                        Image(systemName: "heart.fill")
+                            if goal.deleteAt == nil {
+                                GoalCard(goal: goal)
+                                    .padding(.horizontal, -10)
+                                    .swipeActions(edge: .leading) {
+                                        Button {
+                                            // Add favorite action here
+                                        } label: {
+                                            Image(systemName: "heart.fill")
+                                        }
+                                        .tint(.red)
                                     }
-                                    .tint(.red)
-                                }
-                                .swipeActions(edge: .trailing) {
-                                    Button(role: .destructive) {
-                                        // Add delete action here
-                                    } label: {
-                                        Image(systemName: "trash.fill")
+                                    .swipeActions(edge: .trailing) {
+                                        Button(role: .destructive) {
+                                            // Add delete action here
+                                            goal.deleteAt = Date()
+                                        } label: {
+                                            Image(systemName: "trash.fill")
+                                        }
                                     }
-                                }
-                            
+                            }
                         }
                     }
                     .listStyle(PlainListStyle())
@@ -90,7 +91,6 @@ struct TopBarCalendar: View {
     var weekView: some View {
         VStack(spacing: 20) {
             HStack {
-                
                 Text("Calendar")
                     .font(.system(size: 40, weight: .bold))
                     .foregroundColor(.red)
@@ -98,10 +98,8 @@ struct TopBarCalendar: View {
                 Spacer()
                 
                 HStack(spacing: 25) {
-                    
                     Button(action: {
                         showDatePicker = true
-                        
                     }) {
                         Image(systemName: "calendar")
                             .foregroundColor(.red)
@@ -111,7 +109,6 @@ struct TopBarCalendar: View {
                         // Handle add action
                     }) {
                         Image(systemName: "plus")
-                        
                             .foregroundColor(.red)
                     }
                 }
@@ -167,18 +164,6 @@ struct TopBarCalendar: View {
         return dateFormatter.string(from: date)
     }
     
-    func monthString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "LLLL"
-        return dateFormatter.string(from: selectedDate)
-    }
-    
-    func yearString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy"
-        return dateFormatter.string(from: selectedDate)
-    }
-    
     func isDateSelected(index: Int) -> Bool {
         let date = dateForIndex(index)
         return calendar.isDate(date, inSameDayAs: selectedDate)
@@ -192,12 +177,6 @@ struct TopBarCalendar: View {
     func dateForIndex(_ index: Int) -> Date {
         let startOfWeek = calendar.date(byAdding: .day, value: currentWeekOffset * 7, to: getStartOfWeek(for: selectedDate))!
         return calendar.date(byAdding: .day, value: index, to: startOfWeek)!
-    }
-    
-    func dateString(from date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter.string(from: date)
     }
     
     func getStartOfWeek(for date: Date) -> Date {
@@ -224,6 +203,7 @@ struct TopBarCalendar: View {
         }
     }
 }
+
 
 struct CalendarView: View {
     var body: some View {

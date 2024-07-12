@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4015BBE82C404EC800415C7A /* AddPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4015BBE72C404EC800415C7A /* AddPhotos.swift */; };
 		4015BBEA2C404EE600415C7A /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4015BBE92C404EE600415C7A /* PhotoPicker.swift */; };
+		4015BBEC2C40D8E900415C7A /* DeletedHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4015BBEB2C40D8E900415C7A /* DeletedHabitView.swift */; };
 		408CBE522C3FF939006539DB /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CBE512C3FF939006539DB /* DatePickerView.swift */; };
 		408CBE542C3FF948006539DB /* GoalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CBE532C3FF948006539DB /* GoalCardView.swift */; };
 		408CBE562C3FF952006539DB /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CBE552C3FF952006539DB /* MonthView.swift */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		4015BBE72C404EC800415C7A /* AddPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotos.swift; sourceTree = "<group>"; };
 		4015BBE92C404EE600415C7A /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
+		4015BBEB2C40D8E900415C7A /* DeletedHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedHabitView.swift; sourceTree = "<group>"; };
 		408CBE512C3FF939006539DB /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		408CBE532C3FF948006539DB /* GoalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardView.swift; sourceTree = "<group>"; };
 		408CBE552C3FF952006539DB /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				F63FFB472C3E5D7700EB8778 /* ContentView.swift */,
 				C18E78CC2C3F19CC00847A25 /* HomeView.swift */,
 				C18E78CE2C3F19D800847A25 /* CalendarView.swift */,
+				4015BBEB2C40D8E900415C7A /* DeletedHabitView.swift */,
 				408CBE512C3FF939006539DB /* DatePickerView.swift */,
 				408CBE532C3FF948006539DB /* GoalCardView.swift */,
 				408CBE552C3FF952006539DB /* MonthView.swift */,
@@ -236,6 +239,7 @@
 				C18E78DC2C3F727200847A25 /* CardHabitView.swift in Sources */,
 				F63FFB482C3E5D7700EB8778 /* ContentView.swift in Sources */,
 				C18E78CD2C3F19CC00847A25 /* HomeView.swift in Sources */,
+				4015BBEC2C40D8E900415C7A /* DeletedHabitView.swift in Sources */,
 				C18E78CF2C3F19D800847A25 /* CalendarView.swift in Sources */,
 				C18E78D12C3F19E000847A25 /* HabitsView.swift in Sources */,
 				408CBE542C3FF948006539DB /* GoalCardView.swift in Sources */,
