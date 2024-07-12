@@ -12,7 +12,8 @@ struct NotesHabitApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                
         }
-        .modelContainer(for: [HabitModel.self, NoteModel.self, FolderModel.self])
+        .modelContainer(for: [NoteModel.self, HabitModel.self, FolderModel.self])
     }
 }

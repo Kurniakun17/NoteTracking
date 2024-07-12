@@ -65,7 +65,7 @@ struct CardHabitView: View {
     }
 }
 
-struct ContentView3: View {
+struct ContentView4: View {
     let goalsContent: [HabitModel] = [
         HabitModel(title: "Morning Routines", body: "Personal", days: [2, 4, 6], startDate: Date(), emoji: "🌅", notes: [], streak: 5, lastLog: Date()),
         HabitModel(title: "SwiftUI Learn", body: "Personal > Study", days: [1, 3, 5], startDate: Date(), emoji: "📚", notes: [], time: Date(), streak: 10, lastLog: Date()),
@@ -90,7 +90,7 @@ struct ContentView3: View {
         var config = ModelConfiguration(isStoredInMemoryOnly: true)
         var container = try ModelContainer(for: HabitModel.self, configurations: config)
         
-        return ContentView3()
+        return ContentView4()
             .modelContainer(container)
         
     } catch {

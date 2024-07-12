@@ -1,10 +1,3 @@
-//
-//  GoalModel.swift
-//  NoteTrack
-//
-//  Created by Kurnia Kharisma Agung Samiadjie on 10/07/24.
-//
-
 import Foundation
 import SwiftData
 
@@ -21,8 +14,8 @@ class HabitModel: Identifiable {
     @Relationship(deleteRule: .cascade, inverse: \NoteModel.goal)
     var notes: [NoteModel] = []
 
-//    @Relationship(deleteRule: .cascade, inverse: \ReminderModel.goal)
-//    var reminders: ReminderModel?
+    //    @Relationship(deleteRule: .cascade, inverse: \ReminderModel.goal)
+    //    var reminders: ReminderModel?
     var time: Date?
     var isReminder = false
     var createAt = Date()
@@ -50,6 +43,3 @@ class HabitModel: Identifiable {
         self.lastLog = lastLog
     }
 }
-
-
-
