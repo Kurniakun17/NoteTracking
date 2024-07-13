@@ -1,6 +1,8 @@
 import SwiftUI
 import SwiftData
 
+// MARK: ini cuman untuk tes deleted habit
+
 struct DeletedHabitView: View {
     @Binding var goalsContent: [HabitModel]
     

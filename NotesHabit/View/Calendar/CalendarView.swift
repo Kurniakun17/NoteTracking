@@ -1,10 +1,11 @@
 import SwiftUI
 import SwiftData
 
-struct TopBarCalendar: View {
+struct CalendarView: View {
     @State private var selectedDate = Date()
     @State private var currentWeekOffset = 0
     @State private var showDatePicker = false
+    @State private var showAddHabitView = false
     let calendar = Calendar.current
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -20,133 +21,120 @@ struct TopBarCalendar: View {
     ]
     
     var body: some View {
-        ZStack {
-            VStack(spacing: 10) {
-                weekView
-                
-                Text(dateFormatter.string(from: selectedDate))
-                    .font(.system(size: 18))
-                    .padding(.bottom, 6)
-                
-                let dayGoals = goalsForSelectedDate().filter { $0.deleteAt == nil }
-                if !dayGoals.isEmpty {
-                    List {
-                        ForEach(dayGoals) { goal in
-                            GoalCard(goal: goal)
-                                .padding(.horizontal, -10)
-                                .swipeActions(edge: .leading) {
-                                    Button {
-                                        // Add favorite action here
-                                    } label: {
-                                        Image(systemName: "heart.fill")
-                                    }
-                                    .tint(.red)
-                                }
-                                .swipeActions(edge: .trailing) {
-                                    Button(role: .destructive) {
-                                        // Add delete action here
-                                        goal.deleteAt = Date()
-                                    } label: {
-                                        Image(systemName: "trash.fill")
-                                    }
-                                }
-                        }
-                    }
-                } else {
-                    Divider()
+        NavigationView {
+            ZStack {
+                VStack(spacing: 10) {
+                    weekView
+                    
+                    Text(dateFormatter.string(from: selectedDate))
+                        .font(.system(size: 18))
                         .padding(.bottom, 6)
                     
-                    Spacer()
-                    
-                    Text("No habits scheduled for this date")
-                        .foregroundColor(.gray)
-                        .padding()
-                    
-                    Spacer()
+                    let dayGoals = goalsForSelectedDate().filter { $0.deleteAt == nil }
+                    if !dayGoals.isEmpty {
+                        List {
+                            ForEach(dayGoals) { goal in
+                                GoalCard(goal: goal)
+                                    .padding(.horizontal, -10)
+                                    .swipeActions(edge: .leading) {
+                                        Button {
+                                            // Add favorite action here
+                                        } label: {
+                                            Image(systemName: "heart.fill")
+                                        }
+                                        .tint(.red)
+                                    }
+                                    .swipeActions(edge: .trailing) {
+                                        Button(role: .destructive) {
+                                            // Add delete action here
+                                            goal.deleteAt = Date()
+                                        } label: {
+                                            Image(systemName: "trash.fill")
+                                        }
+                                    }
+                            }
+                        }
+                    } else {
+                        Divider()
+                            .padding(.bottom, 6)
+                        
+                        Spacer()
+                        
+                        Text("No habits scheduled for this date")
+                            .foregroundColor(.gray)
+                            .padding()
+                        
+                        Spacer()
+                    }
                 }
-            }
-            .background(Color(.systemBackground))
-            
-            if showDatePicker {
-                Color.black.opacity(0.4)
-                    .edgesIgnoringSafeArea(.all)
-                    .onTapGesture {
+                .background(Color(.systemBackground))
+                
+                if showDatePicker {
+                    Color.black.opacity(0.4)
+                        .edgesIgnoringSafeArea(.all)
+                        .onTapGesture {
+                            showDatePicker = false
+                        }
+                    
+                    DatePickerView(selectedDate: $selectedDate) { newDate in
+                        selectedDate = newDate
                         showDatePicker = false
                     }
-                
-                DatePickerView(selectedDate: $selectedDate) { newDate in
-                    selectedDate = newDate
-                    showDatePicker = false
+                    .frame(width: 350)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 10)
+                    .offset(y: -160)
                 }
-                .frame(width: 350)
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 10)
-                .offset(y: -120)
+            }
+            .sheet(isPresented: $showAddHabitView) {
+                AddHabitView()
             }
         }
+        .accentColor(.primaryRed)
+        .navigationTitle("Scheduled Habit")
+        .navigationBarItems(trailing: Button(action: {
+            showDatePicker = true
+            print("Show date picker")
+        }) {
+            Image(systemName: "calendar")
+                .foregroundColor(.primaryRed)
+        })
+        
     }
     
+    
     var weekView: some View {
-        VStack(spacing: 20) {
-            HStack {
-                Text("Calendar")
-                    .font(.system(size: 40, weight: .bold))
-                    .foregroundColor(.red)
-                
-                Spacer()
-                
-                HStack(spacing: 25) {
-                    Button(action: {
-                        showDatePicker = true
-                    }) {
-                        Image(systemName: "calendar")
-                            .foregroundColor(.red)
-                    }
+        HStack(spacing: 20) {
+            ForEach(0..<7) { index in
+                VStack {
+                    Text(shortWeekdayString(from: index))
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
                     
-                    Button(action: {
-                        // Handle add action
-                    }) {
-                        Image(systemName: "plus")
-                            .foregroundColor(.red)
-                    }
-                }
-                .font(.system(size: 22))
-            }
-            .padding(.top)
-            .padding(.horizontal, 20)
-            
-            HStack(spacing: 20) {
-                ForEach(0..<7) { index in
-                    VStack {
-                        Text(shortWeekdayString(from: index))
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                        
-                        Circle()
-                            .fill(isDateSelected(index: index) ? Color.red : Color.clear)
-                            .frame(width: 30, height: 30)
-                            .overlay(
-                                Text(dayString(from: index))
-                                    .foregroundColor(isDateSelected(index: index) ? .white : .primary)
-                            )
-                            .onTapGesture {
-                                selectDate(index: index)
-                            }
-                    }
-                }
-            }
-            .gesture(
-                DragGesture()
-                    .onEnded { value in
-                        if value.translation.width < 0 {
-                            currentWeekOffset += 1
-                        } else if value.translation.width > 0 {
-                            currentWeekOffset -= 1
+                    Circle()
+                        .fill(isDateSelected(index: index) ? Color.primaryRed : Color.clear)
+                        .frame(width: 30, height: 30)
+                        .overlay(
+                            Text(dayString(from: index))
+                                .foregroundColor(isDateSelected(index: index) ? .white : .black)
+                        )
+                        .onTapGesture {
+                            selectDate(index: index)
                         }
-                    }
-            )
+                }
+            }
         }
+        .gesture(
+            DragGesture()
+                .onEnded { value in
+                    if value.translation.width < 0 {
+                        currentWeekOffset += 1
+                    } else if value.translation.width > 0 {
+                        currentWeekOffset -= 1
+                    }
+                }
+        )
     }
     
     func shortWeekdayString(from index: Int) -> String {
@@ -201,12 +189,6 @@ struct TopBarCalendar: View {
             guard goal.days.contains(selectedDayOfWeek) else { return false }
             return calendar.compare(selectedDate, to: goal.startDate, toGranularity: .day) != .orderedAscending
         }
-    }
-}
-
-struct CalendarView: View {
-    var body: some View {
-        TopBarCalendar()
     }
 }
 
