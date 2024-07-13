@@ -15,19 +15,13 @@ struct Footer: View {
                     // Action for option 1
                     print("Option 1 selected")
                 }) {
-                    Text("Option 1")
+                    Text("New Folder")
                 }
                 Button(action: {
                     // Action for option 2
                     print("Option 2 selected")
                 }) {
-                    Text("Option 2")
-                }
-                Button(action: {
-                    // Action for option 3
-                    print("Option 3 selected")
-                }) {
-                    Text("Option 3")
+                    Text("New Habit")
                 }
             } label: {
                 Image(systemName: "folder.badge.plus")
