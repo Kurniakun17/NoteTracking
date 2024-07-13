@@ -5,6 +5,7 @@ struct TopBarCalendar: View {
     @State private var selectedDate = Date()
     @State private var currentWeekOffset = 0
     @State private var showDatePicker = false
+    @State private var showAddHabitView = false
     let calendar = Calendar.current
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -85,14 +86,17 @@ struct TopBarCalendar: View {
                 .offset(y: -120)
             }
         }
+        .sheet(isPresented: $showAddHabitView) {
+                AddHabitView()
+            }
     }
     
     var weekView: some View {
         VStack(spacing: 20) {
             HStack {
-                Text("Calendar")
+                Text("Scheduled")
                     .font(.system(size: 40, weight: .bold))
-                    .foregroundColor(.red)
+                    .foregroundColor(.black)
                 
                 Spacer()
                 
@@ -101,14 +105,15 @@ struct TopBarCalendar: View {
                         showDatePicker = true
                     }) {
                         Image(systemName: "calendar")
-                            .foregroundColor(.red)
+                            .foregroundColor(.primaryRed)
                     }
                     
                     Button(action: {
                         // Handle add action
+                        showAddHabitView = true
                     }) {
                         Image(systemName: "plus")
-                            .foregroundColor(.red)
+                            .foregroundColor(.primaryRed)
                     }
                 }
                 .font(.system(size: 22))
@@ -124,11 +129,11 @@ struct TopBarCalendar: View {
                             .foregroundColor(.gray)
                         
                         Circle()
-                            .fill(isDateSelected(index: index) ? Color.red : Color.clear)
+                            .fill(isDateSelected(index: index) ? Color.primaryRed : Color.clear)
                             .frame(width: 30, height: 30)
                             .overlay(
                                 Text(dayString(from: index))
-                                    .foregroundColor(isDateSelected(index: index) ? .white : .primary)
+                                    .foregroundColor(isDateSelected(index: index) ? .white : .black)
                             )
                             .onTapGesture {
                                 selectDate(index: index)
