@@ -6,29 +6,24 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     var body: some View {
-        TabView {
-            HomeView()
-                .tabItem {
-                    Image(systemName: "star.fill")
-                    Text("Home")
-                }
-            CalendarView()
-                .tabItem {
-                    Image(systemName: "calendar")
-                    Text("Calendar")
-                }
-            HabitsView()
-                .tabItem {
-                    Image(systemName: "star")
-                    Text("Habits")
-                }
-        }
+        FoldersView()
     }
+    
 }
-
 #Preview {
-    ContentView()
+    do
+    {
+        var config = ModelConfiguration(isStoredInMemoryOnly: true)
+        var container = try ModelContainer(for: HabitModel.self, configurations: config)
+        
+        return ContentView()
+            .modelContainer(container)
+        
+    } catch {
+        fatalError("Error")
+    }
 }
