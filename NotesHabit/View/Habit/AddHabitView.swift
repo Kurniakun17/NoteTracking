@@ -1,3 +1,4 @@
+import SwiftData
 import SwiftUI
 
 struct AddHabitView: View {
@@ -7,9 +8,10 @@ struct AddHabitView: View {
     @State private var reminderOn: Bool = false
     @State private var showTimePicker: Bool = false
     @State private var showDatePicker: Bool = false
-    @State private var selectedTime: Date = Date()
-    @State private var selectedDate: Date = Date()
+    @State private var selectedTime: Date = .init()
+    @State private var selectedDate: Date = .init()
     @State private var selectedDays: Set<Int> = []
+    @Environment(\.modelContext) var context
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -54,7 +56,7 @@ struct AddHabitView: View {
                     }
                     
                     HStack {
-                        ForEach(0..<7) { index in
+                        ForEach(0 ..< 7) { index in
                             Button(action: {
                                 toggleDaySelection(index)
                             }) {
@@ -75,7 +77,7 @@ struct AddHabitView: View {
                 
                 Section {
                     Toggle("Reminder", isOn: $reminderOn)
-                        .onChange(of: reminderOn) { value in
+                        .onChange(of: reminderOn) { _ in
                             showTimePicker = false // Reset the time picker when the toggle is changed
                         }
                     
@@ -108,11 +110,11 @@ struct AddHabitView: View {
             .navigationBarItems(leading: Button("Cancel", action: {
                 presentationMode.wrappedValue.dismiss()
             }),
-                                trailing: Button("Done", action: {
-                // TODO: Tambahin function untuk SaveHabit disini
-//                saveHabit()
+            trailing: Button("Done", action: {
+                saveHabit()
                 presentationMode.wrappedValue.dismiss()
             }))
+//            .disabled(habitTitle == "")
         }
         .accentColor(.primaryRed)
     }
@@ -153,12 +155,21 @@ struct AddHabitView: View {
     }
     
     private func saveHabit() {
-        // Add your saving logic here
+        context.insert(HabitModel(title: habitTitle, body: "", days: selectedDays, emoji: emoji, time: selectedTime, isReminder: reminderOn))
     }
 }
 
-struct AddHabitView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddHabitView()
+#Preview {
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: HabitModel.self, configurations: config)
+        
+        SeedContainer(container: container)
+        
+        return AddHabitView()
+            .modelContainer(container)
+        
+    } catch {
+        fatalError("Error")
     }
 }

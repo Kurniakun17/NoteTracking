@@ -30,27 +30,7 @@ struct EditNoteView: View {
                     .fontWeight(.bold)
                     .padding(.horizontal, 20)
                     .autocorrectionDisabled()
-
-                HStack {
-                    Image(systemName: "arrowtriangle.down.circle")
-                        .foregroundStyle(.black.opacity(0.8))
-                    Text("Habit")
-                        .foregroundStyle(.black.opacity(0.8))
-                    Picker(selection: $habit, label: EmptyView()) {
-                        ForEach(options, id: \.self) {
-                            opt in
-                            Text(opt)
-                                .foregroundStyle(.white)
-                        }
-                    }
-                    .labelsHidden()
-                    .tint(habit == "Empty" ? .black.opacity(0.8) : .black)
-                    Spacer()
-                }
-                .padding(.horizontal, 20)
-
                 Divider()
-
                 TextEditor(text: $bodyText)
                     .autocorrectionDisabled()
                     .padding(.horizontal, 20)
@@ -62,10 +42,12 @@ struct EditNoteView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onChange(of: title) {
             note.title = title
+            note.updatedAt = Date()
         }
 
         .onChange(of: bodyText) {
             note.body = bodyText
+            note.updatedAt = Date()
         }
     }
 }

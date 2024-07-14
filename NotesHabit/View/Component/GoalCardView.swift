@@ -82,8 +82,8 @@ struct ContentView3: View {
 #Preview {
     do
     {
-        var config = ModelConfiguration(isStoredInMemoryOnly: true)
-        var container = try ModelContainer(for: HabitModel.self, configurations: config)
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: HabitModel.self, configurations: config)
         
         return ContentView3()
             .modelContainer(container)
