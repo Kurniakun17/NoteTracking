@@ -6,6 +6,7 @@ struct CalendarView: View {
     @State private var currentWeekOffset = 0
     @State private var showDatePicker = false
     @State private var showAddHabitView = false
+    var folder: FolderModel
     let calendar = Calendar.current
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()

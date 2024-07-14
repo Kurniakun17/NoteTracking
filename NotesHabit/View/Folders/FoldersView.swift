@@ -2,7 +2,8 @@ import SwiftUI
 import SwiftData
 
 struct FoldersView: View {
-    @State private var showModal = false
+    @State private var showModalHabit = false
+    @State private var showModalFolder = false
     @Query(animation: .snappy) private var habits: [HabitModel]
     @Query(animation: .snappy) private var notes: [NoteModel]
     @Query(animation: .snappy) private var folders: [FolderModel]
@@ -14,9 +15,14 @@ struct FoldersView: View {
                 
                 List {
                     // TODO: ganti variabel count nya dengan Count isi folder yang sebenarnya
-                    FolderRow(destination: PersonalNotes(), title: "Personal Notes", count: habits.count)
+//                    FolderRow(destination: PersonalNotes(), title: "Personal Notes", count: habits.count)
                     
-                    FolderRow(destination: CalendarView(), title: "Building Habits (tent)", count: habits.count)
+//                    FolderRow(destination: CalendarView(), title: "Building Habits (tent)", count: habits.count)
+                    
+                    ForEach(folders){folderItem in
+//                        FoldersView()
+                        FolderRow(destination: CalendarView(folder: folderItem), title: folderItem.title, count: habits.count)
+                    }
                 }
                 .listStyle(InsetGroupedListStyle())
                 .navigationTitle("Folders")
@@ -26,13 +32,14 @@ struct FoldersView: View {
                             Menu {
                                 Button(action: {
                                     // Action for option 1
-                                    self.showModal = true
+                                    showModalHabit = true
                                 }) {
                                     Text("Add Habit")
                                 }
                                 Button(action: {
                                     // Action for option 2
-                                    print("Option 2 selected")
+//                                    print("Option 2 selected")
+                                    showModalFolder = true
                                 }) {
                                     Text("Add Folder")
                                 }
@@ -52,31 +59,34 @@ struct FoldersView: View {
                     }
                 }
             }
-            .sheet(isPresented: $showModal) {
-                AddHabitView(showModal: self.$showModal)
+            .sheet(isPresented: self.$showModalHabit) {
+                AddHabitView(showModal: self.$showModalHabit)
+            }
+            .sheet(isPresented: self.$showModalFolder) {
+                AddFolderView(showModal: self.$showModalFolder)
             }
         }
     }
 }
 
 
-struct FolderRow<Destination: View>: View {
-    var destination: Destination
-    var title: String
-    var count: Int
-    
-    var body: some View {
-        NavigationLink(destination: destination) {
-            HStack {
-                Image(systemName: "folder")
-                Text(title)
-                Spacer()
-                Text("\(count)")
-                    .foregroundColor(.gray)
-            }
-        }
-    }
-}
+//struct FolderRow<Destination: View>: View {
+//    var destination: Destination
+//    var title: String
+//    var count: Int
+//    
+//    var body: some View {
+//        NavigationLink(destination: destination) {
+//            HStack {
+//                Image(systemName: "folder")
+//                Text(title)
+//                Spacer()
+//                Text("\(count)")
+//                    .foregroundColor(.gray)
+//            }
+//        }
+//    }
+//}
 
 
 #Preview {

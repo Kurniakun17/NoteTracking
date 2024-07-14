@@ -19,7 +19,7 @@ class FolderModel: Identifiable {
     @Relationship(deleteRule: .cascade, inverse: \HabitModel.folder)
     var goals: [HabitModel] = []
 
-    init(id: UUID = UUID(), title: String, notes: [NoteModel], goals: [HabitModel]) {
+    init(id: UUID = UUID(), title: String, notes: [NoteModel] = [], goals: [HabitModel] = []) {
         self.id = id
         self.title = title
         self.notes = notes

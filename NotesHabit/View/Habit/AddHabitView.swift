@@ -111,11 +111,9 @@ struct AddHabitView: View {
             .navigationBarTitle("Add Habit", displayMode: .inline)
             .navigationBarItems(leading: Button("Cancel", action: {
                 presentationMode.wrappedValue.dismiss()
-            }),
-                                trailing: Button("Done", action: {
+            }),trailing:Button("Done", action: {
                 // TODO: Tambahin function untuk SaveHabit disini
                 saveHabit(title: self.habitTitle, body: self.description,emoji: self.emoji,startDate: self.selectedDate, repeatDay: self.selectedDays, reminder: self.reminderOn)
-                
                 presentationMode.wrappedValue.dismiss()
             }))
         }
