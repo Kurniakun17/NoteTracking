@@ -2,10 +2,12 @@ import SwiftData
 import SwiftUI
 
 struct StartView: View {
-    @Query var notesFolder: [FolderModel]
-    @State var isAddFolder = false
     @Environment(\.modelContext) var context
+    @Query var notesFolder: [FolderModel]
     @Query var notes: [NoteModel]
+    @Query var habits: [HabitModel]
+    @State var isAddFolder = false
+    @State var isAddHabit = false
     
     init() {
         let notesOnlyPredicate = #Predicate<FolderModel> {
@@ -21,31 +23,55 @@ struct StartView: View {
                 List {
                     FolderRow(destination: PersonalNotes(), title: "Personal Notes", count: notesFolder.count)
                     
-                    FolderRow(destination: HabitsView(), title: "Habit Documentation", count: 15)
+                    FolderRow(destination: HabitsView(), title: "Habit Documentation", count: habits.count)
                 }
                 .listStyle(InsetGroupedListStyle())
                 .navigationTitle("Folders")
                 .sheet(isPresented: $isAddFolder, content: {
-                    AddFolder(isAddFolder: $isAddFolder)
+                    AddFolderView()
+                })
+                .sheet(isPresented: $isAddHabit, content: {
+                    AddHabitView()
                 })
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
                         HStack {
-                            Button(action: {
-                                isAddFolder = true
-                            }) {
-                                Image(systemName: "folder.badge.plus")
-                            }
+                            Menu(content: {
+                                     Button(action: {
+                                         isAddHabit = true
+                                     }) {
+                                         HStack {
+                                             Text("New Habit")
+                                             Spacer()
+                                             Image(systemName: "book.and.wrench")
+                                         }
+                                     }
+                                
+                                     Button(action: {
+                                         isAddFolder = true
+
+                                     }) {
+                                         HStack {
+                                             Text("New Folder")
+                                             Spacer()
+                                             Image(systemName: "folder")
+                                         }
+                                     }
+                                
+                                 },
+                                 label: {
+                                     Image(systemName: "folder.badge.plus")
+                                 })
                             
                             Spacer()
-                            
+
                             NavigationLink(
-                                destination: AddNoteView(
-                                ).onAppear {
-                                    context.insert(NoteModel(title: "", body: ""))
-                                }) {
-                                    Image(systemName: "square.and.pencil")
-                                }
+                                destination: AddNoteView()
+                                    .onAppear {
+                                        context.insert(NoteModel(title: "", body: ""))
+                                    }) {
+                                Image(systemName: "square.and.pencil")
+                            }
                         }
                     }
                 }

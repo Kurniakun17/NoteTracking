@@ -24,6 +24,17 @@ struct FolderDetail: View {
                     Section(header: Text("Today")) {
                         ForEach(todayNotes, id: \.self) { note in
                             NoteListItem(note: note)
+                                .swipeActions(edge: .trailing) {
+                                    Button(action: {
+                                        if let index = folder.notes.firstIndex(where: { $0 == note }) {
+                                            folder.notes.remove(at: index)
+                                            context.delete(note)
+                                        }
+
+                                    }) {
+                                        Image(systemName: "trash")
+                                    }.tint(.red)
+                                }
                         }
                     }
                     .headerProminence(.increased)
@@ -67,13 +78,14 @@ struct FolderDetail: View {
                         Spacer()
 
                         NavigationLink(
-                            destination: AddNoteView().onAppear {
-                                let newNote = NoteModel(title: "", body: "", folder: folder)
-                                folder.notes.append(newNote)
-                                context.insert(newNote)
-                            }) {
-                                Image(systemName: "square.and.pencil")
-                            }
+                            destination: AddNoteView()
+                                .onAppear {
+                                    let newNote = NoteModel(title: "", body: "", folder: folder)
+                                    context.insert(newNote)
+                                    folder.notes.append(newNote)
+                                }) {
+                            Image(systemName: "square.and.pencil")
+                        }
                     }
                 }
             }

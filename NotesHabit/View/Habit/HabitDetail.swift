@@ -39,12 +39,14 @@ struct HabitDetail: View {
                         Spacer()
 
                         NavigationLink(
-                            destination: AddNoteView(
-                            ).onAppear {
-                                habit.notes.append(NoteModel(title: "", body: "", habit: habit))
-                            }) {
-                                Image(systemName: "square.and.pencil")
-                            }
+                            destination: AddNoteView()
+                                .onAppear {
+                                    let newNote = NoteModel(title: "", body: "", habit: habit)
+                                    context.insert(newNote)
+                                    habit.notes.append(newNote)
+                                }) {
+                            Image(systemName: "square.and.pencil")
+                        }
                     }
                 }
             }
