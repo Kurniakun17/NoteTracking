@@ -15,6 +15,7 @@ struct AddNoteView: View {
     @State var habit: String = "Empty"
     @State var bodyText: String = ""
     @Query var notes: [NoteModel]
+    @Query var habits: [HabitModel]
 
     @State var options = [
         "Empty",
@@ -47,32 +48,53 @@ struct AddNoteView: View {
                             Image(systemName: "pin")
                         }
                     }
-                    Button(action: {}) {
+                    Menu(content: {
+                        ForEach(habits, id: \.self) {
+                            habit in
+                            Button(action: {
+                                notes.last?.habit = habit
+//                                TODO: Update last log and streak
+//                                habit.lastLog = ()
+                            }) {
+                                Text(habit.title)
+                            }
+                        }
+                    }, label: {
                         HStack {
                             Text("Add to Habit")
                             Spacer()
                             Image(systemName: "book.and.wrench")
                         }
-                    }
+                    })
 
                 }, label: {
                     Image(systemName: "ellipsis.circle")
-
                 })
             }
         }
-//        .searchable(text: .con`stant(""), placement: .navigationBarDrawer(displayMode: .))
 
         .onChange(of: title) {
             notes.last?.title = title
             notes.last?.updatedAt = Date()
+            updateHabit()
         }
 
         .onChange(of: bodyText) {
             notes.last?.body = bodyText
             notes.last?.updatedAt = Date()
+            updateHabit()
         }
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func updateHabit() {
+        let habit = notes.last?.habit
+        if habit != nil {
+            if !Calendar.current.isDateInToday(habit!.lastLog!) {
+                habit?.streak += 1
+            }
+            habit?.lastLog = Date()
+        }
     }
 }
 

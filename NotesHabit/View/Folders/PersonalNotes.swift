@@ -57,17 +57,17 @@ struct PersonalNotes: View {
                         Spacer()
 
                         NavigationLink(
-                            destination: AddNoteView(
-                            ).onAppear {
-                                context.insert(NoteModel(title: "", body: ""))
-                            }) {
-                                Image(systemName: "square.and.pencil")
-                            }
+                            destination: AddNoteView()
+                                .onAppear {
+                                    context.insert(NoteModel(title: "", body: ""))
+                                }) {
+                            Image(systemName: "square.and.pencil")
+                        }
                     }
                 }
             }
             .sheet(isPresented: $isAddFolder, content: {
-                AddFolder(isAddFolder: $isAddFolder)
+                AddFolderView()
             })
         }
     }

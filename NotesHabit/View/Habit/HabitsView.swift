@@ -35,20 +35,7 @@ struct HabitsView: View {
                 Section(header: Text("All Habits")) {
                     ForEach(habits, id: \.self) {
                         habit in
-                        NavigationLink(destination: HabitDetail(habit: habit)) {
-                            HStack(spacing: 12) {
-                                Image(systemName: "calendar")
-
-                                Text(habit.title)
-                                Spacer()
-                                HStack(spacing: 8) {
-                                    Text(String(habit.streak))
-                                        .foregroundColor(habit.streak == 0 ? .gray : .primaryRed)
-                                    Image(systemName: "flame.fill")
-                                        .foregroundStyle(.primaryRed)
-                                }
-                            }
-                        }
+                        HabitListItem(habit: habit)
                     }
                 }
                 .headerProminence(.increased)
@@ -75,13 +62,33 @@ struct HabitsView: View {
                         Spacer()
 
                         NavigationLink(
-                            destination: AddNoteView(
-                            ).onAppear {
-                                context.insert(NoteModel(title: "", body: ""))
-                            }) {
-                                Image(systemName: "square.and.pencil")
-                            }
+                            destination: AddNoteView()
+                                .onAppear {
+                                    context.insert(NoteModel(title: "", body: ""))
+                                }) {
+                            Image(systemName: "square.and.pencil")
+                        }
                     }
+                }
+            }
+        }
+    }
+}
+
+struct HabitListItem: View {
+    var habit: HabitModel
+    var body: some View {
+        NavigationLink(destination: HabitDetail(habit: habit)) {
+            HStack(spacing: 12) {
+                Image(systemName: "calendar")
+
+                Text(habit.title)
+                Spacer()
+                HStack(spacing: 8) {
+                    Text(String(habit.streak))
+                        .foregroundColor(habit.streak == 0 ? .gray : .primaryRed)
+                    Image(systemName: "flame.fill")
+                        .foregroundStyle(habit.streak == 0 ? .gray : .primaryRed)
                 }
             }
         }
@@ -154,7 +161,8 @@ struct ModalView: View {
                     title: habitTitle,
                     body: descriptions,
                     days: daysSet,
-                    emoji: selectedEmoji)
+                    emoji: selectedEmoji
+                )
                 context.insert(habit)
                 self.showModal = false
 

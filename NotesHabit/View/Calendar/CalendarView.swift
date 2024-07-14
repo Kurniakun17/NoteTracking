@@ -1,5 +1,5 @@
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct CalendarView: View {
     @State private var selectedDate = Date()
@@ -13,14 +13,7 @@ struct CalendarView: View {
         return formatter
     }()
     
-    // Sample goals data
-    @Query private var goalsContent: [HabitModel]
-    
-//    @Query private var goalsContent: [HabitModel] = [
-//        HabitModel(title: "Morning Routines", body: "Personal", days: [2, 4, 6], startDate: Date(), emoji: "🌅", notes: [], streak: 5, lastLog: Date()),
-//        HabitModel(title: "SwiftUI Learn", body: "Personal > Study", days: [1, 3, 5], startDate: Date(), emoji: "📚", notes: [], time: Date(), streak: 10, lastLog: Date()),
-//        HabitModel(title: "Learn Figma", body: "Personal > Study", days: [1, 3, 5], startDate: Date(), emoji: "🎨", notes: [], time: Date(), streak: 10, lastLog: Date())
-//    ]
+    @Query private var habits: [HabitModel]
     
     var body: some View {
         NavigationView {
@@ -33,10 +26,27 @@ struct CalendarView: View {
                         .padding(.bottom, 6)
                     
                     let dayGoals = goalsForSelectedDate().filter { $0.deleteAt == nil }
+                    
                     if !dayGoals.isEmpty {
                         List {
-                            ForEach(dayGoals) { goal in
-                                GoalCard(goal: goal)
+                            let completedHabit = habits.filter {
+                                if $0.lastLog != nil {
+                                    return Calendar.current.isDateInToday($0.lastLog!)
+                                } else {
+                                    return false
+                                }
+                            }
+                            
+                            let incompleteHabit = habits.filter {
+                                if $0.lastLog == nil {
+                                    return true
+                                } else {
+                                    return !(Calendar.current.isDateInToday($0.lastLog!))
+                                }
+                            }
+                            
+                            ForEach(incompleteHabit) { habit in
+                                GoalCard(goal: habit)
                                     .padding(.horizontal, -10)
                                     .swipeActions(edge: .leading) {
                                         Button {
@@ -49,12 +59,36 @@ struct CalendarView: View {
                                     .swipeActions(edge: .trailing) {
                                         Button(role: .destructive) {
                                             // Add delete action here
-                                            goal.deleteAt = Date()
+                                            habit.deleteAt = Date()
                                         } label: {
                                             Image(systemName: "trash.fill")
                                         }
                                     }
                             }
+
+                            Section(header: Text("Complete")) {
+                                ForEach(completedHabit) { habit in
+                                    GoalCard(goal: habit)
+                                        .padding(.horizontal, -10)
+                                        .swipeActions(edge: .leading) {
+                                            Button {
+                                                // Add favorite action here
+                                            } label: {
+                                                Image(systemName: "heart.fill")
+                                            }
+                                            .tint(.red)
+                                        }
+                                        .swipeActions(edge: .trailing) {
+                                            Button(role: .destructive) {
+                                                // Add delete action here
+                                                habit.deleteAt = Date()
+                                            } label: {
+                                                Image(systemName: "trash.fill")
+                                            }
+                                        }
+                                }
+                            }
+                            .headerProminence(.increased)
                         }
                     } else {
                         Divider()
@@ -101,13 +135,11 @@ struct CalendarView: View {
             Image(systemName: "calendar")
                 .foregroundColor(.primaryRed)
         })
-        
     }
-    
     
     var weekView: some View {
         HStack(spacing: 20) {
-            ForEach(0..<7) { index in
+            ForEach(0 ..< 7) { index in
                 VStack {
                     Text(shortWeekdayString(from: index))
                         .font(.subheadline)
@@ -169,7 +201,7 @@ struct CalendarView: View {
     }
     
     func getStartOfWeek(for date: Date) -> Date {
-        var startOfWeek: Date = Date()
+        var startOfWeek = Date()
         var interval: TimeInterval = 0
         if calendar.dateInterval(of: .weekOfYear, start: &startOfWeek, interval: &interval, for: date) {
             return startOfWeek
@@ -186,7 +218,7 @@ struct CalendarView: View {
     
     func goalsForSelectedDate() -> [HabitModel] {
         let selectedDayOfWeek = calendar.component(.weekday, from: selectedDate)
-        return goalsContent.filter { goal in
+        return habits.filter { goal in
             guard goal.days.contains(selectedDayOfWeek) else { return false }
             return calendar.compare(selectedDate, to: goal.startDate, toGranularity: .day) != .orderedAscending
         }
@@ -194,8 +226,7 @@ struct CalendarView: View {
 }
 
 #Preview {
-    do
-    {
+    do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: HabitModel.self, configurations: config)
         

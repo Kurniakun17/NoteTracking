@@ -8,11 +8,10 @@
 import SwiftData
 import SwiftUI
 
-struct AddFolder: View {
+struct AddFolderView: View {
     @Environment(\.modelContext) var context
-    @State var folderTitle = ""
-    @Binding var isAddFolder: Bool
     @Environment(\.presentationMode) var presentationMode
+    @State var folderTitle = ""
 
     var body: some View {
         NavigationView {
@@ -28,7 +27,7 @@ struct AddFolder: View {
                 Spacer()
             }
             .padding()
-            .navigationBarTitle("Add Habit", displayMode: .inline)
+            .navigationBarTitle("Add Folder", displayMode: .inline)
             .navigationBarItems(
                 leading: Button("Cancel", action: {
                     presentationMode.wrappedValue.dismiss()
@@ -37,11 +36,12 @@ struct AddFolder: View {
 
                 trailing: Button("Done", action: {
                     context.insert(FolderModel(title: folderTitle))
+                    presentationMode.wrappedValue.dismiss()
                 }))
         }
     }
 }
 
 #Preview {
-    AddFolder(isAddFolder: .constant(true))
+    AddFolderView()
 }

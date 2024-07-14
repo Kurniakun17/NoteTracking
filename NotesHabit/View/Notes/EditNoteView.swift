@@ -9,12 +9,11 @@ import SwiftData
 import SwiftUI
 
 struct EditNoteView: View {
+    @Query var habits: [HabitModel]
     @State var note: NoteModel
-    @State var text = NSAttributedString(string: "Hai")
     @State var title: String
     @State var habit: String = "Empty"
     @State var bodyText: String
-
     @State var options = [
         "Empty",
         "Learn Swiftui 30 Minutes",
@@ -23,31 +22,75 @@ struct EditNoteView: View {
     ]
 
     var body: some View {
-        NavigationView(content: {
-            VStack {
-                TextField("Title", text: $title)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.horizontal, 20)
-                    .autocorrectionDisabled()
-                Divider()
-                TextEditor(text: $bodyText)
-                    .autocorrectionDisabled()
-                    .padding(.horizontal, 20)
+        VStack {
+            TextField("Title", text: $title)
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .padding(.horizontal, 20)
+                .autocorrectionDisabled()
+            Divider()
+            TextEditor(text: $bodyText)
+                .autocorrectionDisabled()
+                .padding(.horizontal, 20)
 
-                Spacer()
+            Spacer()
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Menu(content: {
+                    Button(action: {}) {
+                        HStack {
+                            Text("Pin Note")
+                            Spacer()
+                            Image(systemName: "pin")
+                        }
+                    }
+                    Menu(content: {
+                        ForEach(habits, id: \.self) {
+                            habit in
+                            Button(action: {
+                                note.habit = habit
+//                                TODO: Update last log and streak
+//                                habit.lastLog = ()
+                            }) {
+                                Text(habit.title)
+                            }
+                        }
+                    }, label: {
+                        HStack {
+                            Text("Add to Habit")
+                            Spacer()
+                            Image(systemName: "book.and.wrench")
+                        }
+                    })
+
+                }, label: {
+                    Image(systemName: "ellipsis.circle")
+                })
             }
-            .onChange(of: text) {}
-        })
+        }
+
         .navigationBarTitleDisplayMode(.inline)
         .onChange(of: title) {
             note.title = title
             note.updatedAt = Date()
+            updateHabit()
         }
 
         .onChange(of: bodyText) {
             note.body = bodyText
             note.updatedAt = Date()
+            updateHabit()
+        }
+    }
+
+    private func updateHabit() {
+        let habit = note.habit
+        if habit != nil {
+            if !Calendar.current.isDateInToday(habit!.lastLog!) {
+                habit?.streak += 1
+            }
+            habit?.lastLog = Date()
         }
     }
 }
