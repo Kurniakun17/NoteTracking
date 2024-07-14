@@ -1,8 +1,8 @@
 import SwiftUI
 import SwiftData
 
-struct GoalCard: View {
-    let goal: HabitModel
+struct HabitCard: View {
+    let habit: HabitModel
     
     var body: some View {
         HStack(spacing: 20) {
@@ -10,28 +10,28 @@ struct GoalCard: View {
                 .fill(Color.gray.opacity(0.1))
                 .frame(width: 80, height: 80)
                 .overlay(
-                    Text(goal.emoji)
+                    Text(habit.emoji)
                         .font(.system(size: 40))
                 )
 //                .padding(.horizontal, -5)
             
             VStack(alignment: .leading, spacing: 5) {
-                Text(goal.folder?.title ?? "No Folder")
+                Text(habit.folder?.title ?? "No Folder")
                     .font(.caption)
                     .foregroundColor(.gray)
                 
-                Text(goal.title)
+                Text(habit.title)
                     .font(.headline)
                 
                 HStack {
                     HStack {
                         Image(systemName: "flame")
-                        Text("\(goal.streak)")
+                        Text("\(habit.streak)")
                     }
                     
                     HStack {
                         Image(systemName: "clock")
-                        Text(timeString(from: goal.time))
+                        Text(timeString(from: habit.time))
                     }
                 }
                 .foregroundColor(.gray)
@@ -70,7 +70,7 @@ struct ContentView3: View {
     var body: some View {
         ScrollView {
             ForEach(goalsContent) { goal in
-                GoalCard(goal: goal)
+                HabitCard(habit: goal)
                     .padding(.horizontal)
                     .padding(.top, 4)
             }

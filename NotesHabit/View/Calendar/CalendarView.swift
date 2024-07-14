@@ -14,8 +14,8 @@ struct CalendarView: View {
         return formatter
     }()
     
-    // Sample goals data
-    @State private var goalsContent: [HabitModel] = [
+    // Sample habits data
+    @State private var habitsContent: [HabitModel] = [
         HabitModel(title: "Morning Routines", body: "Personal", days: [2, 4, 6], startDate: Date(), emoji: "🌅", notes: [], streak: 5, lastLog: Date()),
         HabitModel(title: "SwiftUI Learn", body: "Personal > Study", days: [1, 3, 5], startDate: Date(), emoji: "📚", notes: [], time: Date(), streak: 10, lastLog: Date()),
         HabitModel(title: "Learn Figma", body: "Personal > Study", days: [1, 3, 5], startDate: Date(), emoji: "🎨", notes: [], time: Date(), streak: 10, lastLog: Date())
@@ -31,11 +31,11 @@ struct CalendarView: View {
                         .font(.system(size: 18))
                         .padding(.bottom, 6)
                     
-                    let dayGoals = goalsForSelectedDate().filter { $0.deleteAt == nil }
-                    if !dayGoals.isEmpty {
+                    let dayhabits = habitsForSelectedDate().filter { $0.deleteAt == nil }
+                    if !dayhabits.isEmpty {
                         List {
-                            ForEach(dayGoals) { goal in
-                                GoalCard(goal: goal)
+                            ForEach(dayhabits) { habit in
+                                HabitCard(habit: habit)
                                     .padding(.horizontal, -10)
                                     .swipeActions(edge: .leading) {
                                         Button {
@@ -48,7 +48,7 @@ struct CalendarView: View {
                                     .swipeActions(edge: .trailing) {
                                         Button(role: .destructive) {
                                             // Add delete action here
-                                            goal.deleteAt = Date()
+                                            habit.deleteAt = Date()
                                         } label: {
                                             Image(systemName: "trash.fill")
                                         }
@@ -184,25 +184,25 @@ struct CalendarView: View {
         currentWeekOffset = daysBetween / 7
     }
     
-    func goalsForSelectedDate() -> [HabitModel] {
+    func habitsForSelectedDate() -> [HabitModel] {
         let selectedDayOfWeek = calendar.component(.weekday, from: selectedDate)
-        return goalsContent.filter { goal in
-            guard goal.days.contains(selectedDayOfWeek) else { return false }
-            return calendar.compare(selectedDate, to: goal.startDate, toGranularity: .day) != .orderedAscending
+        return habitsContent.filter { habit in
+            guard habit.days.contains(selectedDayOfWeek) else { return false }
+            return calendar.compare(selectedDate, to: habit.startDate, toGranularity: .day) != .orderedAscending
         }
     }
 }
 
-#Preview {
-    do
-    {
-        var config = ModelConfiguration(isStoredInMemoryOnly: true)
-        var container = try ModelContainer(for: HabitModel.self, configurations: config)
-        
-        return CalendarView()
-            .modelContainer(container)
-        
-    } catch {
-        fatalError("Error")
-    }
-}
+//#Preview {
+//    do
+//    {
+//        var config = ModelConfiguration(isStoredInMemoryOnly: true)
+//        var container = try ModelContainer(for: HabitModel.self, configurations: config)
+//        
+//        return CalendarView()
+//            .modelContainer(container)
+//        
+//    } catch {
+//        fatalError("Error")
+//    }
+//}

@@ -15,13 +15,12 @@ struct FoldersView: View {
                 
                 List {
                     // TODO: ganti variabel count nya dengan Count isi folder yang sebenarnya
-//                    FolderRow(destination: PersonalNotes(), title: "Personal Notes", count: habits.count)
+                    //                    FolderRow(destination: PersonalNotes(), title: "Personal Notes", count: habits.count)
                     
-//                    FolderRow(destination: CalendarView(), title: "Building Habits (tent)", count: habits.count)
+                    //                    FolderRow(destination: CalendarView(), title: "Building Habits (tent)", count: habits.count)
                     
                     ForEach(folders){folderItem in
-//                        FoldersView()
-                        FolderRow(destination: CalendarView(folder: folderItem), title: folderItem.title, count: habits.count)
+                        FolderRow(destination: CalendarView(folder: folderItem), title: folderItem.title, count: folderItem.habitCount())
                     }
                 }
                 .listStyle(InsetGroupedListStyle())
@@ -37,8 +36,6 @@ struct FoldersView: View {
                                     Text("Add Habit")
                                 }
                                 Button(action: {
-                                    // Action for option 2
-//                                    print("Option 2 selected")
                                     showModalFolder = true
                                 }) {
                                     Text("Add Folder")
@@ -74,7 +71,7 @@ struct FoldersView: View {
 //    var destination: Destination
 //    var title: String
 //    var count: Int
-//    
+//
 //    var body: some View {
 //        NavigationLink(destination: destination) {
 //            HStack {

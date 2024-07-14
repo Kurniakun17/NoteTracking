@@ -14,7 +14,7 @@
 		4015BBFA2C428A7800415C7A /* FoldersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4015BBF92C428A7800415C7A /* FoldersView.swift */; };
 		4015BBFD2C429EEE00415C7A /* PersonalNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4015BBFC2C429EEE00415C7A /* PersonalNotes.swift */; };
 		408CBE522C3FF939006539DB /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CBE512C3FF939006539DB /* DatePickerView.swift */; };
-		408CBE542C3FF948006539DB /* GoalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CBE532C3FF948006539DB /* GoalCardView.swift */; };
+		408CBE542C3FF948006539DB /* HabitCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CBE532C3FF948006539DB /* HabitCard.swift */; };
 		C12B01022C43825600CE4B60 /* AddFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B01012C43825600CE4B60 /* AddFolderView.swift */; };
 		C12B01042C439C9100CE4B60 /* FolderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B01032C439C9100CE4B60 /* FolderRow.swift */; };
 		C18E78CF2C3F19D800847A25 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78CE2C3F19D800847A25 /* CalendarView.swift */; };
@@ -42,7 +42,7 @@
 		4015BBF92C428A7800415C7A /* FoldersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersView.swift; sourceTree = "<group>"; };
 		4015BBFC2C429EEE00415C7A /* PersonalNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalNotes.swift; sourceTree = "<group>"; };
 		408CBE512C3FF939006539DB /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
-		408CBE532C3FF948006539DB /* GoalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardView.swift; sourceTree = "<group>"; };
+		408CBE532C3FF948006539DB /* HabitCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCard.swift; sourceTree = "<group>"; };
 		C12B01012C43825600CE4B60 /* AddFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFolderView.swift; sourceTree = "<group>"; };
 		C12B01032C439C9100CE4B60 /* FolderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderRow.swift; sourceTree = "<group>"; };
 		C18E78CE2C3F19D800847A25 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		C18E78D62C3F1D9B00847A25 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				408CBE532C3FF948006539DB /* GoalCardView.swift */,
+				408CBE532C3FF948006539DB /* HabitCard.swift */,
 				408CBE512C3FF939006539DB /* DatePickerView.swift */,
 				4015BBE92C404EE600415C7A /* PhotoPicker.swift */,
 				4015BBE72C404EC800415C7A /* AddPhotos.swift */,
@@ -276,7 +276,7 @@
 				C18E78CF2C3F19D800847A25 /* CalendarView.swift in Sources */,
 				C18E78D12C3F19E000847A25 /* HabitsView.swift in Sources */,
 				4015BBFA2C428A7800415C7A /* FoldersView.swift in Sources */,
-				408CBE542C3FF948006539DB /* GoalCardView.swift in Sources */,
+				408CBE542C3FF948006539DB /* HabitCard.swift in Sources */,
 				F63FFB572C3E5E1100EB8778 /* NoteModel.swift in Sources */,
 				408CBE522C3FF939006539DB /* DatePickerView.swift in Sources */,
 				C18E78D82C3F1E1700847A25 /* SearchBar.swift in Sources */,

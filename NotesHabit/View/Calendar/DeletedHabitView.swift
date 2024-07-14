@@ -19,7 +19,7 @@ struct DeletedHabitView: View {
             } else {
                 List {
                     ForEach(deletedGoals) { goal in
-                        GoalCard(goal: goal)
+                        HabitCard(habit: goal)
                             .padding(.horizontal, -10)
                     }
                 }

@@ -26,3 +26,10 @@ class FolderModel: Identifiable {
         self.goals = goals
     }
 }
+
+
+extension FolderModel{
+    func habitCount() -> Int{
+        return self.goals.count
+    }
+}
