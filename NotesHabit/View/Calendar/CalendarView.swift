@@ -14,11 +14,13 @@ struct CalendarView: View {
     }()
     
     // Sample goals data
-    @State private var goalsContent: [HabitModel] = [
-        HabitModel(title: "Morning Routines", body: "Personal", days: [2, 4, 6], startDate: Date(), emoji: "🌅", notes: [], streak: 5, lastLog: Date()),
-        HabitModel(title: "SwiftUI Learn", body: "Personal > Study", days: [1, 3, 5], startDate: Date(), emoji: "📚", notes: [], time: Date(), streak: 10, lastLog: Date()),
-        HabitModel(title: "Learn Figma", body: "Personal > Study", days: [1, 3, 5], startDate: Date(), emoji: "🎨", notes: [], time: Date(), streak: 10, lastLog: Date())
-    ]
+    @Query private var goalsContent: [HabitModel]
+    
+//    @Query private var goalsContent: [HabitModel] = [
+//        HabitModel(title: "Morning Routines", body: "Personal", days: [2, 4, 6], startDate: Date(), emoji: "🌅", notes: [], streak: 5, lastLog: Date()),
+//        HabitModel(title: "SwiftUI Learn", body: "Personal > Study", days: [1, 3, 5], startDate: Date(), emoji: "📚", notes: [], time: Date(), streak: 10, lastLog: Date()),
+//        HabitModel(title: "Learn Figma", body: "Personal > Study", days: [1, 3, 5], startDate: Date(), emoji: "🎨", notes: [], time: Date(), streak: 10, lastLog: Date())
+//    ]
     
     var body: some View {
         NavigationView {
@@ -95,7 +97,6 @@ struct CalendarView: View {
         .navigationTitle("Scheduled Habit")
         .navigationBarItems(trailing: Button(action: {
             showDatePicker = true
-            print("Show date picker")
         }) {
             Image(systemName: "calendar")
                 .foregroundColor(.primaryRed)
@@ -195,8 +196,8 @@ struct CalendarView: View {
 #Preview {
     do
     {
-        var config = ModelConfiguration(isStoredInMemoryOnly: true)
-        var container = try ModelContainer(for: HabitModel.self, configurations: config)
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: HabitModel.self, configurations: config)
         
         return CalendarView()
             .modelContainer(container)

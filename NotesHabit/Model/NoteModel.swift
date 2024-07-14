@@ -18,9 +18,9 @@ class NoteModel: Identifiable {
     var createdAt = Date()
     var updatedAt = Date()
     var deletedAt: Date?
-    var goal : HabitModel?
+    var habit : HabitModel?
 
-    init(id: UUID = UUID(), title: String, body: String, isFavourite: Bool = false, folder: FolderModel? = nil, createdAt: Date = Date(), updatedAt: Date = Date(), deletedAt: Date? = nil) {
+    init(id: UUID = UUID(), title: String, body: String, isFavourite: Bool = false, folder: FolderModel? = nil, createdAt: Date = Date(), updatedAt: Date = Date(), deletedAt: Date? = nil, habit: HabitModel? = nil) {
         self.id = id
         self.title = title
         self.body = body
@@ -29,6 +29,7 @@ class NoteModel: Identifiable {
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.deletedAt = deletedAt
+        self.habit = habit
     }
 }
 

@@ -5,20 +5,15 @@
 //  Created by Kurnia Kharisma Agung Samiadjie on 11/07/24.
 //
 
-//import RichEditorSwiftUI
-//import RichTextKit
+// import RichEditorSwiftUI
+// import RichTextKit
 import SwiftData
 import SwiftUI
 
 struct AddNoteView: View {
-//    @ObservedObject var state: RichEditorState = .init(input: "HelloWorld")
-
-//    @State var text = NSAttributedString(string: "Hai")
-//    @StateObject var context = RichTextContext()
     @State var title = ""
     @State var habit: String = "Empty"
     @State var bodyText: String = ""
-
     @Query var notes: [NoteModel]
 
     @State var options = [
@@ -29,64 +24,58 @@ struct AddNoteView: View {
     ]
 
     var body: some View {
-        NavigationView(content: {
-            VStack {
-                TextField("Title", text: $title)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.horizontal, 20)
-                    .autocorrectionDisabled()
-
-                HStack {
-                    Image(systemName: "arrowtriangle.down.circle")
-                        .foregroundStyle(.black.opacity(0.8))
-                    Text("Habit")
-                        .foregroundStyle(.black.opacity(0.8))
-                    Picker(selection: $habit, label: EmptyView()) {
-                        ForEach(options, id: \.self) {
-                            opt in
-                            Text(opt)
-                                .foregroundStyle(.white)
-                        }
-                    }
-                    .labelsHidden()
-                    .tint(habit == "Empty" ? .black.opacity(0.8) : .black)
-                    Spacer()
-                }
+        VStack {
+            TextField("New Notes", text: $title)
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .padding(.horizontal, 20)
+                .autocorrectionDisabled()
+            Divider()
+            TextEditor(text: $bodyText)
+                .autocorrectionDisabled()
                 .padding(.horizontal, 20)
 
-                Divider()
+            Spacer()
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Menu(content: {
+                    Button(action: {}) {
+                        HStack {
+                            Text("Pin Note")
+                            Spacer()
+                            Image(systemName: "pin")
+                        }
+                    }
+                    Button(action: {}) {
+                        HStack {
+                            Text("Add to Habit")
+                            Spacer()
+                            Image(systemName: "book.and.wrench")
+                        }
+                    }
 
-                TextEditor(text: $bodyText)
-                    .autocorrectionDisabled()
-                    .padding(.horizontal, 20)
+                }, label: {
+                    Image(systemName: "ellipsis.circle")
 
-                Spacer()
+                })
             }
-        })
-        .navigationBarTitleDisplayMode(.inline)
+        }
+//        .searchable(text: .con`stant(""), placement: .navigationBarDrawer(displayMode: .))
+
         .onChange(of: title) {
             notes.last?.title = title
+            notes.last?.updatedAt = Date()
         }
 
         .onChange(of: bodyText) {
             notes.last?.body = bodyText
+            notes.last?.updatedAt = Date()
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
     AddNoteView()
 }
-
-//                RichTextEditor(text: $text, context: context) { _ in
-//                }
-//                .autocorrectionDisabled()
-//                .focusedValue(\.richTextContext, context)
-//                .padding(.horizontal, 20)
-//
-//                RichTextKeyboardToolbar(
-//                    context: context,
-//                    leadingButtons: { _ in Text("Hai") },
-//                    trailingButtons: { _ in },
-//                    formatSheet: { $0 })

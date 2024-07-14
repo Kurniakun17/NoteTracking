@@ -11,7 +11,7 @@ class HabitModel: Identifiable {
     var folder: FolderModel?
     var emoji: String
 
-    @Relationship(deleteRule: .cascade, inverse: \NoteModel.goal)
+    @Relationship(deleteRule: .cascade, inverse: \NoteModel.habit)
     var notes: [NoteModel] = []
 
     //    @Relationship(deleteRule: .cascade, inverse: \ReminderModel.goal)

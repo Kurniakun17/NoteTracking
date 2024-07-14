@@ -5,24 +5,28 @@
 //  Created by Kurnia Kharisma Agung Samiadjie on 10/07/24.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct ContentView: View {
+    @Query var folders: [FolderModel]
+    @Environment(\.modelContext) var context
+
     var body: some View {
-        FoldersView()
+        StartView()
     }
-    
 }
+
 #Preview {
-    do
-    {
-        var config = ModelConfiguration(isStoredInMemoryOnly: true)
-        var container = try ModelContainer(for: HabitModel.self, configurations: config)
-        
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: HabitModel.self, NoteModel.self, HabitModel.self, configurations: config)
+
+      SeedContainer(container: container)
+
         return ContentView()
             .modelContainer(container)
-        
+
     } catch {
         fatalError("Error")
     }
