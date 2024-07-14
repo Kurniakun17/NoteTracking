@@ -88,7 +88,7 @@ struct CalendarView: View {
                 }
             }
             .sheet(isPresented: $showAddHabitView) {
-                AddHabitView()
+//                AddHabitView(showModal: <#T##Binding<Bool>#>)
             }
         }
         .accentColor(.primaryRed)

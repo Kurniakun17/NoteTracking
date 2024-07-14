@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct AddHabitView: View {
+    @Binding var showModal: Bool
     @State private var habitTitle: String = ""
     @State private var emoji: String = ""
     @State private var description: String = ""
@@ -12,6 +13,7 @@ struct AddHabitView: View {
     @State private var selectedDays: Set<Int> = []
     
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.modelContext) private var context
     
     let daysOfWeek = ["S", "M", "T", "W", "T", "F", "S"]
     let fullDaysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
@@ -20,7 +22,9 @@ struct AddHabitView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField("New Habit Title", text: $habitTitle)
+                    TextField("Emoji", text: $emoji)
+                    TextField("Habit Title", text: $habitTitle)
+                    TextField("Description", text: $description)
                 }
                 
                 Section {
@@ -110,7 +114,8 @@ struct AddHabitView: View {
             }),
                                 trailing: Button("Done", action: {
                 // TODO: Tambahin function untuk SaveHabit disini
-//                saveHabit()
+                saveHabit(title: self.habitTitle, body: self.description,emoji: self.emoji,startDate: self.selectedDate, repeatDay: self.selectedDays, reminder: self.reminderOn)
+                
                 presentationMode.wrappedValue.dismiss()
             }))
         }
@@ -152,13 +157,23 @@ struct AddHabitView: View {
         }
     }
     
-    private func saveHabit() {
+    private func saveHabit(title: String,body: String,emoji: String, startDate: Date, repeatDay: Set<Int>, reminder: Bool ) {
         // Add your saving logic here
+        print(title)
+        print(startDate)
+        print(repeatDay)
+        print(reminder)
+        let habit = HabitModel(title: title, body: body, days: repeatDay, startDate: startDate, emoji: emoji)
+        context.insert(habit)
+        self.showModal = false
+        
+        
+        
     }
 }
 
 struct AddHabitView_Previews: PreviewProvider {
     static var previews: some View {
-        AddHabitView()
+        AddHabitView(showModal: Binding<Bool>.constant(true))
     }
 }

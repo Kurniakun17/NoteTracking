@@ -2,6 +2,10 @@ import SwiftUI
 import SwiftData
 
 struct FoldersView: View {
+    @State private var showModal = false
+    @Query(animation: .snappy) private var habits: [HabitModel]
+    @Query(animation: .snappy) private var notes: [NoteModel]
+    @Query(animation: .snappy) private var folders: [FolderModel]
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: -2) {
@@ -10,20 +14,32 @@ struct FoldersView: View {
                 
                 List {
                     // TODO: ganti variabel count nya dengan Count isi folder yang sebenarnya
-                    FolderRow(destination: PersonalNotes(), title: "Personal Notes", count: 20)
+                    FolderRow(destination: PersonalNotes(), title: "Personal Notes", count: habits.count)
                     
-                    FolderRow(destination: CalendarView(), title: "Building Habits (tent)", count: 15)
+                    FolderRow(destination: CalendarView(), title: "Building Habits (tent)", count: habits.count)
                 }
                 .listStyle(InsetGroupedListStyle())
                 .navigationTitle("Folders")
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
                         HStack {
-                            Button(action: {
-                                // TODO: Add action for add folder button
-                            }) {
+                            Menu {
+                                Button(action: {
+                                    // Action for option 1
+                                    self.showModal = true
+                                }) {
+                                    Text("Add Habit")
+                                }
+                                Button(action: {
+                                    // Action for option 2
+                                    print("Option 2 selected")
+                                }) {
+                                    Text("Add Folder")
+                                }
+                            } label: {
                                 Image(systemName: "folder.badge.plus")
                             }
+                            .padding(.leading, 20)
                             
                             Spacer()
                             
@@ -35,6 +51,9 @@ struct FoldersView: View {
                         }
                     }
                 }
+            }
+            .sheet(isPresented: $showModal) {
+                AddHabitView(showModal: self.$showModal)
             }
         }
     }
