@@ -161,6 +161,36 @@
         }
       }
     },
+    "Every Weekday" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setiap Hari Kerja"
+          }
+        }
+      }
+    },
+    "Every Weekend" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setiap Akhir Pekan"
+          }
+        }
+      }
+    },
+    "Everyday" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setiap Hari"
+          }
+        }
+      }
+    },
     "Folder Title" : {
       "localizations" : {
         "id" : {
@@ -275,7 +305,14 @@
 
     },
     "Previous 7 Days" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7 Hari Sebelumnya"
+          }
+        }
+      }
     },
     "Previous 30 Days" : {
       "localizations" : {

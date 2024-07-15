@@ -135,11 +135,11 @@ struct AddHabitView: View {
         let sortedDays = selectedDays.sorted()
         switch sortedDays {
         case [1, 2, 3, 4, 5]:
-            return "Every Weekday"
+            return String(localized: "Every Weekday" )
         case [0, 6]:
-            return "Every Weekend"
+            return String(localized: "Every Weekend")
         case [0, 1, 2, 3, 4, 5, 6]:
-            return "Everyday"
+            return String(localized: "Everyday")
         default:
             let days = sortedDays.map { fullDaysOfWeek[$0] }
             return days.isEmpty ? "None" : "Every " + days.joined(separator: ", ")
