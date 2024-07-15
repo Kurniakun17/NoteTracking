@@ -217,10 +217,9 @@ struct CalendarView: View {
     }
     
     func goalsForSelectedDate() -> [HabitModel] {
-        let selectedDayOfWeek = calendar.component(.weekday, from: selectedDate)
-        return habitViewModel.habits.filter { habit in
-            habit.days.contains(selectedDayOfWeek - 1)
-        }
+        let weekDayIndex = Calendar.current.component(.weekday, from: selectedDate) - 1
+        let habits = habitViewModel.habits.filter { $0.days.contains(weekDayIndex) && $0.startDate <= selectedDate }
+        return habits
     }
 }
 

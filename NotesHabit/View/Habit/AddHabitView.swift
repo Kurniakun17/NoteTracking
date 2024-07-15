@@ -7,7 +7,6 @@ struct AddHabitView: View {
     @State private var description: String = ""
     @State private var reminderOn: Bool = false
     @State private var showTimePicker: Bool = false
-    @State private var showDatePicker: Bool = false
     @State private var selectedTime: Date = .init()
     @State private var selectedDate: Date = .init()
     @State private var selectedDays: Set<Int> = []
@@ -25,27 +24,7 @@ struct AddHabitView: View {
                 }
                 
                 Section {
-                    HStack {
-                        Text("Start Date")
-                        Spacer()
-                        
-                        Text("\(selectedDate, formatter: dateFormatter)")
-                            .foregroundColor(.primaryRed)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 5)
-                            .background(
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.gray.opacity(0.15))
-                            )
-                    }
-                    .onTapGesture {
-                        showDatePicker.toggle()
-                    }
-                    
-                    if showDatePicker {
-                        DatePicker("", selection: $selectedDate, displayedComponents: .date)
-                            .datePickerStyle(GraphicalDatePickerStyle())
-                    }
+                    DatePicker("Start Date", selection: $selectedDate, in: Date()..., displayedComponents: .date)
                     
                     HStack {
                         Text("Repeat ")
@@ -113,7 +92,6 @@ struct AddHabitView: View {
                 saveHabit()
                 presentationMode.wrappedValue.dismiss()
             }))
-//            .disabled(habitTitle == "")
         }
         .accentColor(.primaryRed)
         .onAppear {
@@ -164,7 +142,7 @@ struct AddHabitView: View {
     }
     
     private func saveHabit() {
-        let newHabit = HabitModel(title: habitTitle, body: "", days: selectedDays, emoji: emoji, time: selectedTime, isReminder: reminderOn)
+        let newHabit = HabitModel(title: habitTitle, body: "", days: selectedDays, startDate: selectedDate, emoji: emoji, time: selectedTime, isReminder: reminderOn)
         
         habitViewModel.addHabit(habit: newHabit)
         scheduleHabitNotifications(for: newHabit)
