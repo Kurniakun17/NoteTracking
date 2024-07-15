@@ -30,24 +30,16 @@ struct HabitDetail: View {
 
                 ToolbarItem(placement: .bottomBar) {
                     HStack {
-    
                         Spacer()
 
                         NavigationLink(
-                            destination: AddNoteView()
-                                .onAppear {
-                                    let newNote = NoteModel(title: "", body: "", habit: habit)
-                                    context.insert(newNote)
-                                    habit.notes.append(newNote)
-                                }) {
+                            destination: AddNoteView(habit: habit)
+                        ) {
                             Image(systemName: "square.and.pencil")
                         }
                     }
                 }
             }
-//            .sheet(isPresented: $isAddFolder, content: {
-//                AddFolder(isAddFolder: $isAddFolder)
-//            })
         }
     }
 }

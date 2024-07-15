@@ -12,10 +12,12 @@ import SwiftUI
 
 struct AddNoteView: View {
     @State var title = ""
-    @State var habit: String = "Empty"
     @State var bodyText: String = ""
-    @Query var notes: [NoteModel]
-    @Query var habits: [HabitModel]
+    @State var note = NoteModel(title: "", body: "")
+    @EnvironmentObject var noteViewModel: NoteViewModel
+    @EnvironmentObject var habitViewModel: HabitViewModel
+    var folder: FolderModel? = nil
+    var habit: HabitModel? = nil
 
     @State var options = [
         "Empty",
@@ -49,12 +51,14 @@ struct AddNoteView: View {
                         }
                     }
                     Menu(content: {
-                        ForEach(habits, id: \.self) {
+                        ForEach(habitViewModel.habits, id: \.self) {
                             habit in
                             Button(action: {
-                                notes.last?.habit = habit
-//                                TODO: Update last log and streak
-//                                habit.lastLog = ()
+                                note.habit = habit
+
+                                if(title != "" && bodyText != ""){
+                                    habitViewModel.updateHabitLastLog(habit: habit)
+                                }
                             }) {
                                 Text(habit.title)
                             }
@@ -72,35 +76,47 @@ struct AddNoteView: View {
                 })
             }
         }
-
         .onChange(of: title) {
-            notes.last?.title = title
-            notes.last?.updatedAt = Date()
-            updateHabitLastLog()
+            note.title = title
+            note.updatedAt = Date()
+            if let habitExist = habit {
+                habitViewModel.updateHabitLastLog(habit: habitExist)
+            }
+        }
+        .onChange(of: bodyText) {
+            note.body = bodyText
+            note.updatedAt = Date()
+            if let habitExist = habit {
+                habitViewModel.updateHabitLastLog(habit: habitExist)
+            }
         }
 
-        .onChange(of: bodyText) {
-            notes.last?.body = bodyText
-            notes.last?.updatedAt = Date()
-            updateHabitLastLog()
+        .onDisappear {
+            if let folderExist = folder {
+                note.folder = folderExist
+                folderExist.notes.append(note)
+            }
+
+            if let habitExist = habit {
+                note.habit = habitExist
+                habitExist.notes.append(note)
+            }
+
+            noteViewModel.addNote(note: note)
         }
         .navigationBarTitleDisplayMode(.inline)
     }
 
     private func updateHabitLastLog() {
-        if let habit = notes.last?.habit {
+        if let habit = note.habit {
             if let lastLog = habit.lastLog {
                 if !Calendar.current.isDateInToday(lastLog) {
                     habit.streak += 1
                 }
-            }else {
+            } else {
                 habit.streak += 1
             }
             habit.lastLog = Date()
         }
     }
-}
-
-#Preview {
-    AddNoteView()
 }

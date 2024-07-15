@@ -78,12 +78,8 @@ struct FolderDetail: View {
                         Spacer()
 
                         NavigationLink(
-                            destination: AddNoteView()
-                                .onAppear {
-                                    let newNote = NoteModel(title: "", body: "", folder: folder)
-                                    context.insert(newNote)
-                                    folder.notes.append(newNote)
-                                }) {
+                            destination: AddNoteView(folder: folder)
+                        ) {
                             Image(systemName: "square.and.pencil")
                         }
                     }
