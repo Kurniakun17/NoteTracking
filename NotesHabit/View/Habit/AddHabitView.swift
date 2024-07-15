@@ -116,6 +116,9 @@ struct AddHabitView: View {
 //            .disabled(habitTitle == "")
         }
         .accentColor(.primaryRed)
+        .onAppear {
+            setInitialSelectedDay()
+        }
     }
     
     private var timeFormatter: DateFormatter {
@@ -147,14 +150,24 @@ struct AddHabitView: View {
     
     private func toggleDaySelection(_ index: Int) {
         if selectedDays.contains(index) {
-            selectedDays.remove(index)
+            if selectedDays.count > 1 {
+                selectedDays.remove(index)
+            }
         } else {
             selectedDays.insert(index)
         }
     }
     
+    private func setInitialSelectedDay() {
+        let currentDay = Calendar.current.component(.weekday, from: selectedDate) - 1
+        selectedDays = [currentDay]
+    }
+    
     private func saveHabit() {
-        habitViewModel.addHabit(habit: HabitModel(title: habitTitle, body: "", days: selectedDays, emoji: emoji, time: selectedTime, isReminder: reminderOn))
+        let newHabit = HabitModel(title: habitTitle, body: "", days: selectedDays, emoji: emoji, time: selectedTime, isReminder: reminderOn)
+        
+        habitViewModel.addHabit(habit: newHabit)
+        scheduleHabitNotifications(for: newHabit)
     }
 }
 

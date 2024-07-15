@@ -19,6 +19,8 @@ struct ContentView: View {
             .environmentObject(folderViewModel)
             .environmentObject(habitViewModel)
             .onAppear {
+                requestNotificationPermissions()
+                
                 for habit in habitViewModel.habits {
                     if let lastLog = habit.lastLog,
                        !Calendar.current.isDateInToday(lastLog) && !Calendar.current.isDateInYesterday(lastLog)
