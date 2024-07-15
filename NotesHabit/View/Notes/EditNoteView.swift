@@ -74,23 +74,26 @@ struct EditNoteView: View {
         .onChange(of: title) {
             note.title = title
             note.updatedAt = Date()
-            updateHabit()
+            updateHabitLastLog()
         }
 
         .onChange(of: bodyText) {
             note.body = bodyText
             note.updatedAt = Date()
-            updateHabit()
+            updateHabitLastLog()
         }
     }
 
-    private func updateHabit() {
-        let habit = note.habit
-        if habit != nil {
-            if !Calendar.current.isDateInToday(habit!.lastLog!) {
-                habit?.streak += 1
+    private func updateHabitLastLog() {
+        if let habit = note.habit {
+            if let lastLog = habit.lastLog {
+                if !Calendar.current.isDateInToday(lastLog) {
+                    habit.streak += 1
+                }
+            } else {
+                habit.streak += 1
             }
-            habit?.lastLog = Date()
+            habit.lastLog = Date()
         }
     }
 }
@@ -103,8 +106,7 @@ struct EditNoteView: View {
 
         return EditNoteView(note: note, title: note.title, bodyText: note.body)
             .modelContainer(container)
-    }
-    catch {
+    } catch {
         fatalError("Text")
     }
 }

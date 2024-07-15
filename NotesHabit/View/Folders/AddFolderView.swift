@@ -16,17 +16,13 @@ struct AddFolderView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 24) {
-                HStack {
+                Form {
                     TextField("Folder Title", text: $folderTitle)
                         .autocorrectionDisabled()
                 }
-                .padding()
-                .background(.gray.opacity(0.2))
-                .clipShape(RoundedRectangle(cornerRadius: 10))
 
-                Spacer()
+                
             }
-            .padding()
             .navigationBarTitle("Add Folder", displayMode: .inline)
             .navigationBarItems(
                 leading: Button("Cancel", action: {

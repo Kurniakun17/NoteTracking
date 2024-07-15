@@ -76,24 +76,27 @@ struct AddNoteView: View {
         .onChange(of: title) {
             notes.last?.title = title
             notes.last?.updatedAt = Date()
-            updateHabit()
+            updateHabitLastLog()
         }
 
         .onChange(of: bodyText) {
             notes.last?.body = bodyText
             notes.last?.updatedAt = Date()
-            updateHabit()
+            updateHabitLastLog()
         }
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    private func updateHabit() {
-        let habit = notes.last?.habit
-        if habit != nil {
-            if !Calendar.current.isDateInToday(habit!.lastLog!) {
-                habit?.streak += 1
+    private func updateHabitLastLog() {
+        if let habit = notes.last?.habit {
+            if let lastLog = habit.lastLog {
+                if !Calendar.current.isDateInToday(lastLog) {
+                    habit.streak += 1
+                }
+            }else {
+                habit.streak += 1
             }
-            habit?.lastLog = Date()
+            habit.lastLog = Date()
         }
     }
 }
