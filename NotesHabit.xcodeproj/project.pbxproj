@@ -35,7 +35,6 @@
 		F63FFB572C3E5E1100EB8778 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB562C3E5E1100EB8778 /* NoteModel.swift */; };
 		F63FFB592C3E5E1900EB8778 /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB582C3E5E1900EB8778 /* HabitModel.swift */; };
 		F63FFB5B2C3E5E2200EB8778 /* FolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB5A2C3E5E2200EB8778 /* FolderModel.swift */; };
-		F63FFB5D2C3E5EA300EB8778 /* ReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB5C2C3E5EA300EB8778 /* ReminderModel.swift */; };
 		F63FFB612C3F52B400EB8778 /* AddNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB602C3F52B400EB8778 /* AddNoteView.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,7 +68,6 @@
 		F63FFB562C3E5E1100EB8778 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
 		F63FFB582C3E5E1900EB8778 /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
 		F63FFB5A2C3E5E2200EB8778 /* FolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderModel.swift; sourceTree = "<group>"; };
-		F63FFB5C2C3E5EA300EB8778 /* ReminderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderModel.swift; sourceTree = "<group>"; };
 		F63FFB602C3F52B400EB8778 /* AddNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -213,7 +211,6 @@
 				F63FFB562C3E5E1100EB8778 /* NoteModel.swift */,
 				F63FFB582C3E5E1900EB8778 /* HabitModel.swift */,
 				F63FFB5A2C3E5E2200EB8778 /* FolderModel.swift */,
-				F63FFB5C2C3E5EA300EB8778 /* ReminderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -328,7 +325,6 @@
 				F63FFB462C3E5D7700EB8778 /* NotesHabitApp.swift in Sources */,
 				F627D3A42C437F3200411E16 /* HelperFunction.swift in Sources */,
 				4015BBE82C404EC800415C7A /* AddPhotos.swift in Sources */,
-				F63FFB5D2C3E5EA300EB8778 /* ReminderModel.swift in Sources */,
 				C18E78D52C3F1D9600847A25 /* SearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -30,12 +30,7 @@ struct HabitDetail: View {
 
                 ToolbarItem(placement: .bottomBar) {
                     HStack {
-                        Button(action: {
-//                            isAddFolder = true
-                        }) {
-                            Image(systemName: "folder.badge.plus")
-                        }
-
+    
                         Spacer()
 
                         NavigationLink(

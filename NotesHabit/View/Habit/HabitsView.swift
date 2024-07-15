@@ -47,27 +47,19 @@ struct HabitsView: View {
                 AddHabitView()
             }
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Edit", action: {})
-                }
+//                ToolbarItem(placement: .topBarTrailing) {
+//                    Button("Edit", action: {})
+//                }
 
                 ToolbarItem(placement: .bottomBar) {
                     HStack {
                         Button(action: {
                             isAddHabit = true
                         }) {
-                            Image(systemName: "folder.badge.plus")
+                            Image(systemName: "book.and.wrench")
                         }
 
                         Spacer()
-
-                        NavigationLink(
-                            destination: AddNoteView()
-                                .onAppear {
-                                    context.insert(NoteModel(title: "", body: ""))
-                                }) {
-                            Image(systemName: "square.and.pencil")
-                        }
                     }
                 }
             }
