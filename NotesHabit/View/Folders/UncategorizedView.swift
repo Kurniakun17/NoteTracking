@@ -8,20 +8,12 @@ import SwiftData
 import SwiftUI
 
 struct UncategorizedView: View {
-    @Query var uncategorizedNotes: [NoteModel]
-    @Environment(\.modelContext) var context
-
-    init() {
-        let uncategorizedPredicate = #Predicate<NoteModel> {
-            $0.folder == nil && $0.habit == nil
-        }
-
-        _uncategorizedNotes = Query(filter: uncategorizedPredicate, sort: [], animation: .snappy)
-    }
+    @EnvironmentObject var noteViewModel: NoteViewModel
 
     var body: some View {
         VStack(alignment: .leading) {
             List {
+                let uncategorizedNotes = noteViewModel.notes.filter { $0.folder == nil && $0.habit == nil }
                 let sortedNotes = uncategorizedNotes.sorted(by: { $0.createdAt > $1.createdAt })
                 let todayNotes = sortedNotes.filter { Calendar.current.isDateInToday($0.createdAt) }
                 let previous7DaysNotes = sortedNotes.filter { isInLast7Days($0.createdAt) && !Calendar.current.isDateInToday($0.createdAt) }
@@ -32,6 +24,13 @@ struct UncategorizedView: View {
                     Section(header: Text("Today")) {
                         ForEach(todayNotes, id: \.self) { note in
                             NoteListItem(note: note)
+                                .swipeActions(edge: .trailing) {
+                                    Button(action: {
+                                        noteViewModel.deleteNote(note: note)
+                                    }) {
+                                        Image(systemName: "trash")
+                                    }.tint(.red)
+                                }
                         }
                     }
                     .headerProminence(.increased)
@@ -41,6 +40,13 @@ struct UncategorizedView: View {
                     Section(header: Text("Preivous 7 Days")) {
                         ForEach(previous7DaysNotes, id: \.self) {
                             note in NoteListItem(note: note)
+                                .swipeActions(edge: .trailing) {
+                                    Button(action: {
+                                        noteViewModel.deleteNote(note: note)
+                                    }) {
+                                        Image(systemName: "trash")
+                                    }.tint(.red)
+                                }
                         }
                     }.headerProminence(.increased)
                 }
@@ -49,6 +55,13 @@ struct UncategorizedView: View {
                     Section(header: Text("Previous 30 Days")) {
                         ForEach(previous30DaysNotes, id: \.self) { note in
                             NoteListItem(note: note)
+                                .swipeActions(edge: .trailing) {
+                                    Button(action: {
+                                        noteViewModel.deleteNote(note: note)
+                                    }) {
+                                        Image(systemName: "trash")
+                                    }.tint(.red)
+                                }
                         }
                     }
                     .headerProminence(.increased)
@@ -73,19 +86,17 @@ struct UncategorizedView: View {
 
                 ToolbarItem(placement: .bottomBar) {
                     HStack {
-//                        Button(action: {
-//                            // TODO: Add action for add folder button
-//                        }) {
-//                            Image(systemName: "folder.badge.plus")
-//                        }
+                        Button(action: {
+                            noteViewModel.addSampleNote()
+                        }) {
+                            Image(systemName: "plus")
+                        }
 
                         Spacer()
 
                         NavigationLink(
                             destination: AddNoteView()
-                                .onAppear {
-                                    context.insert(NoteModel(title: "", body: ""))
-                                }) {
+                        ) {
                             Image(systemName: "square.and.pencil")
                         }
                     }

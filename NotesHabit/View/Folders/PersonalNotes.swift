@@ -9,33 +9,28 @@ import SwiftData
 import SwiftUI
 
 struct PersonalNotes: View {
-    @Query var notesFolder: [FolderModel]
-    @Query var uncategorizedNotes: [NoteModel]
+    @EnvironmentObject var noteViewModel: NoteViewModel
+    @EnvironmentObject var folderViewModel: FolderViewModel
     @Environment(\.modelContext) var context
     @State var isAddNewNote = false
     @State var isAddFolder = false
 
-    init() {
-        let notesOnlyPredicate = #Predicate<FolderModel> {
-            $0.goals.count == 0
-        }
-
-        _notesFolder = Query(filter: notesOnlyPredicate, sort: [], animation: .snappy)
-
-        let uncategorizedPredicate = #Predicate<NoteModel> {
-            $0.folder == nil && $0.habit == nil
-        }
-
-        _uncategorizedNotes = Query(filter: uncategorizedPredicate, sort: [], animation: .snappy)
-    }
-
     var body: some View {
         VStack(alignment: .leading) {
             List {
-                FolderRow(destination: UncategorizedView(), title: String(localized: "Uncategorized Notes"), count: uncategorizedNotes.count)
-                ForEach(notesFolder, id: \.self) {
+                let uncategorizedNotes = noteViewModel.notes.filter { $0.habit == nil && $0.folder == nil }
+                FolderRow(destination: UncategorizedView(), title: "Uncategorized Notes", count: uncategorizedNotes.count)
+
+                ForEach(folderViewModel.folders, id: \.self) {
                     folder in
                     FolderRow(destination: FolderDetail(folder: folder), title: folder.title, count: folder.notes.count)
+                        .swipeActions(edge: .trailing) {
+                            Button(action: {
+                                folderViewModel.deleteFolder(folder: folder)
+                            }) {
+                                Image(systemName: "trash")
+                            }.tint(.red)
+                        }
                 }
             }
             .searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
@@ -58,9 +53,7 @@ struct PersonalNotes: View {
 
                         NavigationLink(
                             destination: AddNoteView()
-                                .onAppear {
-                                    context.insert(NoteModel(title: "", body: ""))
-                                }) {
+                        ) {
                             Image(systemName: "square.and.pencil")
                         }
                     }
@@ -73,17 +66,16 @@ struct PersonalNotes: View {
     }
 }
 
-#Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: HabitModel.self, configurations: config)
-
-        SeedContainer(container: container)
-
-        return PersonalNotes()
-            .modelContainer(container)
-
-    } catch {
-        fatalError("Error")
-    }
-}
+//
+// #Preview {
+//    do {
+//        @MainActor
+//        @StateObject var noteViewModel = NoteViewModel(dataSource: .shared)
+//
+//        return PersonalNotes()
+//            .environmentObject(noteViewModel)
+//
+//    } catch {
+//        fatalError("Error")
+//    }
+// }

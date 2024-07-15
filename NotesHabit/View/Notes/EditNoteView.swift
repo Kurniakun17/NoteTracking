@@ -9,7 +9,8 @@ import SwiftData
 import SwiftUI
 
 struct EditNoteView: View {
-    @Query var habits: [HabitModel]
+    @EnvironmentObject var noteViewModel: NoteViewModel
+    @EnvironmentObject var habitViewModel: HabitViewModel
     @State var note: NoteModel
     @State var title: String
     @State var habit: String = "Empty"
@@ -46,12 +47,13 @@ struct EditNoteView: View {
                         }
                     }
                     Menu(content: {
-                        ForEach(habits, id: \.self) {
+                        ForEach(habitViewModel.habits, id: \.self) {
                             habit in
                             Button(action: {
                                 note.habit = habit
-//                                TODO: Update last log and streak
-//                                habit.lastLog = ()
+                                if title != "", bodyText != "" {
+                                    habitViewModel.updateHabitLastLog(habit: habit)
+                                }
                             }) {
                                 Text(habit.title)
                             }

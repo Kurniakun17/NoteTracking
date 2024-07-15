@@ -12,6 +12,7 @@ struct AddFolderView: View {
     @Environment(\.modelContext) var context
     @Environment(\.presentationMode) var presentationMode
     @State var folderTitle = ""
+    @EnvironmentObject var folderViewModel: FolderViewModel
 
     var body: some View {
         NavigationView {
@@ -20,8 +21,6 @@ struct AddFolderView: View {
                     TextField("Folder Title", text: $folderTitle)
                         .autocorrectionDisabled()
                 }
-
-                
             }
             .navigationBarTitle("Add Folder", displayMode: .inline)
             .navigationBarItems(
@@ -31,7 +30,7 @@ struct AddFolderView: View {
                 .tint(.red),
 
                 trailing: Button("Done", action: {
-                    context.insert(FolderModel(title: folderTitle))
+                    folderViewModel.addFolder(folder: FolderModel(title: folderTitle))
                     presentationMode.wrappedValue.dismiss()
                 }))
         }

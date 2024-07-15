@@ -11,8 +11,7 @@ struct AddHabitView: View {
     @State private var selectedTime: Date = .init()
     @State private var selectedDate: Date = .init()
     @State private var selectedDays: Set<Int> = []
-    @Environment(\.modelContext) var context
-    
+    @EnvironmentObject var habitViewModel: HabitViewModel
     @Environment(\.presentationMode) var presentationMode
     
     let daysOfWeek = ["S", "M", "T", "W", "T", "F", "S"]
@@ -155,7 +154,7 @@ struct AddHabitView: View {
     }
     
     private func saveHabit() {
-        context.insert(HabitModel(title: habitTitle, body: "", days: selectedDays, emoji: emoji, time: selectedTime, isReminder: reminderOn))
+        habitViewModel.addHabit(habit: HabitModel(title: habitTitle, body: "", days: selectedDays, emoji: emoji, time: selectedTime, isReminder: reminderOn))
     }
 }
 

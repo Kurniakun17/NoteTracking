@@ -13,7 +13,7 @@ struct CalendarView: View {
         return formatter
     }()
     
-    @Query private var habits: [HabitModel]
+    @EnvironmentObject private var habitViewModel: HabitViewModel
     
     var body: some View {
         NavigationView {
@@ -29,7 +29,7 @@ struct CalendarView: View {
                     
                     if !dayGoals.isEmpty {
                         List {
-                            let completedHabit = habits.filter {
+                            let completedHabit = habitViewModel.habits.filter {
                                 if $0.lastLog != nil {
                                     return Calendar.current.isDateInToday($0.lastLog!)
                                 } else {
@@ -37,7 +37,7 @@ struct CalendarView: View {
                                 }
                             }
                             
-                            let incompleteHabit = habits.filter {
+                            let incompleteHabit = habitViewModel.habits.filter {
                                 if $0.lastLog == nil {
                                     return true
                                 } else {
@@ -218,7 +218,7 @@ struct CalendarView: View {
     
     func goalsForSelectedDate() -> [HabitModel] {
         let selectedDayOfWeek = calendar.component(.weekday, from: selectedDate)
-        return habits.filter { goal in
+        return habitViewModel.habits.filter { goal in
             guard goal.days.contains(selectedDayOfWeek) else { return false }
             return calendar.compare(selectedDate, to: goal.startDate, toGranularity: .day) != .orderedAscending
         }

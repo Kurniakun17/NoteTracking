@@ -9,14 +9,17 @@ import SwiftData
 import SwiftUI
 
 struct ContentView: View {
-    @Query var folders: [FolderModel]
-    @Query var habits: [HabitModel]
-    @Environment(\.modelContext) var context
+    @StateObject var noteViewModel = NoteViewModel(dataSource: .shared)
+    @StateObject var folderViewModel = FolderViewModel(datasource: .shared)
+    @StateObject var habitViewModel = HabitViewModel(dataSource: .shared)
 
     var body: some View {
         StartView()
+            .environmentObject(noteViewModel)
+            .environmentObject(folderViewModel)
+            .environmentObject(habitViewModel)
             .onAppear {
-                for habit in habits {
+                for habit in habitViewModel.habits {
                     if let lastLog = habit.lastLog,
                        !Calendar.current.isDateInToday(lastLog) && !Calendar.current.isDateInYesterday(lastLog)
                     {
