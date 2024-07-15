@@ -29,19 +29,19 @@ struct CalendarView: View {
                     
                     if !dayGoals.isEmpty {
                         List {
-                            let completedHabit = habits.filter {
-                                if $0.lastLog != nil {
-                                    return Calendar.current.isDateInToday($0.lastLog!)
+                            let completedHabit = dayGoals.filter {
+                                if let lastLog = $0.lastLog {
+                                    return Calendar.current.isDate(selectedDate, inSameDayAs: lastLog)
                                 } else {
                                     return false
                                 }
                             }
                             
-                            let incompleteHabit = habits.filter {
-                                if $0.lastLog == nil {
-                                    return true
+                            let incompleteHabit = dayGoals.filter {
+                                if let lastLog = $0.lastLog {
+                                    return !Calendar.current.isDate(selectedDate, inSameDayAs: lastLog)
                                 } else {
-                                    return !(Calendar.current.isDateInToday($0.lastLog!))
+                                    return true
                                 }
                             }
                             
@@ -218,9 +218,8 @@ struct CalendarView: View {
     
     func goalsForSelectedDate() -> [HabitModel] {
         let selectedDayOfWeek = calendar.component(.weekday, from: selectedDate)
-        return habits.filter { goal in
-            guard goal.days.contains(selectedDayOfWeek) else { return false }
-            return calendar.compare(selectedDate, to: goal.startDate, toGranularity: .day) != .orderedAscending
+        return habits.filter { habit in
+            habit.days.contains(selectedDayOfWeek - 1)
         }
     }
 }

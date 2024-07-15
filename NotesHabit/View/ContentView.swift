@@ -16,6 +16,8 @@ struct ContentView: View {
     var body: some View {
         StartView()
             .onAppear {
+                requestNotificationPermissions()
+                
                 for habit in habits {
                     if let lastLog = habit.lastLog,
                        !Calendar.current.isDateInToday(lastLog) && !Calendar.current.isDateInYesterday(lastLog)
