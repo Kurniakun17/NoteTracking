@@ -32,7 +32,7 @@ struct PersonalNotes: View {
     var body: some View {
         VStack(alignment: .leading) {
             List {
-                FolderRow(destination: UncategorizedView(), title: "Uncategorized Notes", count: uncategorizedNotes.count)
+                FolderRow(destination: UncategorizedView(), title: String(localized: "Uncategorized Notes"), count: uncategorizedNotes.count)
                 ForEach(notesFolder, id: \.self) {
                     folder in
                     FolderRow(destination: FolderDetail(folder: folder), title: folder.title, count: folder.notes.count)
