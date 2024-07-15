@@ -17,6 +17,7 @@ struct StartView: View {
                     
                     
                     FolderRow(destination: HabitsView(), title: "Habit Documentation", count: habitViewModel.habits.count)
+
                 }
                 .listStyle(InsetGroupedListStyle())
                 .navigationTitle("Folders")

@@ -41,7 +41,7 @@ struct FolderDetail: View {
                 }
 
                 if !previous7DaysNotes.isEmpty {
-                    Section(header: Text("Preivous 7 Days")) {
+                    Section(header: Text("Previous 7 Days")) {
                         ForEach(previous7DaysNotes, id: \.self) {
                             note in NoteListItem(note: note)
                         }

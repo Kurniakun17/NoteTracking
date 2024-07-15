@@ -24,6 +24,8 @@
 		F6156E592C45621E00572233 /* SwiftDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6156E582C45621E00572233 /* SwiftDataService.swift */; };
 		F6156E5B2C45711200572233 /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6156E5A2C45711200572233 /* FolderViewModel.swift */; };
 		F6156E5D2C45765200572233 /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6156E5C2C45765200572233 /* HabitViewModel.swift */; };
+		C1F8AFC82C45426E007CC870 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C1F8AFC72C45426E007CC870 /* Localizable.xcstrings */; };
+
 		F627D3992C42B3F300411E16 /* FolderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627D3982C42B3F300411E16 /* FolderDetail.swift */; };
 		F627D39C2C42B7EB00411E16 /* DateFormatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627D39B2C42B7EB00411E16 /* DateFormatted.swift */; };
 		F627D39F2C42BAFD00411E16 /* SeedContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627D39E2C42BAFD00411E16 /* SeedContainer.swift */; };
@@ -60,6 +62,7 @@
 		F6156E582C45621E00572233 /* SwiftDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataService.swift; sourceTree = "<group>"; };
 		F6156E5A2C45711200572233 /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
 		F6156E5C2C45765200572233 /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
+		C1F8AFC72C45426E007CC870 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F627D3982C42B3F300411E16 /* FolderDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDetail.swift; sourceTree = "<group>"; };
 		F627D39B2C42B7EB00411E16 /* DateFormatted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatted.swift; sourceTree = "<group>"; };
 		F627D39E2C42BAFD00411E16 /* SeedContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedContainer.swift; sourceTree = "<group>"; };
@@ -196,6 +199,7 @@
 				F627D39A2C42B7DB00411E16 /* Extensions */,
 				F627D39D2C42BAD700411E16 /* Utilities */,
 				F63FFB4B2C3E5D7900EB8778 /* Preview Content */,
+				C1F8AFC72C45426E007CC870 /* Localizable.xcstrings */,
 			);
 			path = NotesHabit;
 			sourceTree = "<group>";
@@ -308,6 +312,7 @@
 			files = (
 				F63FFB4D2C3E5D7900EB8778 /* Preview Assets.xcassets in Resources */,
 				F63FFB4A2C3E5D7900EB8778 /* Assets.xcassets in Resources */,
+				C1F8AFC82C45426E007CC870 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
