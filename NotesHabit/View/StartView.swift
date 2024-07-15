@@ -21,9 +21,9 @@ struct StartView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 List {
-                    FolderRow(destination: PersonalNotes(), title: "Personal Notes", count: notesFolder.count)
+                    FolderRow(destination: PersonalNotes(), title:String(localized: "Personal Notes") , count: notesFolder.count)
                     
-                    FolderRow(destination: HabitsView(), title: "Habit Documentation", count: habits.count)
+                    FolderRow(destination: HabitsView(), title: String(localized: "Habit Documentation") , count: habits.count)
                 }
                 .listStyle(InsetGroupedListStyle())
                 .navigationTitle("Folders")

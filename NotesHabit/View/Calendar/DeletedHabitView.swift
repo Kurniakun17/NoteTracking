@@ -8,12 +8,12 @@ struct DeletedHabitView: View {
     
     var body: some View {
         VStack {
-            Text("Deleted Goals")
+            Text("Deleted Habit")
                 .font(.system(size: 40, weight: .bold))
                 .padding()
             
             if deletedGoals.isEmpty {
-                Text("No deleted goals")
+                Text("No deleted habit")
                     .foregroundColor(.gray)
                     .padding()
             } else {
