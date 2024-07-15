@@ -161,6 +161,20 @@
         }
       }
     },
+    "Every " : {
+
+    },
+    "Every %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setiap"
+          }
+        }
+      }
+    },
     "Every Weekday" : {
       "localizations" : {
         "id" : {
@@ -211,12 +225,32 @@
         }
       }
     },
+    "Fri" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jum"
+          }
+        }
+      }
+    },
     "Habit Documentation" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dokumentasi Habit"
+          }
+        }
+      }
+    },
+    "Mon" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sen"
           }
         }
       }
@@ -277,6 +311,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tidak Ada Habit yang Terjadwal"
+          }
+        }
+      }
+    },
+    "None" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak Ada"
           }
         }
       }
@@ -344,6 +388,16 @@
         }
       }
     },
+    "Sat" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sab"
+          }
+        }
+      }
+    },
     "Scheduled Habit" : {
       "localizations" : {
         "id" : {
@@ -384,6 +438,26 @@
         }
       }
     },
+    "Sun" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Min"
+          }
+        }
+      }
+    },
+    "Thu" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kam"
+          }
+        }
+      }
+    },
     "Time" : {
       "localizations" : {
         "id" : {
@@ -414,12 +488,32 @@
         }
       }
     },
+    "Tue" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sel"
+          }
+        }
+      }
+    },
     "Uncategorized Notes" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Catatan Tak Berkategori"
+          }
+        }
+      }
+    },
+    "Wed" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rab"
           }
         }
       }

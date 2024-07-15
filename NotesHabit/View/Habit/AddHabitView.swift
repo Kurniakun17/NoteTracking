@@ -16,7 +16,7 @@ struct AddHabitView: View {
     @Environment(\.presentationMode) var presentationMode
     
     let daysOfWeek = ["S", "M", "T", "W", "T", "F", "S"]
-    let fullDaysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    let fullDaysOfWeek = [String(localized: "Sun"), String(localized: "Mon"), String(localized: "Tue"), String(localized: "Wed"), String(localized: "Thu"), String(localized: "Fri"), String(localized: "Sat")]
     
     var body: some View {
         NavigationView {
@@ -142,7 +142,7 @@ struct AddHabitView: View {
             return String(localized: "Everyday")
         default:
             let days = sortedDays.map { fullDaysOfWeek[$0] }
-            return days.isEmpty ? "None" : "Every " + days.joined(separator: ", ")
+            return days.isEmpty ? String(localized: "None") : String(localized: "Every ")+days.joined(separator: ", ")
         }
     }
     
