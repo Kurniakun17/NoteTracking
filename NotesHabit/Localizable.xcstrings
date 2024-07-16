@@ -345,6 +345,7 @@
 
     },
     "Personal Notes" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -365,9 +366,6 @@
       }
     },
     "Pinned" : {
-
-    },
-    "Preivous 7 Days" : {
 
     },
     "Previous 7 Days" : {

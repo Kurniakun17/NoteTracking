@@ -15,42 +15,27 @@ struct HabitDetail: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            List {
-                ForEach(habit.notes, id: \.self) {
-                    note in
-                    NoteListItem(note: note)
-                        .swipeActions(edge: .trailing) {
-                            Button(action: {
-                                noteViewModel.delete(item: note)
-                                if let index = habit.notes.firstIndex(where: {$0.id == note.id}){
-                                    habit.notes.remove(at: index)
-                                }
-                            }) {
-                                Image(systemName: "trash")
-                            }.tint(.red)
-                        }
-                }
-            }
-            .searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
-            .listStyle(InsetGroupedListStyle())
-            .navigationTitle(habit.title)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Edit", action: {})
-                }
+            NotesList(filteredNotes: habit.notes)
+                .searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
+                .listStyle(InsetGroupedListStyle())
+                .navigationTitle(habit.title)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Edit", action: {})
+                    }
 
-                ToolbarItem(placement: .bottomBar) {
-                    HStack {
-                        Spacer()
+                    ToolbarItem(placement: .bottomBar) {
+                        HStack {
+                            Spacer()
 
-                        NavigationLink(
-                            destination: AddNoteView(habit: habit)
-                        ) {
-                            Image(systemName: "square.and.pencil")
+                            NavigationLink(
+                                destination: AddNoteView(habit: habit)
+                            ) {
+                                Image(systemName: "square.and.pencil")
+                            }
                         }
                     }
                 }
-            }
         }
     }
 }

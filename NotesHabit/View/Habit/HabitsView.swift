@@ -16,19 +16,6 @@ struct HabitsView: View {
     var body: some View {
         VStack(alignment: .leading) {
             List {
-//                NavigationLink(destination: CalendarView()) {
-//                    HStack(spacing: 12) {
-//                        Image(systemName: "calendar.circle.fill")
-//                            .font(.system(size: 41))
-//                            .foregroundStyle(.primaryRed)
-//
-//                        Text("Scheduled Habit")
-//                        Spacer()
-//                        Text(String(habitViewModel.habits.count))
-//                            .foregroundColor(.gray)
-//                    }
-//                }
-
                 Section(header: Text("All Habits")) {
                     ForEach(habitViewModel.habits, id: \.self) {
                         habit in

@@ -17,74 +17,59 @@ struct PinnedNotesView: View {
     @State private var isHabitDocumentationExpanded = true
 
     var body: some View {
-        
-            VStack(alignment: .leading) {
-                List {
-                    Section(
-                        isExpanded: $isPersonalNotesExpanded,
-                        content: {
-                            ForEach(noteViewModel.notes.filter { $0.folder != nil }, id: \.self) { note in
-                                NoteListItem(note: note)
-                                    .swipeActions(edge: .trailing) {
-                                        Button(action: {
-                                            noteViewModel.delete(item: note)
-                                        }) {
-                                            Image(systemName: "trash")
-                                        }.tint(.red)
-                                    }
-                            }
-                        },
-                        header: {
-                            Text("Folders")
-                                .headerProminence(.increased)
+        VStack(alignment: .leading) {
+            List {
+                Section(
+                    isExpanded: $isPersonalNotesExpanded,
+                    content: {
+                        ForEach(noteViewModel.notes.filter { $0.folder != nil }, id: \.self) { note in
+                            NoteListItem(note: note)
                         }
-                    )
+                    },
+                    header: {
+                        Text("Folders")
+                            .headerProminence(.increased)
+                    }
+                )
                     
-                    Section(
-                        isExpanded: $isHabitDocumentationExpanded,
-                        content: {
-                            ForEach(noteViewModel.notes.filter { $0.habit != nil }, id: \.self) { note in
-                                NoteListItem(note: note)
-                                    .swipeActions(edge: .trailing) {
-                                        Button(action: {
-                                            noteViewModel.delete(item: note)
-                                        }) {
-                                            Image(systemName: "trash")
-                                        }.tint(.red)
-                                    }
-                            }
-                        },
-                        header: {
-                            Text("Habits")
-                                .headerProminence(.increased)
+                Section(
+                    isExpanded: $isHabitDocumentationExpanded,
+                    content: {
+                        ForEach(noteViewModel.notes.filter { $0.habit != nil }, id: \.self) { note in
+                            NoteListItem(note: note)
                         }
-                    )
-                }
-                .listStyle(SidebarListStyle())
+                    },
+                    header: {
+                        Text("Habits")
+                            .headerProminence(.increased)
+                    }
+                )
             }
-            .navigationTitle("Pinned")
-            .sheet(isPresented: $isAddFolder, content: {
-                AddFolderView()
-            })
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    HStack {
-                        Button(action: {
-                            isAddFolder = true
-                        }) {
-                            Image(systemName: "folder.badge.plus")
-                        }
+            .listStyle(SidebarListStyle())
+        }
+        .navigationTitle("Pinned")
+        .sheet(isPresented: $isAddFolder, content: {
+            AddFolderView()
+        })
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                HStack {
+                    Button(action: {
+                        isAddFolder = true
+                    }) {
+                        Image(systemName: "folder.badge.plus")
+                    }
                         
-                        Spacer()
+                    Spacer()
                         
-                        NavigationLink(
-                            destination: AddNoteView()
-                        ) {
-                            Image(systemName: "square.and.pencil")
-                        }
+                    NavigationLink(
+                        destination: AddNoteView()
+                    ) {
+                        Image(systemName: "square.and.pencil")
                     }
                 }
             }
+        }
         .searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
     }
 }
