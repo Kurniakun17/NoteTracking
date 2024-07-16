@@ -26,6 +26,7 @@ struct GoalCard: View {
                 HStack {
                     HStack {
                         Image(systemName: "flame")
+                            
                         Text("\(goal.streak)")
                     }
                     
