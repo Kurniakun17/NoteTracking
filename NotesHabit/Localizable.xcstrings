@@ -63,6 +63,12 @@
         }
       }
     },
+    "Add New Folder" : {
+
+    },
+    "Add New Habit" : {
+
+    },
     "Add photos & videos" : {
       "localizations" : {
         "id" : {
@@ -167,6 +173,9 @@
           }
         }
       }
+    },
+    "every" : {
+
     },
     "Every " : {
 
@@ -344,6 +353,9 @@
     "Noted" : {
 
     },
+    "on" : {
+
+    },
     "Personal Notes" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -397,6 +409,9 @@
           }
         }
       }
+    },
+    "Repeat" : {
+
     },
     "Repeat " : {
       "localizations" : {
