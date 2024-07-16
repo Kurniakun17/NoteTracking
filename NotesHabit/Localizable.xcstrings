@@ -63,6 +63,15 @@
         }
       }
     },
+    "Add New Folder" : {
+
+    },
+    "Add New Habit" : {
+
+    },
+    "Add new or edit a new note to keep streak!" : {
+
+    },
     "Add photos & videos" : {
       "localizations" : {
         "id" : {
@@ -422,7 +431,11 @@
         }
       }
     },
+    "Scheduled" : {
+
+    },
     "Scheduled Habit" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {

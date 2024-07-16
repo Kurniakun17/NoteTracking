@@ -14,9 +14,7 @@ struct ContentView: View {
     @StateObject var habitViewModel = HabitViewModel(dataSource: .shared)
 
     var body: some View {
-//        StartView()
         MainView()
-//        HomeView()
             .environmentObject(noteViewModel)
             .environmentObject(folderViewModel)
             .environmentObject(habitViewModel)

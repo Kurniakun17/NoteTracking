@@ -5,7 +5,7 @@ struct CalendarView: View {
     @State private var selectedDate = Date()
     @State private var currentWeekOffset = 0
     @State private var showDatePicker = false
-    @State private var showAddHabitView = false
+    @State var isAddHabit = false
     let calendar = Calendar.current
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -95,17 +95,30 @@ struct CalendarView: View {
                 .offset(y: -160)
             }
         }
-        .sheet(isPresented: $showAddHabitView) {
+        .sheet(isPresented: $isAddHabit, content: {
             AddHabitView()
-        }
+        })
         .accentColor(.primaryRed)
-        .navigationTitle("Scheduled Habit")
+        .navigationTitle("Scheduled")
         .navigationBarItems(trailing: Button(action: {
             showDatePicker = true
         }) {
             Image(systemName: "calendar")
                 .foregroundColor(.primaryRed)
         })
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                HStack {
+                    Button(action: {
+                        isAddHabit = true
+                    }) {
+                        Image(systemName: "folder.badge.plus")
+                    }
+                    
+                    Spacer()
+                }
+            }
+        }
     }
     
     var weekView: some View {
@@ -218,3 +231,4 @@ struct CalendarView: View {
         fatalError("Error")
     }
 }
+

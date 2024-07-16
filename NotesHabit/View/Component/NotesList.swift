@@ -24,6 +24,7 @@ struct NotesList: View {
                 Section(header: Text("Today")) {
                     ForEach(todayNotes, id: \.self) { note in
                         NoteListItem(note: note, folder: folder, habit: habit)
+                            .transition(.slide)
                     }
                 }
                 .headerProminence(.increased)

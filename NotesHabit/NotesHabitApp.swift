@@ -16,3 +16,7 @@ struct NotesHabitApp: App {
         .modelContainer(for: [NoteModel.self, HabitModel.self, FolderModel.self])
     }
 }
+
+
+
+

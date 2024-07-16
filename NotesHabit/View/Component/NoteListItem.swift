@@ -27,7 +27,9 @@ struct NoteListItem: View {
         }
         .swipeActions(edge: .trailing) {
             Button(action: {
-                deleteNote(note: note)
+                withAnimation {
+                    deleteNote(note: note)
+                }
             }) {
                 Image(systemName: "trash")
             }.tint(.red)
