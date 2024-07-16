@@ -30,7 +30,7 @@ struct AddFolderView: View {
                 .tint(.red),
 
                 trailing: Button("Done", action: {
-                    folderViewModel.addFolder(folder: FolderModel(title: folderTitle))
+                    folderViewModel.add(item: FolderModel(title: folderTitle))
                     presentationMode.wrappedValue.dismiss()
                 }))
         }

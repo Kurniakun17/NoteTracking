@@ -93,6 +93,9 @@
         }
       }
     },
+    "All Notes" : {
+
+    },
     "Cancel" : {
       "localizations" : {
         "id" : {
@@ -240,6 +243,7 @@
       }
     },
     "Habit Documentation" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -248,6 +252,12 @@
           }
         }
       }
+    },
+    "Habit Entries" : {
+
+    },
+    "Habits" : {
+
     },
     "Mon" : {
       "localizations" : {
@@ -331,6 +341,9 @@
         }
       }
     },
+    "Noted" : {
+
+    },
     "Personal Notes" : {
       "localizations" : {
         "id" : {
@@ -350,6 +363,9 @@
           }
         }
       }
+    },
+    "Pinned" : {
+
     },
     "Preivous 7 Days" : {
 

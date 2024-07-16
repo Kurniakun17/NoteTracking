@@ -4,7 +4,7 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-class NoteViewModel: ObservableObject {
+class NoteViewModel: ObservableObject, Addable, Deletable {
     @Published var notes: [NoteModel]
 
     private let dataSource: SwiftDataService
@@ -21,13 +21,13 @@ class NoteViewModel: ObservableObject {
         notes = dataSource.fetchNotes()
     }
     
-    func addNote(note: NoteModel){
-        dataSource.addNote(note: note)
+    func add(item: NoteModel){
+        dataSource.addNote(note: item)
         notes = dataSource.fetchNotes()
     }
     
-    func deleteNote(note: NoteModel){
-        dataSource.deleteNote(note: note)
+    func delete(item: NoteModel){
+        dataSource.deleteNote(note: item)
         notes = dataSource.fetchNotes()
     }
 }

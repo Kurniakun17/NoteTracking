@@ -9,7 +9,8 @@ import SwiftData
 import SwiftUI
 
 struct HabitDetail: View {
-    @Environment(\.modelContext) var context
+    @EnvironmentObject var noteViewModel: NoteViewModel
+    @EnvironmentObject var habitViewModel: HabitViewModel
     var habit: HabitModel
 
     var body: some View {
@@ -18,6 +19,16 @@ struct HabitDetail: View {
                 ForEach(habit.notes, id: \.self) {
                     note in
                     NoteListItem(note: note)
+                        .swipeActions(edge: .trailing) {
+                            Button(action: {
+                                noteViewModel.delete(item: note)
+                                if let index = habit.notes.firstIndex(where: {$0.id == note.id}){
+                                    habit.notes.remove(at: index)
+                                }
+                            }) {
+                                Image(systemName: "trash")
+                            }.tint(.red)
+                        }
                 }
             }
             .searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")

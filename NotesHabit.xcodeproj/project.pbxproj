@@ -16,6 +16,14 @@
 		408CBE522C3FF939006539DB /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CBE512C3FF939006539DB /* DatePickerView.swift */; };
 		408CBE542C3FF948006539DB /* GoalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CBE532C3FF948006539DB /* GoalCardView.swift */; };
 		40A3603E2C45829A0044F0CD /* ScheduleNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3603D2C45829A0044F0CD /* ScheduleNotification.swift */; };
+		40E8A2572C458E25009AA454 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A2562C458E25009AA454 /* MainView.swift */; };
+		40E8A2592C4595D0009AA454 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A2582C4595D0009AA454 /* HomeView.swift */; };
+		40E8A25B2C4613E7009AA454 /* AllNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A25A2C4613E7009AA454 /* AllNotesView.swift */; };
+		40E8A25D2C461908009AA454 /* HabitEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A25C2C461908009AA454 /* HabitEntries.swift */; };
+		40E8A2612C4619FD009AA454 /* PinnedNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A2602C4619FD009AA454 /* PinnedNotesView.swift */; };
+		40E8A2642C462B0A009AA454 /* Adding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A2632C462B0A009AA454 /* Adding.swift */; };
+		40E8A2662C462B1A009AA454 /* Deleting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A2652C462B1A009AA454 /* Deleting.swift */; };
+		40E8A2682C4632D2009AA454 /* NotesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A2672C4632D2009AA454 /* NotesList.swift */; };
 		C18E78CF2C3F19D800847A25 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78CE2C3F19D800847A25 /* CalendarView.swift */; };
 		C18E78D12C3F19E000847A25 /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78D02C3F19E000847A25 /* HabitsView.swift */; };
 		C18E78D52C3F1D9600847A25 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78D42C3F1D9600847A25 /* SearchView.swift */; };
@@ -54,6 +62,14 @@
 		408CBE512C3FF939006539DB /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		408CBE532C3FF948006539DB /* GoalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardView.swift; sourceTree = "<group>"; };
 		40A3603D2C45829A0044F0CD /* ScheduleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNotification.swift; sourceTree = "<group>"; };
+		40E8A2562C458E25009AA454 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		40E8A2582C4595D0009AA454 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		40E8A25A2C4613E7009AA454 /* AllNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesView.swift; sourceTree = "<group>"; };
+		40E8A25C2C461908009AA454 /* HabitEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEntries.swift; sourceTree = "<group>"; };
+		40E8A2602C4619FD009AA454 /* PinnedNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedNotesView.swift; sourceTree = "<group>"; };
+		40E8A2632C462B0A009AA454 /* Adding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adding.swift; sourceTree = "<group>"; };
+		40E8A2652C462B1A009AA454 /* Deleting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deleting.swift; sourceTree = "<group>"; };
+		40E8A2672C4632D2009AA454 /* NotesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesList.swift; sourceTree = "<group>"; };
 		C18E78CE2C3F19D800847A25 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		C18E78D02C3F19E000847A25 /* HabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
 		C18E78D42C3F1D9600847A25 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -99,6 +115,9 @@
 			children = (
 				F63FFB602C3F52B400EB8778 /* AddNoteView.swift */,
 				F6391DCB2C40CA620030566F /* EditNoteView.swift */,
+				40E8A25A2C4613E7009AA454 /* AllNotesView.swift */,
+				40E8A2602C4619FD009AA454 /* PinnedNotesView.swift */,
+				40E8A2672C4632D2009AA454 /* NotesList.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -118,6 +137,7 @@
 				C18E78D02C3F19E000847A25 /* HabitsView.swift */,
 				4015BBF32C41114600415C7A /* AddHabitView.swift */,
 				F627D3A72C4397B900411E16 /* HabitDetail.swift */,
+				40E8A25C2C461908009AA454 /* HabitEntries.swift */,
 			);
 			path = Habit;
 			sourceTree = "<group>";
@@ -131,6 +151,15 @@
 				F627D3A02C43636700411E16 /* UncategorizedView.swift */,
 			);
 			path = Folders;
+			sourceTree = "<group>";
+		};
+		40E8A2622C462AFE009AA454 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				40E8A2632C462B0A009AA454 /* Adding.swift */,
+				40E8A2652C462B1A009AA454 /* Deleting.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		C18E78D62C3F1D9B00847A25 /* Component */ = {
@@ -200,6 +229,7 @@
 				F63FFB532C3E5DAD00EB8778 /* View */,
 				F627D39A2C42B7DB00411E16 /* Extensions */,
 				F627D39D2C42BAD700411E16 /* Utilities */,
+				40E8A2622C462AFE009AA454 /* Protocols */,
 				F63FFB4B2C3E5D7900EB8778 /* Preview Content */,
 				C1F8AFC72C45426E007CC870 /* Localizable.xcstrings */,
 			);
@@ -219,6 +249,8 @@
 			children = (
 				F63FFB472C3E5D7700EB8778 /* ContentView.swift */,
 				4015BBF92C428A7800415C7A /* StartView.swift */,
+				40E8A2562C458E25009AA454 /* MainView.swift */,
+				40E8A2582C4595D0009AA454 /* HomeView.swift */,
 				4015BBFB2C429C0B00415C7A /* Folders */,
 				4015BBF12C40F9FF00415C7A /* Calendar */,
 				4015BBF22C41112E00415C7A /* Habit */,
@@ -331,11 +363,16 @@
 				F627D3A62C43852600411E16 /* AddFolderView.swift in Sources */,
 				4015BBEC2C40D8E900415C7A /* DeletedHabitView.swift in Sources */,
 				F6156E5D2C45765200572233 /* HabitViewModel.swift in Sources */,
+				40E8A25B2C4613E7009AA454 /* AllNotesView.swift in Sources */,
 				C18E78CF2C3F19D800847A25 /* CalendarView.swift in Sources */,
+				40E8A2612C4619FD009AA454 /* PinnedNotesView.swift in Sources */,
 				C18E78D12C3F19E000847A25 /* HabitsView.swift in Sources */,
+				40E8A2592C4595D0009AA454 /* HomeView.swift in Sources */,
 				4015BBFA2C428A7800415C7A /* StartView.swift in Sources */,
 				F627D3A12C43636700411E16 /* UncategorizedView.swift in Sources */,
 				408CBE542C3FF948006539DB /* GoalCardView.swift in Sources */,
+				40E8A2572C458E25009AA454 /* MainView.swift in Sources */,
+				40E8A25D2C461908009AA454 /* HabitEntries.swift in Sources */,
 				F627D3A82C4397B900411E16 /* HabitDetail.swift in Sources */,
 				F63FFB572C3E5E1100EB8778 /* NoteModel.swift in Sources */,
 				408CBE522C3FF939006539DB /* DatePickerView.swift in Sources */,
@@ -345,9 +382,12 @@
 				F63FFB592C3E5E1900EB8778 /* HabitModel.swift in Sources */,
 				F6156E532C45142D00572233 /* NoteViewModel.swift in Sources */,
 				F6156E592C45621E00572233 /* SwiftDataService.swift in Sources */,
+				40E8A2642C462B0A009AA454 /* Adding.swift in Sources */,
 				F63FFB592C3E5E1900EB8778 /* HabitModel.swift in Sources */,
 				F63FFB612C3F52B400EB8778 /* AddNoteView.swift in Sources */,
 				F6391DCC2C40CA620030566F /* EditNoteView.swift in Sources */,
+				40E8A2682C4632D2009AA454 /* NotesList.swift in Sources */,
+				40E8A2662C462B1A009AA454 /* Deleting.swift in Sources */,
 				F63FFB5B2C3E5E2200EB8778 /* FolderModel.swift in Sources */,
 				4015BBF42C41114600415C7A /* AddHabitView.swift in Sources */,
 				F6156E5B2C45711200572233 /* FolderViewModel.swift in Sources */,
