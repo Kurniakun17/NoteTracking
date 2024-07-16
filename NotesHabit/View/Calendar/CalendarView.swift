@@ -16,116 +16,87 @@ struct CalendarView: View {
     @EnvironmentObject private var habitViewModel: HabitViewModel
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                VStack(spacing: 10) {
-                    weekView
-                    
-                    Text(dateFormatter.string(from: selectedDate))
-                        .font(.system(size: 18))
+        ZStack {
+            VStack(spacing: 10) {
+                weekView
+                
+                Text(dateFormatter.string(from: selectedDate))
+                    .font(.system(size: 18))
+                    .padding(.bottom, 6)
+                
+                let dayGoals = goalsForSelectedDate().filter { $0.deleteAt == nil }
+                
+                if !dayGoals.isEmpty {
+                    List {
+                        let completedHabit = dayGoals.filter {
+                            if let lastLog = $0.lastLog {
+                                return Calendar.current.isDate(selectedDate, inSameDayAs: lastLog)
+                            } else {
+                                return false
+                            }
+                        }
+                        
+                        let incompleteHabit = dayGoals.filter {
+                            if let lastLog = $0.lastLog {
+                                return !Calendar.current.isDate(selectedDate, inSameDayAs: lastLog)
+                            } else {
+                                return true
+                            }
+                        }
+                        
+                        ForEach(incompleteHabit) { habit in
+                            Section {
+                                ScheduledHabitListItem(habit: habit, isComplete: false)
+                            }
+                            .listSectionSpacing(8)
+                        }
+                        
+                        Section(header: Text("Completed")) {
+                            ForEach(completedHabit) { habit in
+                                Section {
+                                    ScheduledHabitListItem(habit: habit, isComplete: true)
+                                }
+                                .listSectionSpacing(8)
+                            }
+                        }
+                        .headerProminence(.increased)
+                        
+                    }
+                } else {
+                    Divider()
                         .padding(.bottom, 6)
                     
-                    let dayGoals = goalsForSelectedDate().filter { $0.deleteAt == nil }
+                    Spacer()
                     
-                    if !dayGoals.isEmpty {
-                        List {
-                            let completedHabit = dayGoals.filter {
-                                if let lastLog = $0.lastLog {
-                                    return Calendar.current.isDate(selectedDate, inSameDayAs: lastLog)
-                                } else {
-                                    return false
-                                }
-                            }
-                            
-                            let incompleteHabit = dayGoals.filter {
-                                if let lastLog = $0.lastLog {
-                                    return !Calendar.current.isDate(selectedDate, inSameDayAs: lastLog)
-                                } else {
-                                    return true
-                                }
-                            }
-                            
-                            ForEach(incompleteHabit) { habit in
-                                GoalCard(goal: habit)
-                                    .padding(.horizontal, -10)
-                                    .swipeActions(edge: .leading) {
-                                        Button {
-                                            // Add favorite action here
-                                        } label: {
-                                            Image(systemName: "heart.fill")
-                                        }
-                                        .tint(.red)
-                                    }
-                                    .swipeActions(edge: .trailing) {
-                                        Button(role: .destructive) {
-                                            // Add delete action here
-                                            habit.deleteAt = Date()
-                                        } label: {
-                                            Image(systemName: "trash.fill")
-                                        }
-                                    }
-                            }
-
-                            Section(header: Text("Complete")) {
-                                ForEach(completedHabit) { habit in
-                                    GoalCard(goal: habit)
-                                        .padding(.horizontal, -10)
-                                        .swipeActions(edge: .leading) {
-                                            Button {
-                                                // Add favorite action here
-                                            } label: {
-                                                Image(systemName: "heart.fill")
-                                            }
-                                            .tint(.red)
-                                        }
-                                        .swipeActions(edge: .trailing) {
-                                            Button(role: .destructive) {
-                                                // Add delete action here
-                                                habit.deleteAt = Date()
-                                            } label: {
-                                                Image(systemName: "trash.fill")
-                                            }
-                                        }
-                                }
-                            }
-                            .headerProminence(.increased)
-                        }
-                    } else {
-                        Divider()
-                            .padding(.bottom, 6)
-                        
-                        Spacer()
-                        
-                        Text("No habits scheduled for this date")
-                            .foregroundColor(.gray)
-                            .padding()
-                        
-                        Spacer()
-                    }
+                    Text("No habits scheduled for this date")
+                        .foregroundColor(.gray)
+                        .padding()
+                    
+                    Spacer()
                 }
-                .background(Color(.systemBackground))
-                
-                if showDatePicker {
-                    Color.black.opacity(0.4)
-                        .edgesIgnoringSafeArea(.all)
-                        .onTapGesture {
-                            showDatePicker = false
-                        }
-                    
-                    DatePickerView(selectedDate: $selectedDate) { newDate in
-                        selectedDate = newDate
+            }
+            .background(Color(.systemBackground))
+            
+            if showDatePicker {
+                Color.black.opacity(0.4)
+                    .edgesIgnoringSafeArea(.all)
+                    .onTapGesture {
                         showDatePicker = false
                     }
-                    .frame(width: 350)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 10)
-                    .offset(y: -160)
+                
+                DatePickerView(selectedDate: $selectedDate) { newDate in
+                    selectedDate = newDate
+                    showDatePicker = false
                 }
+                .frame(width: 350)
+                .background(Color.white)
+                .cornerRadius(10)
+                .shadow(radius: 10)
+                .offset(y: -160)
             }
-            .sheet(isPresented: $showAddHabitView) {
-                AddHabitView()
-            }
+        }
+        .sheet(isPresented: $showAddHabitView) {
+            AddHabitView()
         }
         .accentColor(.primaryRed)
         .navigationTitle("Scheduled Habit")
@@ -152,13 +123,13 @@ struct CalendarView: View {
                             ({
                                 if (isDateSelected(index: index)) {
                                     return Text(dayString(from: index))
-                                            .foregroundColor(.white)
+                                        .foregroundColor(.white)
                                 } else {
                                     return Text(dayString(from: index))
                                 }
                                 
                             })()
-
+                            
                         )
                         .onTapGesture {
                             selectDate(index: index)

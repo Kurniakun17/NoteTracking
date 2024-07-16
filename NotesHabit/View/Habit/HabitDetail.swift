@@ -11,7 +11,7 @@ import SwiftUI
 struct HabitDetail: View {
     @EnvironmentObject var noteViewModel: NoteViewModel
     @EnvironmentObject var habitViewModel: HabitViewModel
-    var habit = HabitModel(title: "Swift UI", body: "asdasd", days: [1, 2, 3], emoji: "asdad", time: Date())
+    var habit: HabitModel
     var formatter: Formatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH.mm"
@@ -31,10 +31,6 @@ struct HabitDetail: View {
         6: "Sat"
     ]
 
-    var days: [String] {
-        habit.days.compactMap { dayNames[$0] }
-    }
-
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading) {
@@ -46,19 +42,9 @@ struct HabitDetail: View {
                             .fontWeight(.bold)
                     }
 
-                    HStack(spacing: 4) {
-                        Text("Repeat")
-                        if habit.time != nil {
-                            Text("on")
-                            Text(habit.time!.toTimeString())
-                                .fontWeight(.bold)
-                        }
-                        Text("every")
-                        Text(days.joined(separator: ", "))
-                            .fontWeight(.bold)
-                    }
-//                    .foregroundStyle(colorScheme == .dark ? .white : .black)
+                    Text(formattedString())
                 }
+                Text("Add new or edit a new note to keep streak!")
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 16)
@@ -83,20 +69,27 @@ struct HabitDetail: View {
             }
         }
     }
-}
 
-#Preview {
-    do {
-        @StateObject var noteViewModel = NoteViewModel(dataSource: .shared)
-        @StateObject var folderViewModel = FolderViewModel(datasource: .shared)
-        @StateObject var habitViewModel = HabitViewModel(dataSource: .shared)
+    func formattedString() -> String {
+        var result = "Repeat "
+        if let time = habit.time?.toTimeString() {
+            result += "on **\(time)** "
+        }
+        result += repeatDaysText(days: habit.days)
+        return result
+    }
 
-        return HabitDetail()
-            .environmentObject(noteViewModel)
-            .environmentObject(folderViewModel)
-            .environmentObject(habitViewModel)
-
-    } catch {
-        fatalError("Error")
+    func repeatDaysText(days: Set<Int>) -> String {
+        switch days {
+        case [1, 2, 3, 4, 5]:
+            return String(localized: "Every Weekday")
+        case [0, 6]:
+            return String(localized: "Every Weekend")
+        case [0, 1, 2, 3, 4, 5, 6]:
+            return String(localized: "Everyday")
+        default:
+            let days = days.compactMap { dayNames[$0] }
+            return days.isEmpty ? String(localized: "None") : String(localized: "Every ") + days.joined(separator: ", ")
+        }
     }
 }

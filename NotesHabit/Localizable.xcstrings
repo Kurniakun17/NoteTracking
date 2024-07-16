@@ -69,6 +69,9 @@
     "Add New Habit" : {
 
     },
+    "Add new or edit a new note to keep streak!" : {
+
+    },
     "Add photos & videos" : {
       "localizations" : {
         "id" : {
@@ -113,6 +116,7 @@
       }
     },
     "Complete" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -121,6 +125,9 @@
           }
         }
       }
+    },
+    "Completed" : {
+
     },
     "Deleted Goals" : {
       "extractionState" : "stale",
@@ -173,9 +180,6 @@
           }
         }
       }
-    },
-    "every" : {
-
     },
     "Every " : {
 
@@ -353,9 +357,6 @@
     "Noted" : {
 
     },
-    "on" : {
-
-    },
     "Personal Notes" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -409,9 +410,6 @@
           }
         }
       }
-    },
-    "Repeat" : {
-
     },
     "Repeat " : {
       "localizations" : {
