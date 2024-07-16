@@ -64,9 +64,9 @@ struct HabitListItem: View {
                 Spacer()
                 HStack(spacing: 8) {
                     Text(String(habit.streak))
-                        .foregroundColor(habit.streak == 0 ? .gray : .primaryRed)
+                        .foregroundColor(habit.streak == 0 ? .gray : .orangeStreak)
                     Image(systemName: "flame.fill")
-                        .foregroundStyle(habit.streak == 0 ? .gray : .primaryRed)
+                        .foregroundStyle(habit.streak == 0 ? .gray : .orangeStreak)
                 }
             }
         }
@@ -75,14 +75,15 @@ struct HabitListItem: View {
 
 #Preview {
     do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: HabitModel.self, NoteModel.self, configurations: config)
-
-        SeedContainer(container: container)
-
+        @StateObject var noteViewModel = NoteViewModel(dataSource: .shared)
+        @StateObject var folderViewModel = FolderViewModel(datasource: .shared)
+        @StateObject var habitViewModel = HabitViewModel(dataSource: .shared)
+        
         return HabitsView()
-            .modelContainer(container)
-
+            .environmentObject(noteViewModel)
+            .environmentObject(folderViewModel)
+            .environmentObject(habitViewModel)
+        
     } catch {
         fatalError("Error")
     }

@@ -37,7 +37,7 @@ struct NoteListItem: View {
                 note.isFavourite.toggle()
             }) {
                 Image(systemName: "pin")
-            }.tint(.yellow)
+            }.tint(.orange)
         }
     }
 
