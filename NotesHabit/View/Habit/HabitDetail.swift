@@ -42,14 +42,15 @@ struct HabitDetail: View {
 
 #Preview {
     do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: HabitModel.self, NoteModel.self, configurations: config)
-
-        SeedContainer(container: container)
-
+        @StateObject var noteViewModel = NoteViewModel(dataSource: .shared)
+        @StateObject var folderViewModel = FolderViewModel(datasource: .shared)
+        @StateObject var habitViewModel = HabitViewModel(dataSource: .shared)
+        
         return HabitDetail(habit: HabitModel(title: "habit 1", body: "", days: [1, 2, 3], emoji: "👹", notes: [NoteModel(title: "Notes 1", body: "Body 1")], streak: 2))
-            .modelContainer(container)
-
+            .environmentObject(noteViewModel)
+            .environmentObject(folderViewModel)
+            .environmentObject(habitViewModel)
+        
     } catch {
         fatalError("Error")
     }

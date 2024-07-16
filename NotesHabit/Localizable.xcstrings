@@ -107,6 +107,7 @@
       }
     },
     "Complete" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -115,6 +116,9 @@
           }
         }
       }
+    },
+    "Completed" : {
+
     },
     "Deleted Goals" : {
       "extractionState" : "stale",
