@@ -11,6 +11,7 @@ import SwiftUI
 struct HabitDetail: View {
     @EnvironmentObject var noteViewModel: NoteViewModel
     @EnvironmentObject var habitViewModel: HabitViewModel
+    @State private var searchText: String = ""
     var habit: HabitModel
     var formatter: Formatter {
         let formatter = DateFormatter()
@@ -50,9 +51,9 @@ struct HabitDetail: View {
             .padding(.horizontal, 16)
             .background(colorScheme == .dark ? .black : .white)
 
-            NotesList(filteredNotes: habit.notes)
+            NotesList(filteredNotes: filteredNotes)
         }
-        .searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
         .listStyle(InsetGroupedListStyle())
         .navigationTitle(habit.title)
         .toolbar {
@@ -90,6 +91,14 @@ struct HabitDetail: View {
         default:
             let days = days.compactMap { dayNames[$0] }
             return days.isEmpty ? String(localized: "None") : String(localized: "Every ") + days.joined(separator: ", ")
+        }
+    }
+    
+    var filteredNotes: [NoteModel] {
+        if searchText.isEmpty {
+            return habit.notes
+        } else {
+            return habit.notes.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
         }
     }
 }

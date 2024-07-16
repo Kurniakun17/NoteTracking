@@ -4,7 +4,7 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-class NoteViewModel: ObservableObject, Addable, Deletable {
+class NoteViewModel: ObservableObject, Addable, Deletable{
     @Published var notes: [NoteModel]
     @Published var searchText: String = ""
     
@@ -40,4 +40,8 @@ class NoteViewModel: ObservableObject, Addable, Deletable {
         dataSource.deleteNote(note: item)
         notes = dataSource.fetchNotes()
     }
+    
+//    func search(item: [NoteModel]) {
+//        dataSource.searchNotes(notes: item)
+//    }
 }
