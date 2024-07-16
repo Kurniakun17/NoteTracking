@@ -10,6 +10,7 @@ struct MainView: View {
     @State var isAddHabit = false
     @State private var isPersonalNotesExpanded = true
     @State private var isHabitDocumentationExpanded = true
+//    @State private var searchText = ""
 
     var body: some View {
         NavigationView {
@@ -144,6 +145,20 @@ struct MainView: View {
         .navigationViewStyle(StackNavigationViewStyle())
         .searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
     }
+    
+//    var filteredData: [String] {
+//            let notes = noteViewModel.notes.map { $0.title }
+//            let habits = habitViewModel.habits.map { $0.title }
+//            let folders = folderViewModel.folders.map { $0.title }
+//            
+//            let allData = notes + habits + folders
+//            
+//            if searchText.isEmpty {
+//                return allData
+//            } else {
+//                return allData.filter { $0.localizedCaseInsensitiveContains(searchText) }
+//            }
+//        }
 }
 
 struct SummaryItemView: View {
