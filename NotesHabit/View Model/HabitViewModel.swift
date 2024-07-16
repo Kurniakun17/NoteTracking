@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HabitViewModel: ObservableObject {
+class HabitViewModel: ObservableObject, Addable, Deletable {
     @Published var habits: [HabitModel]
 
     private let dataSource: SwiftDataService
@@ -17,13 +17,13 @@ class HabitViewModel: ObservableObject {
         self.habits = dataSource.fetchHabits()
     }
 
-    func addHabit(habit: HabitModel) {
-        dataSource.addHabit(habit: habit)
+    func add(item: HabitModel) {
+        dataSource.addHabit(habit: item)
         habits = dataSource.fetchHabits()
     }
 
-    func deleteHabit(habit: HabitModel) {
-        dataSource.deleteHabit(habit: habit)
+    func delete(item: HabitModel) {
+        dataSource.deleteHabit(habit: item)
         habits = dataSource.fetchHabits()
     }
 

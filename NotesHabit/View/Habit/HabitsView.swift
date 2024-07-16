@@ -16,18 +16,18 @@ struct HabitsView: View {
     var body: some View {
         VStack(alignment: .leading) {
             List {
-                NavigationLink(destination: CalendarView()) {
-                    HStack(spacing: 12) {
-                        Image(systemName: "calendar.circle.fill")
-                            .font(.system(size: 41))
-                            .foregroundStyle(.primaryRed)
-
-                        Text("Scheduled Habit")
-                        Spacer()
-                        Text(String(habitViewModel.habits.count))
-                            .foregroundColor(.gray)
-                    }
-                }
+//                NavigationLink(destination: CalendarView()) {
+//                    HStack(spacing: 12) {
+//                        Image(systemName: "calendar.circle.fill")
+//                            .font(.system(size: 41))
+//                            .foregroundStyle(.primaryRed)
+//
+//                        Text("Scheduled Habit")
+//                        Spacer()
+//                        Text(String(habitViewModel.habits.count))
+//                            .foregroundColor(.gray)
+//                    }
+//                }
 
                 Section(header: Text("All Habits")) {
                     ForEach(habitViewModel.habits, id: \.self) {
@@ -35,7 +35,7 @@ struct HabitsView: View {
                         HabitListItem(habit: habit)
                             .swipeActions(edge: .trailing) {
                                 Button(action: {
-                                    habitViewModel.deleteHabit(habit: habit)
+                                    habitViewModel.delete(item: habit)
                                 }) {
                                     Image(systemName: "trash")
                                 }.tint(.red)
@@ -46,7 +46,7 @@ struct HabitsView: View {
             }
             .searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
             .listStyle(InsetGroupedListStyle())
-            .navigationTitle("Habit Documentation")
+            .navigationTitle("Habit Entries")
             .sheet(isPresented: $isAddHabit) {
                 AddHabitView()
             }
@@ -71,7 +71,7 @@ struct HabitListItem: View {
     var body: some View {
         NavigationLink(destination: HabitDetail(habit: habit)) {
             HStack(spacing: 12) {
-                Image(systemName: "calendar")
+                Image(systemName: "book.and.wrench")
 
                 Text(habit.title)
                 Spacer()

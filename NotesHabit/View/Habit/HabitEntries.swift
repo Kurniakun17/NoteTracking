@@ -1,20 +1,20 @@
 //
-//  FolderView.swift
+//  UncategorizedView.swift
 //  NotesHabit
 //
-//  Created by Kurnia Kharisma Agung Samiadjie on 13/07/24.
+//  Created by Kurnia Kharisma Agung Samiadjie on 14/07/24.
 //
-
+import SwiftData
 import SwiftUI
 
-struct FolderDetail: View {
-    var folder: FolderModel
+struct HabitEntries: View {
     @EnvironmentObject var noteViewModel: NoteViewModel
 
     var body: some View {
         VStack(alignment: .leading) {
             List {
-                let sortedNotes = folder.notes.sorted(by: { $0.createdAt > $1.createdAt })
+                let uncategorizedNotes = noteViewModel.notes.filter { $0.habit != nil }
+                let sortedNotes = uncategorizedNotes.sorted(by: { $0.createdAt > $1.createdAt })
                 let todayNotes = sortedNotes.filter { Calendar.current.isDateInToday($0.createdAt) }
                 let previous7DaysNotes = sortedNotes.filter { isInLast7Days($0.createdAt) && !Calendar.current.isDateInToday($0.createdAt) }
                 let previous30DaysNotes = sortedNotes.filter { isInLast30Days($0.createdAt) && !Calendar.current.isDateInToday($0.createdAt) }
@@ -26,11 +26,7 @@ struct FolderDetail: View {
                             NoteListItem(note: note)
                                 .swipeActions(edge: .trailing) {
                                     Button(action: {
-                                        if let index = folder.notes.firstIndex(where: { $0 == note }) {
-                                            folder.notes.remove(at: index)
-                                        }
                                         noteViewModel.delete(item: note)
-
                                     }) {
                                         Image(systemName: "trash")
                                     }.tint(.red)
@@ -41,16 +37,12 @@ struct FolderDetail: View {
                 }
 
                 if !previous7DaysNotes.isEmpty {
-                    Section(header: Text("Previous 7 Days")) {
-                        ForEach(previous7DaysNotes, id: \.self) { note in
-                            NoteListItem(note: note)
+                    Section(header: Text("Preivous 7 Days")) {
+                        ForEach(previous7DaysNotes, id: \.self) {
+                            note in NoteListItem(note: note)
                                 .swipeActions(edge: .trailing) {
                                     Button(action: {
-                                        if let index = folder.notes.firstIndex(where: { $0 == note }) {
-                                            folder.notes.remove(at: index)
-                                        }
                                         noteViewModel.delete(item: note)
-
                                     }) {
                                         Image(systemName: "trash")
                                     }.tint(.red)
@@ -65,11 +57,7 @@ struct FolderDetail: View {
                             NoteListItem(note: note)
                                 .swipeActions(edge: .trailing) {
                                     Button(action: {
-                                        if let index = folder.notes.firstIndex(where: { $0 == note }) {
-                                            folder.notes.remove(at: index)
-                                        }
                                         noteViewModel.delete(item: note)
-
                                     }) {
                                         Image(systemName: "trash")
                                     }.tint(.red)
@@ -83,69 +71,36 @@ struct FolderDetail: View {
                     Section(header: Text(groupedNotes.month)) {
                         ForEach(groupedNotes.notes, id: \.self) { note in
                             NoteListItem(note: note)
-                                .swipeActions(edge: .trailing) {
-                                    Button(action: {
-                                        if let index = folder.notes.firstIndex(where: { $0 == note }) {
-                                            folder.notes.remove(at: index)
-                                        }
-                                        noteViewModel.delete(item: note)
-
-                                    }) {
-                                        Image(systemName: "trash")
-                                    }.tint(.red)
-                                }
                         }
                     }
                     .headerProminence(.increased)
                 }
             }
+            .searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
             .listStyle(InsetGroupedListStyle())
-            .navigationTitle(folder.title)
+            .navigationTitle("Habit Entries")
             .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Edit", action: {})
+                }
+
                 ToolbarItem(placement: .bottomBar) {
                     HStack {
-                        Button(action: {}) {
-                            Image(systemName: "folder.badge.plus")
+                        Button(action: {
+                            noteViewModel.addSampleNote()
+                        }) {
+                            Image(systemName: "plus")
                         }
 
                         Spacer()
 
                         NavigationLink(
-                            destination: AddNoteView(folder: folder)
+                            destination: AddNoteView()
                         ) {
                             Image(systemName: "square.and.pencil")
                         }
                     }
                 }
-            }
-        }
-        .searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
-    }
-}
-
-struct GroupedNotes: Hashable {
-    let month: String
-    let notes: [NoteModel]
-}
-
-struct NoteListItem: View {
-    var note: NoteModel
-    var body: some View {
-        NavigationLink(destination: EditNoteView(note: note, title: note.title, bodyText: note.body)) {
-            VStack(alignment: .leading) {
-                Text(note.title == "" ? note.body : note.title)
-                    .fontWeight(.bold)
-                    .font(.headline)
-                    .lineLimit(1)
-                    .truncationMode(.tail)
-                HStack {
-                    Text(note.createdAt.formattedString())
-                        .font(.subheadline)
-                    Text(note.title == "" ? "No additional text" : note.body)
-                        .font(.subheadline)
-                        .lineLimit(1)
-                }
-                .foregroundStyle(.gray)
             }
         }
     }

@@ -144,7 +144,7 @@ struct AddHabitView: View {
     private func saveHabit() {
         let newHabit = HabitModel(title: habitTitle, body: "", days: selectedDays, startDate: selectedDate, emoji: emoji, time: selectedTime, isReminder: reminderOn)
         
-        habitViewModel.addHabit(habit: newHabit)
+        habitViewModel.add(item: newHabit)
         scheduleHabitNotifications(for: newHabit)
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FolderViewModel: ObservableObject {
+class FolderViewModel: ObservableObject, Addable, Deletable {
     @Published var folders: [FolderModel]
 
     private let datasource: SwiftDataService
@@ -17,13 +17,13 @@ class FolderViewModel: ObservableObject {
         self.folders = datasource.fetchFolders()
     }
 
-    func addFolder(folder: FolderModel) {
-        datasource.addFolder(folder: folder)
+    func add(item: FolderModel) {
+        datasource.addFolder(folder: item)
         folders = datasource.fetchFolders()
     }
 
-    func deleteFolder(folder: FolderModel) {
-        datasource.deleteFolder(folder: folder)
+    func delete(item: FolderModel) {
+        datasource.deleteFolder(folder: item)
         folders = datasource.fetchFolders()
     }
 }

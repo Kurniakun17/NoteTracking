@@ -37,6 +37,7 @@ struct AddNoteView: View {
             TextEditor(text: $bodyText)
                 .autocorrectionDisabled()
                 .padding(.horizontal, 20)
+                .disabled(title == "")
 
             Spacer()
         }
@@ -92,31 +93,21 @@ struct AddNoteView: View {
         }
 
         .onDisappear {
-            if let folderExist = folder {
-                note.folder = folderExist
-                folderExist.notes.append(note)
+            if title != "" {
+                if let folderExist = folder {
+                    note.folder = folderExist
+                    folderExist.notes.append(note)
+                }
+                
+                if let habitExist = habit {
+                    note.habit = habitExist
+                    habitExist.notes.append(note)
+                }
+                
+                
+                noteViewModel.add(item: note)
             }
-
-            if let habitExist = habit {
-                note.habit = habitExist
-                habitExist.notes.append(note)
-            }
-
-            noteViewModel.addNote(note: note)
         }
         .navigationBarTitleDisplayMode(.inline)
-    }
-
-    private func updateHabitLastLog() {
-        if let habit = note.habit {
-            if let lastLog = habit.lastLog {
-                if !Calendar.current.isDateInToday(lastLog) {
-                    habit.streak += 1
-                }
-            } else {
-                habit.streak += 1
-            }
-            habit.lastLog = Date()
-        }
     }
 }

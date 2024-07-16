@@ -71,31 +71,26 @@ struct EditNoteView: View {
                 })
             }
         }
-
+        .onDisappear {
+            if title == "" && bodyText == "" {
+                noteViewModel.delete(item: note)
+            }
+        }
         .navigationBarTitleDisplayMode(.inline)
         .onChange(of: title) {
             note.title = title
             note.updatedAt = Date()
-            updateHabitLastLog()
+            if let NoteHabit = note.habit {
+                habitViewModel.updateHabitLastLog(habit: NoteHabit)
+            }
         }
 
         .onChange(of: bodyText) {
             note.body = bodyText
             note.updatedAt = Date()
-            updateHabitLastLog()
-        }
-    }
-
-    private func updateHabitLastLog() {
-        if let habit = note.habit {
-            if let lastLog = habit.lastLog {
-                if !Calendar.current.isDateInToday(lastLog) {
-                    habit.streak += 1
-                }
-            } else {
-                habit.streak += 1
+            if let NoteHabit = note.habit {
+                habitViewModel.updateHabitLastLog(habit: NoteHabit)
             }
-            habit.lastLog = Date()
         }
     }
 }

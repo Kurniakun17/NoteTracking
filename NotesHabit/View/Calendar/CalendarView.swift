@@ -149,12 +149,21 @@ struct CalendarView: View {
                         .fill(isDateSelected(index: index) ? Color.primaryRed : Color.clear)
                         .frame(width: 30, height: 30)
                         .overlay(
-                            Text(dayString(from: index))
-                                .foregroundColor(isDateSelected(index: index) ? .white : .black)
+                            ({
+                                if (isDateSelected(index: index)) {
+                                    return Text(dayString(from: index))
+                                            .foregroundColor(.white)
+                                } else {
+                                    return Text(dayString(from: index))
+                                }
+                                
+                            })()
+
                         )
                         .onTapGesture {
                             selectDate(index: index)
                         }
+                    
                 }
             }
         }
@@ -225,11 +234,14 @@ struct CalendarView: View {
 
 #Preview {
     do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: HabitModel.self, configurations: config)
+        @StateObject var noteViewModel = NoteViewModel(dataSource: .shared)
+        @StateObject var folderViewModel = FolderViewModel(datasource: .shared)
+        @StateObject var habitViewModel = HabitViewModel(dataSource: .shared)
         
         return CalendarView()
-            .modelContainer(container)
+            .environmentObject(noteViewModel)
+            .environmentObject(folderViewModel)
+            .environmentObject(habitViewModel)
         
     } catch {
         fatalError("Error")

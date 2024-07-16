@@ -26,7 +26,7 @@ struct PersonalNotes: View {
                     FolderRow(destination: FolderDetail(folder: folder), title: folder.title, count: folder.notes.count)
                         .swipeActions(edge: .trailing) {
                             Button(action: {
-                                folderViewModel.deleteFolder(folder: folder)
+                                folderViewModel.delete(item: folder)
                             }) {
                                 Image(systemName: "trash")
                             }.tint(.red)
@@ -66,7 +66,7 @@ struct PersonalNotes: View {
     }
 }
 
-//
+
 // #Preview {
 //    do {
 //        @MainActor
