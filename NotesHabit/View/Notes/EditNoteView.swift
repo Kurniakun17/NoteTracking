@@ -9,12 +9,12 @@ import SwiftData
 import SwiftUI
 
 struct EditNoteView: View {
+    @EnvironmentObject var noteViewModel: NoteViewModel
+    @EnvironmentObject var habitViewModel: HabitViewModel
     @State var note: NoteModel
-    @State var text = NSAttributedString(string: "Hai")
     @State var title: String
     @State var habit: String = "Empty"
     @State var bodyText: String
-
     @State var options = [
         "Empty",
         "Learn Swiftui 30 Minutes",
@@ -23,49 +23,74 @@ struct EditNoteView: View {
     ]
 
     var body: some View {
-        NavigationView(content: {
-            VStack {
-                TextField("Title", text: $title)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.horizontal, 20)
-                    .autocorrectionDisabled()
-
-                HStack {
-                    Image(systemName: "arrowtriangle.down.circle")
-                        .foregroundStyle(.black.opacity(0.8))
-                    Text("Habit")
-                        .foregroundStyle(.black.opacity(0.8))
-                    Picker(selection: $habit, label: EmptyView()) {
-                        ForEach(options, id: \.self) {
-                            opt in
-                            Text(opt)
-                                .foregroundStyle(.white)
-                        }
-                    }
-                    .labelsHidden()
-                    .tint(habit == "Empty" ? .black.opacity(0.8) : .black)
-                    Spacer()
-                }
+        VStack {
+            TextField("Title", text: $title)
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .padding(.horizontal, 20)
+                .autocorrectionDisabled()
+            Divider()
+            TextEditor(text: $bodyText)
+                .autocorrectionDisabled()
                 .padding(.horizontal, 20)
 
-                Divider()
+            Spacer()
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Menu(content: {
+                    Button(action: {}) {
+                        HStack {
+                            Text("Pin Note")
+                            Spacer()
+                            Image(systemName: "pin")
+                        }
+                    }
+                    Menu(content: {
+                        ForEach(habitViewModel.habits, id: \.self) {
+                            habit in
+                            Button(action: {
+                                note.habit = habit
+                                if title != "", bodyText != "" {
+                                    habitViewModel.updateHabitLastLog(habit: habit)
+                                }
+                            }) {
+                                Text(habit.title)
+                            }
+                        }
+                    }, label: {
+                        HStack {
+                            Text("Add to Habit")
+                            Spacer()
+                            Image(systemName: "book.and.wrench")
+                        }
+                    })
 
-                TextEditor(text: $bodyText)
-                    .autocorrectionDisabled()
-                    .padding(.horizontal, 20)
-
-                Spacer()
+                }, label: {
+                    Image(systemName: "ellipsis.circle")
+                })
             }
-            .onChange(of: text) {}
-        })
+        }
+        .onDisappear {
+            if title == "" && bodyText == "" {
+                noteViewModel.delete(item: note)
+            }
+        }
         .navigationBarTitleDisplayMode(.inline)
         .onChange(of: title) {
             note.title = title
+            note.updatedAt = Date()
+            if let NoteHabit = note.habit {
+                habitViewModel.updateHabitLastLog(habit: NoteHabit)
+            }
         }
 
         .onChange(of: bodyText) {
             note.body = bodyText
+            note.updatedAt = Date()
+            if let NoteHabit = note.habit {
+                habitViewModel.updateHabitLastLog(habit: NoteHabit)
+            }
         }
     }
 }
@@ -78,8 +103,7 @@ struct EditNoteView: View {
 
         return EditNoteView(note: note, title: note.title, bodyText: note.body)
             .modelContainer(container)
-    }
-    catch {
+    } catch {
         fatalError("Text")
     }
 }

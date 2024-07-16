@@ -11,15 +11,36 @@
 		4015BBEA2C404EE600415C7A /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4015BBE92C404EE600415C7A /* PhotoPicker.swift */; };
 		4015BBEC2C40D8E900415C7A /* DeletedHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4015BBEB2C40D8E900415C7A /* DeletedHabitView.swift */; };
 		4015BBF42C41114600415C7A /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4015BBF32C41114600415C7A /* AddHabitView.swift */; };
-		4015BBFA2C428A7800415C7A /* FoldersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4015BBF92C428A7800415C7A /* FoldersView.swift */; };
+		4015BBFA2C428A7800415C7A /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4015BBF92C428A7800415C7A /* StartView.swift */; };
 		4015BBFD2C429EEE00415C7A /* PersonalNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4015BBFC2C429EEE00415C7A /* PersonalNotes.swift */; };
 		408CBE522C3FF939006539DB /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CBE512C3FF939006539DB /* DatePickerView.swift */; };
 		408CBE542C3FF948006539DB /* GoalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CBE532C3FF948006539DB /* GoalCardView.swift */; };
+		40A3603E2C45829A0044F0CD /* ScheduleNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3603D2C45829A0044F0CD /* ScheduleNotification.swift */; };
+		40E8A2572C458E25009AA454 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A2562C458E25009AA454 /* MainView.swift */; };
+		40E8A2592C4595D0009AA454 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A2582C4595D0009AA454 /* HomeView.swift */; };
+		40E8A25B2C4613E7009AA454 /* AllNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A25A2C4613E7009AA454 /* AllNotesView.swift */; };
+		40E8A25D2C461908009AA454 /* HabitEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A25C2C461908009AA454 /* HabitEntries.swift */; };
+		40E8A2612C4619FD009AA454 /* PinnedNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A2602C4619FD009AA454 /* PinnedNotesView.swift */; };
+		40E8A2642C462B0A009AA454 /* Adding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A2632C462B0A009AA454 /* Adding.swift */; };
+		40E8A2662C462B1A009AA454 /* Deleting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A2652C462B1A009AA454 /* Deleting.swift */; };
+		40E8A2682C4632D2009AA454 /* NotesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A2672C4632D2009AA454 /* NotesList.swift */; };
 		C18E78CF2C3F19D800847A25 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78CE2C3F19D800847A25 /* CalendarView.swift */; };
 		C18E78D12C3F19E000847A25 /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78D02C3F19E000847A25 /* HabitsView.swift */; };
 		C18E78D52C3F1D9600847A25 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78D42C3F1D9600847A25 /* SearchView.swift */; };
 		C18E78D82C3F1E1700847A25 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78D72C3F1E1700847A25 /* SearchBar.swift */; };
 		C18E78DC2C3F727200847A25 /* CardHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E78DB2C3F727200847A25 /* CardHabitView.swift */; };
+		C1F8AFC82C45426E007CC870 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C1F8AFC72C45426E007CC870 /* Localizable.xcstrings */; };
+		F6156E532C45142D00572233 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6156E522C45142D00572233 /* NoteViewModel.swift */; };
+		F6156E592C45621E00572233 /* SwiftDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6156E582C45621E00572233 /* SwiftDataService.swift */; };
+		F6156E5B2C45711200572233 /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6156E5A2C45711200572233 /* FolderViewModel.swift */; };
+		F6156E5D2C45765200572233 /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6156E5C2C45765200572233 /* HabitViewModel.swift */; };
+		F627D3992C42B3F300411E16 /* FolderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627D3982C42B3F300411E16 /* FolderDetail.swift */; };
+		F627D39C2C42B7EB00411E16 /* DateFormatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627D39B2C42B7EB00411E16 /* DateFormatted.swift */; };
+		F627D39F2C42BAFD00411E16 /* SeedContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627D39E2C42BAFD00411E16 /* SeedContainer.swift */; };
+		F627D3A12C43636700411E16 /* UncategorizedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627D3A02C43636700411E16 /* UncategorizedView.swift */; };
+		F627D3A42C437F3200411E16 /* HelperFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627D3A32C437F3200411E16 /* HelperFunction.swift */; };
+		F627D3A62C43852600411E16 /* AddFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627D3A52C43852600411E16 /* AddFolderView.swift */; };
+		F627D3A82C4397B900411E16 /* HabitDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627D3A72C4397B900411E16 /* HabitDetail.swift */; };
 		F6391DCC2C40CA620030566F /* EditNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6391DCB2C40CA620030566F /* EditNoteView.swift */; };
 		F63FFB462C3E5D7700EB8778 /* NotesHabitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB452C3E5D7700EB8778 /* NotesHabitApp.swift */; };
 		F63FFB482C3E5D7700EB8778 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB472C3E5D7700EB8778 /* ContentView.swift */; };
@@ -28,7 +49,6 @@
 		F63FFB572C3E5E1100EB8778 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB562C3E5E1100EB8778 /* NoteModel.swift */; };
 		F63FFB592C3E5E1900EB8778 /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB582C3E5E1900EB8778 /* HabitModel.swift */; };
 		F63FFB5B2C3E5E2200EB8778 /* FolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB5A2C3E5E2200EB8778 /* FolderModel.swift */; };
-		F63FFB5D2C3E5EA300EB8778 /* ReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB5C2C3E5EA300EB8778 /* ReminderModel.swift */; };
 		F63FFB612C3F52B400EB8778 /* AddNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63FFB602C3F52B400EB8778 /* AddNoteView.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,15 +57,36 @@
 		4015BBE92C404EE600415C7A /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		4015BBEB2C40D8E900415C7A /* DeletedHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedHabitView.swift; sourceTree = "<group>"; };
 		4015BBF32C41114600415C7A /* AddHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitView.swift; sourceTree = "<group>"; };
-		4015BBF92C428A7800415C7A /* FoldersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersView.swift; sourceTree = "<group>"; };
+		4015BBF92C428A7800415C7A /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		4015BBFC2C429EEE00415C7A /* PersonalNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalNotes.swift; sourceTree = "<group>"; };
 		408CBE512C3FF939006539DB /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		408CBE532C3FF948006539DB /* GoalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardView.swift; sourceTree = "<group>"; };
+		40A3603D2C45829A0044F0CD /* ScheduleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNotification.swift; sourceTree = "<group>"; };
+		40E8A2562C458E25009AA454 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		40E8A2582C4595D0009AA454 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		40E8A25A2C4613E7009AA454 /* AllNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesView.swift; sourceTree = "<group>"; };
+		40E8A25C2C461908009AA454 /* HabitEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEntries.swift; sourceTree = "<group>"; };
+		40E8A2602C4619FD009AA454 /* PinnedNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedNotesView.swift; sourceTree = "<group>"; };
+		40E8A2632C462B0A009AA454 /* Adding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adding.swift; sourceTree = "<group>"; };
+		40E8A2652C462B1A009AA454 /* Deleting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deleting.swift; sourceTree = "<group>"; };
+		40E8A2672C4632D2009AA454 /* NotesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesList.swift; sourceTree = "<group>"; };
 		C18E78CE2C3F19D800847A25 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		C18E78D02C3F19E000847A25 /* HabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
 		C18E78D42C3F1D9600847A25 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		C18E78D72C3F1E1700847A25 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		C18E78DB2C3F727200847A25 /* CardHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHabitView.swift; sourceTree = "<group>"; };
+		C1F8AFC72C45426E007CC870 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		F6156E522C45142D00572233 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
+		F6156E582C45621E00572233 /* SwiftDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataService.swift; sourceTree = "<group>"; };
+		F6156E5A2C45711200572233 /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
+		F6156E5C2C45765200572233 /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
+		F627D3982C42B3F300411E16 /* FolderDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDetail.swift; sourceTree = "<group>"; };
+		F627D39B2C42B7EB00411E16 /* DateFormatted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatted.swift; sourceTree = "<group>"; };
+		F627D39E2C42BAFD00411E16 /* SeedContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedContainer.swift; sourceTree = "<group>"; };
+		F627D3A02C43636700411E16 /* UncategorizedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UncategorizedView.swift; sourceTree = "<group>"; };
+		F627D3A32C437F3200411E16 /* HelperFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunction.swift; sourceTree = "<group>"; };
+		F627D3A52C43852600411E16 /* AddFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFolderView.swift; sourceTree = "<group>"; };
+		F627D3A72C4397B900411E16 /* HabitDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetail.swift; sourceTree = "<group>"; };
 		F6391DCB2C40CA620030566F /* EditNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteView.swift; sourceTree = "<group>"; };
 		F63FFB422C3E5D7700EB8778 /* NotesHabit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesHabit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F63FFB452C3E5D7700EB8778 /* NotesHabitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesHabitApp.swift; sourceTree = "<group>"; };
@@ -55,7 +96,6 @@
 		F63FFB562C3E5E1100EB8778 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
 		F63FFB582C3E5E1900EB8778 /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
 		F63FFB5A2C3E5E2200EB8778 /* FolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderModel.swift; sourceTree = "<group>"; };
-		F63FFB5C2C3E5EA300EB8778 /* ReminderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderModel.swift; sourceTree = "<group>"; };
 		F63FFB602C3F52B400EB8778 /* AddNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +115,9 @@
 			children = (
 				F63FFB602C3F52B400EB8778 /* AddNoteView.swift */,
 				F6391DCB2C40CA620030566F /* EditNoteView.swift */,
+				40E8A25A2C4613E7009AA454 /* AllNotesView.swift */,
+				40E8A2602C4619FD009AA454 /* PinnedNotesView.swift */,
+				40E8A2672C4632D2009AA454 /* NotesList.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -93,6 +136,8 @@
 			children = (
 				C18E78D02C3F19E000847A25 /* HabitsView.swift */,
 				4015BBF32C41114600415C7A /* AddHabitView.swift */,
+				F627D3A72C4397B900411E16 /* HabitDetail.swift */,
+				40E8A25C2C461908009AA454 /* HabitEntries.swift */,
 			);
 			path = Habit;
 			sourceTree = "<group>";
@@ -100,10 +145,21 @@
 		4015BBFB2C429C0B00415C7A /* Folders */ = {
 			isa = PBXGroup;
 			children = (
-				4015BBF92C428A7800415C7A /* FoldersView.swift */,
+				F627D3A52C43852600411E16 /* AddFolderView.swift */,
 				4015BBFC2C429EEE00415C7A /* PersonalNotes.swift */,
+				F627D3982C42B3F300411E16 /* FolderDetail.swift */,
+				F627D3A02C43636700411E16 /* UncategorizedView.swift */,
 			);
 			path = Folders;
+			sourceTree = "<group>";
+		};
+		40E8A2622C462AFE009AA454 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				40E8A2632C462B0A009AA454 /* Adding.swift */,
+				40E8A2652C462B1A009AA454 /* Deleting.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		C18E78D62C3F1D9B00847A25 /* Component */ = {
@@ -120,10 +176,37 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		F6156E572C45620B00572233 /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				F6156E582C45621E00572233 /* SwiftDataService.swift */,
+			);
+			path = "Data Source";
+			sourceTree = "<group>";
+		};
+		F627D39A2C42B7DB00411E16 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F627D39B2C42B7EB00411E16 /* DateFormatted.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F627D39D2C42BAD700411E16 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F627D39E2C42BAFD00411E16 /* SeedContainer.swift */,
+				F627D3A32C437F3200411E16 /* HelperFunction.swift */,
+				40A3603D2C45829A0044F0CD /* ScheduleNotification.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		F63FFB392C3E5D7700EB8778 = {
 			isa = PBXGroup;
 			children = (
 				F63FFB442C3E5D7700EB8778 /* NotesHabit */,
+				F63FFB492C3E5D7900EB8778 /* Assets.xcassets */,
 				F63FFB432C3E5D7700EB8778 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -140,11 +223,15 @@
 			isa = PBXGroup;
 			children = (
 				F63FFB452C3E5D7700EB8778 /* NotesHabitApp.swift */,
-				F63FFB552C3E5DB900EB8778 /* View Model */,
+				F6156E572C45620B00572233 /* Data Source */,
 				F63FFB542C3E5DB400EB8778 /* Model */,
+				F63FFB552C3E5DB900EB8778 /* View Model */,
 				F63FFB532C3E5DAD00EB8778 /* View */,
-				F63FFB492C3E5D7900EB8778 /* Assets.xcassets */,
+				F627D39A2C42B7DB00411E16 /* Extensions */,
+				F627D39D2C42BAD700411E16 /* Utilities */,
+				40E8A2622C462AFE009AA454 /* Protocols */,
 				F63FFB4B2C3E5D7900EB8778 /* Preview Content */,
+				C1F8AFC72C45426E007CC870 /* Localizable.xcstrings */,
 			);
 			path = NotesHabit;
 			sourceTree = "<group>";
@@ -161,6 +248,9 @@
 			isa = PBXGroup;
 			children = (
 				F63FFB472C3E5D7700EB8778 /* ContentView.swift */,
+				4015BBF92C428A7800415C7A /* StartView.swift */,
+				40E8A2562C458E25009AA454 /* MainView.swift */,
+				40E8A2582C4595D0009AA454 /* HomeView.swift */,
 				4015BBFB2C429C0B00415C7A /* Folders */,
 				4015BBF12C40F9FF00415C7A /* Calendar */,
 				4015BBF22C41112E00415C7A /* Habit */,
@@ -176,7 +266,6 @@
 				F63FFB562C3E5E1100EB8778 /* NoteModel.swift */,
 				F63FFB582C3E5E1900EB8778 /* HabitModel.swift */,
 				F63FFB5A2C3E5E2200EB8778 /* FolderModel.swift */,
-				F63FFB5C2C3E5EA300EB8778 /* ReminderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -184,6 +273,9 @@
 		F63FFB552C3E5DB900EB8778 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				F6156E522C45142D00572233 /* NoteViewModel.swift */,
+				F6156E5A2C45711200572233 /* FolderViewModel.swift */,
+				F6156E5C2C45765200572233 /* HabitViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -254,6 +346,7 @@
 			files = (
 				F63FFB4D2C3E5D7900EB8778 /* Preview Assets.xcassets in Resources */,
 				F63FFB4A2C3E5D7900EB8778 /* Assets.xcassets in Resources */,
+				C1F8AFC82C45426E007CC870 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,26 +358,45 @@
 			buildActionMask = 2147483647;
 			files = (
 				C18E78DC2C3F727200847A25 /* CardHabitView.swift in Sources */,
+				F627D39F2C42BAFD00411E16 /* SeedContainer.swift in Sources */,
 				F63FFB482C3E5D7700EB8778 /* ContentView.swift in Sources */,
+				F627D3A62C43852600411E16 /* AddFolderView.swift in Sources */,
 				4015BBEC2C40D8E900415C7A /* DeletedHabitView.swift in Sources */,
+				F6156E5D2C45765200572233 /* HabitViewModel.swift in Sources */,
+				40E8A25B2C4613E7009AA454 /* AllNotesView.swift in Sources */,
 				C18E78CF2C3F19D800847A25 /* CalendarView.swift in Sources */,
+				40E8A2612C4619FD009AA454 /* PinnedNotesView.swift in Sources */,
 				C18E78D12C3F19E000847A25 /* HabitsView.swift in Sources */,
-				4015BBFA2C428A7800415C7A /* FoldersView.swift in Sources */,
+				40E8A2592C4595D0009AA454 /* HomeView.swift in Sources */,
+				4015BBFA2C428A7800415C7A /* StartView.swift in Sources */,
+				F627D3A12C43636700411E16 /* UncategorizedView.swift in Sources */,
 				408CBE542C3FF948006539DB /* GoalCardView.swift in Sources */,
+				40E8A2572C458E25009AA454 /* MainView.swift in Sources */,
+				40E8A25D2C461908009AA454 /* HabitEntries.swift in Sources */,
+				F627D3A82C4397B900411E16 /* HabitDetail.swift in Sources */,
 				F63FFB572C3E5E1100EB8778 /* NoteModel.swift in Sources */,
 				408CBE522C3FF939006539DB /* DatePickerView.swift in Sources */,
 				C18E78D82C3F1E1700847A25 /* SearchBar.swift in Sources */,
+				40A3603E2C45829A0044F0CD /* ScheduleNotification.swift in Sources */,
+				F627D39C2C42B7EB00411E16 /* DateFormatted.swift in Sources */,
 				F63FFB592C3E5E1900EB8778 /* HabitModel.swift in Sources */,
+				F6156E532C45142D00572233 /* NoteViewModel.swift in Sources */,
+				F6156E592C45621E00572233 /* SwiftDataService.swift in Sources */,
+				40E8A2642C462B0A009AA454 /* Adding.swift in Sources */,
 				F63FFB592C3E5E1900EB8778 /* HabitModel.swift in Sources */,
 				F63FFB612C3F52B400EB8778 /* AddNoteView.swift in Sources */,
 				F6391DCC2C40CA620030566F /* EditNoteView.swift in Sources */,
+				40E8A2682C4632D2009AA454 /* NotesList.swift in Sources */,
+				40E8A2662C462B1A009AA454 /* Deleting.swift in Sources */,
 				F63FFB5B2C3E5E2200EB8778 /* FolderModel.swift in Sources */,
 				4015BBF42C41114600415C7A /* AddHabitView.swift in Sources */,
+				F6156E5B2C45711200572233 /* FolderViewModel.swift in Sources */,
+				F627D3992C42B3F300411E16 /* FolderDetail.swift in Sources */,
 				4015BBEA2C404EE600415C7A /* PhotoPicker.swift in Sources */,
 				4015BBFD2C429EEE00415C7A /* PersonalNotes.swift in Sources */,
 				F63FFB462C3E5D7700EB8778 /* NotesHabitApp.swift in Sources */,
+				F627D3A42C437F3200411E16 /* HelperFunction.swift in Sources */,
 				4015BBE82C404EC800415C7A /* AddPhotos.swift in Sources */,
-				F63FFB5D2C3E5EA300EB8778 /* ReminderModel.swift in Sources */,
 				C18E78D52C3F1D9600847A25 /* SearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

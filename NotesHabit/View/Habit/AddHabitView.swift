@@ -1,3 +1,4 @@
+import SwiftData
 import SwiftUI
 
 struct AddHabitView: View {
@@ -6,15 +7,14 @@ struct AddHabitView: View {
     @State private var description: String = ""
     @State private var reminderOn: Bool = false
     @State private var showTimePicker: Bool = false
-    @State private var showDatePicker: Bool = false
-    @State private var selectedTime: Date = Date()
-    @State private var selectedDate: Date = Date()
+    @State private var selectedTime: Date = .init()
+    @State private var selectedDate: Date = .init()
     @State private var selectedDays: Set<Int> = []
-    
+    @EnvironmentObject var habitViewModel: HabitViewModel
     @Environment(\.presentationMode) var presentationMode
     
     let daysOfWeek = ["S", "M", "T", "W", "T", "F", "S"]
-    let fullDaysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    let fullDaysOfWeek = [String(localized: "Sun"), String(localized: "Mon"), String(localized: "Tue"), String(localized: "Wed"), String(localized: "Thu"), String(localized: "Fri"), String(localized: "Sat")]
     
     var body: some View {
         NavigationView {
@@ -24,27 +24,7 @@ struct AddHabitView: View {
                 }
                 
                 Section {
-                    HStack {
-                        Text("Start Date")
-                        Spacer()
-                        
-                        Text("\(selectedDate, formatter: dateFormatter)")
-                            .foregroundColor(.primaryRed)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 5)
-                            .background(
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.gray.opacity(0.15))
-                            )
-                    }
-                    .onTapGesture {
-                        showDatePicker.toggle()
-                    }
-                    
-                    if showDatePicker {
-                        DatePicker("", selection: $selectedDate, displayedComponents: .date)
-                            .datePickerStyle(GraphicalDatePickerStyle())
-                    }
+                    DatePicker("Start Date", selection: $selectedDate, in: Date()..., displayedComponents: .date)
                     
                     HStack {
                         Text("Repeat ")
@@ -54,7 +34,7 @@ struct AddHabitView: View {
                     }
                     
                     HStack {
-                        ForEach(0..<7) { index in
+                        ForEach(0 ..< 7) { index in
                             Button(action: {
                                 toggleDaySelection(index)
                             }) {
@@ -75,7 +55,7 @@ struct AddHabitView: View {
                 
                 Section {
                     Toggle("Reminder", isOn: $reminderOn)
-                        .onChange(of: reminderOn) { value in
+                        .onChange(of: reminderOn) { _ in
                             showTimePicker = false // Reset the time picker when the toggle is changed
                         }
                     
@@ -108,13 +88,15 @@ struct AddHabitView: View {
             .navigationBarItems(leading: Button("Cancel", action: {
                 presentationMode.wrappedValue.dismiss()
             }),
-                                trailing: Button("Done", action: {
-                // TODO: Tambahin function untuk SaveHabit disini
-//                saveHabit()
+            trailing: Button("Done", action: {
+                saveHabit()
                 presentationMode.wrappedValue.dismiss()
             }))
         }
         .accentColor(.primaryRed)
+        .onAppear {
+            setInitialSelectedDay()
+        }
     }
     
     private var timeFormatter: DateFormatter {
@@ -133,32 +115,51 @@ struct AddHabitView: View {
         let sortedDays = selectedDays.sorted()
         switch sortedDays {
         case [1, 2, 3, 4, 5]:
-            return "Every Weekday"
+            return String(localized: "Every Weekday" )
         case [0, 6]:
-            return "Every Weekend"
+            return String(localized: "Every Weekend")
         case [0, 1, 2, 3, 4, 5, 6]:
-            return "Everyday"
+            return String(localized: "Everyday")
         default:
             let days = sortedDays.map { fullDaysOfWeek[$0] }
-            return days.isEmpty ? "None" : "Every " + days.joined(separator: ", ")
+            return days.isEmpty ? String(localized: "None") : String(localized: "Every ")+days.joined(separator: ", ")
         }
     }
     
     private func toggleDaySelection(_ index: Int) {
         if selectedDays.contains(index) {
-            selectedDays.remove(index)
+            if selectedDays.count > 1 {
+                selectedDays.remove(index)
+            }
         } else {
             selectedDays.insert(index)
         }
     }
     
+    private func setInitialSelectedDay() {
+        let currentDay = Calendar.current.component(.weekday, from: selectedDate) - 1
+        selectedDays = [currentDay]
+    }
+    
     private func saveHabit() {
-        // Add your saving logic here
+        let newHabit = HabitModel(title: habitTitle, body: "", days: selectedDays, startDate: selectedDate, emoji: emoji, time: selectedTime, isReminder: reminderOn)
+        
+        habitViewModel.add(item: newHabit)
+        scheduleHabitNotifications(for: newHabit)
     }
 }
 
-struct AddHabitView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddHabitView()
+#Preview {
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: HabitModel.self, configurations: config)
+        
+        SeedContainer(container: container)
+        
+        return AddHabitView()
+            .modelContainer(container)
+        
+    } catch {
+        fatalError("Error")
     }
 }

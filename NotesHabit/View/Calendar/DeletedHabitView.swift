@@ -8,12 +8,12 @@ struct DeletedHabitView: View {
     
     var body: some View {
         VStack {
-            Text("Deleted Goals")
+            Text("Deleted Habit")
                 .font(.system(size: 40, weight: .bold))
                 .padding()
             
             if deletedGoals.isEmpty {
-                Text("No deleted goals")
+                Text("No deleted habit")
                     .foregroundColor(.gray)
                     .padding()
             } else {
@@ -40,8 +40,8 @@ struct DeletedHabitView: View {
 #Preview {
     do
     {
-        var config = ModelConfiguration(isStoredInMemoryOnly: true)
-        var container = try ModelContainer(for: HabitModel.self, configurations: config)
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: HabitModel.self, configurations: config)
         
         return DeletedHabitView(goalsContent: .constant([
             HabitModel(title: "Sample Goal 1", body: "Body 1", days: [1], startDate: Date(), emoji: "😊", notes: [], deleteAt: Date()),

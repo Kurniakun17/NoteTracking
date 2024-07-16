@@ -5,131 +5,98 @@
 //  Created by Ahmad Syafiq Kamil on 11/07/24.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct HabitsView: View {
-    @State private var showModal = false
-    @Query(animation: .snappy) private var habits: [HabitModel]
-    
+    @EnvironmentObject var habitViewModel: HabitViewModel
+    @State var isAddNewNote = false
+    @State var isAddHabit = false
+
     var body: some View {
-        NavigationView {
-            ScrollView{
-                VStack(alignment: .leading, spacing: 5) {
-                    SearchBar()
-                    ForEach(habits){habit in
-                        Text(habit.title)
-                        Text(habit.emoji)
-                        Text(habit.body)
+        VStack(alignment: .leading) {
+            List {
+//                NavigationLink(destination: CalendarView()) {
+//                    HStack(spacing: 12) {
+//                        Image(systemName: "calendar.circle.fill")
+//                            .font(.system(size: 41))
+//                            .foregroundStyle(.primaryRed)
+//
+//                        Text("Scheduled Habit")
+//                        Spacer()
+//                        Text(String(habitViewModel.habits.count))
+//                            .foregroundColor(.gray)
+//                    }
+//                }
+
+                Section(header: Text("All Habits")) {
+                    ForEach(habitViewModel.habits, id: \.self) {
+                        habit in
+                        HabitListItem(habit: habit)
+                            .swipeActions(edge: .trailing) {
+                                Button(action: {
+                                    habitViewModel.delete(item: habit)
+                                }) {
+                                    Image(systemName: "trash")
+                                }.tint(.red)
+                            }
                     }
-                    Spacer()
                 }
+                .headerProminence(.increased)
             }
-            .padding()
-            .navigationTitle("Habits")
-            .navigationBarItems(
-                trailing:
-                    Button(action: {
-                        self.showModal = true
-                    }) {
-                        Image(systemName: "plus")
-                    })
-            .sheet(isPresented: $showModal) {
-                
-                ModalView(showModal: self.$showModal)
+            .searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
+            .listStyle(InsetGroupedListStyle())
+            .navigationTitle("Habit Entries")
+            .sheet(isPresented: $isAddHabit) {
+                AddHabitView()
+            }
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    HStack {
+                        Button(action: {
+                            isAddHabit = true
+                        }) {
+                            Image(systemName: "book.and.wrench")
+                        }
+                        Spacer()
+                    }
+                }
             }
         }
     }
 }
 
-//var id = UUID()
-//var title: String
-//var body: String
-//var days: Set<Int>
-//var startDate = Date()
-//var folder: FolderModel?
-//var emoji: String
-
-
-struct ModalView: View {
-    // Binding to the state variable to dismiss the modal
-    @Binding var showModal: Bool
-    @State private var habitTitle = ""
-    @State private var selectedEmoji = ""
-    @State private var descriptions = ""
-    @State private var startDate = Date()
-    @State private var repeatDays: [Bool] = Array(repeating: false, count: 7)
-    @State private var remindersEnabled = false
-    @Environment(\.modelContext) private var context
-    
-    let daysOfWeek = ["S", "M", "T", "W", "T", "F", "S"]
-    var daysSet : Set = [112, 114, 116, 118, 115]
-    
+struct HabitListItem: View {
+    var habit: HabitModel
     var body: some View {
-        NavigationView {
-            VStack {
-                Form {
-                    Section {
-                        TextField("Add Habit Title", text: $habitTitle)
-                        TextField("Add emoji", text: $selectedEmoji)
-                        TextField("Descriptions", text: $descriptions)
-                    }
-                    
-//                    Section(header: Text("Start Date")) {
-//                        DatePicker("", selection: $startDate, displayedComponents: .date)
-//                            .datePickerStyle(GraphicalDatePickerStyle())
-//                    }
-//                    
-//                    Section(header: Text("Repeat")) {
-//                        HStack {
-//                            ForEach(0..<daysOfWeek.count) { index in
-//                                Button(action: {
-//                                    repeatDays[index].toggle()
-//                                }) {
-//                                    Text(daysOfWeek[index])
-//                                        .foregroundColor(repeatDays[index] ? .white : .primary)
-//                                        .frame(width: 30, height: 30)
-//                                        .background(repeatDays[index] ? Color.red : Color.clear)
-//                                        .cornerRadius(15)
-//                                        .overlay(
-//                                            Circle()
-//                                                .stroke(Color.red, lineWidth: 1)
-//                                        )
-//                                }
-//                            }
-//                        }
-//                    }
-//                    
-//                    Section {
-//                        Toggle(isOn: $remindersEnabled) {
-//                            Text("Reminders")
-//                        }
-//                    }
+        NavigationLink(destination: HabitDetail(habit: habit)) {
+            HStack(spacing: 12) {
+                Image(systemName: "book.and.wrench")
+
+                Text(habit.title)
+                Spacer()
+                HStack(spacing: 8) {
+                    Text(String(habit.streak))
+                        .foregroundColor(habit.streak == 0 ? .gray : .primaryRed)
+                    Image(systemName: "flame.fill")
+                        .foregroundStyle(habit.streak == 0 ? .gray : .primaryRed)
                 }
             }
-            .navigationBarTitle("Add Habit", displayMode: .inline)
-            .navigationBarItems(leading: Button("Cancel", action: {
-                // Dismiss action here
-                self.showModal = false
-            }), trailing: Button("Add", action: {
-                // Add habit action here
-                let habit = HabitModel(
-                    title: habitTitle,
-                    body: descriptions,
-                    days: daysSet,
-                    emoji: selectedEmoji)
-                context.insert(habit)
-                self.showModal = false
-                
-            }))
         }
     }
 }
-
 
 #Preview {
-    HabitsView()
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: HabitModel.self, NoteModel.self, configurations: config)
+
+        SeedContainer(container: container)
+
+        return HabitsView()
+            .modelContainer(container)
+
+    } catch {
+        fatalError("Error")
+    }
 }
-
-
-
