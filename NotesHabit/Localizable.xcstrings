@@ -431,7 +431,11 @@
         }
       }
     },
+    "Scheduled" : {
+
+    },
     "Scheduled Habit" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {

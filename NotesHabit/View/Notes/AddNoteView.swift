@@ -43,38 +43,45 @@ struct AddNoteView: View {
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Menu(content: {
-                    Button(action: {}) {
-                        HStack {
-                            Text("Pin Note")
-                            Spacer()
-                            Image(systemName: "pin")
-                        }
-                    }
+                HStack {
                     Menu(content: {
-                        ForEach(habitViewModel.habits, id: \.self) {
-                            habit in
-                            Button(action: {
-                                note.habit = habit
-
-                                if title != "", bodyText != "" {
-                                    habitViewModel.updateHabitLastLog(habit: habit)
-                                }
-                            }) {
-                                Text(habit.title)
+                        Button(action: {}) {
+                            HStack {
+                                Text("Pin Note")
+                                Spacer()
+                                Image(systemName: "pin")
                             }
                         }
+                        Menu(content: {
+                            ForEach(habitViewModel.habits, id: \.self) {
+                                habit in
+                                Button(action: {
+                                    note.habit = habit
+                                    
+                                    if title != "", bodyText != "" {
+                                        habitViewModel.updateHabitLastLog(habit: habit)
+                                    }
+                                }) {
+                                    Text(habit.title)
+                                }
+                            }
+                        }, label: {
+                            HStack {
+                                Text("Add to Habit")
+                                Spacer()
+                                Image(systemName: "book.and.wrench")
+                            }
+                        })
+                        
                     }, label: {
-                        HStack {
-                            Text("Add to Habit")
-                            Spacer()
-                            Image(systemName: "book.and.wrench")
-                        }
+                        Image(systemName: "ellipsis.circle")
                     })
-
-                }, label: {
-                    Image(systemName: "ellipsis.circle")
-                })
+                    
+                    // TODO: tambahin action done nya
+                    Button("Done") {
+                        
+                    }
+                }
             }
         }
         .onChange(of: title) {

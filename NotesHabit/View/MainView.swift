@@ -20,7 +20,6 @@ struct MainView: View {
                         NavigationLink(destination: CalendarView()) {
                             SummaryItemView(title: "Scheduled", count: habitViewModel.habits.count, icon: "calendar.circle.fill")
                         }
-                        // TODO: kalau berubah dark harus diatur
                         .foregroundColor(.black)
 
                         NavigationLink(destination: PinnedNotesView()) {
@@ -108,22 +107,22 @@ struct MainView: View {
                     HStack {
                         Menu(content: {
                             Button(action: {
-                                isAddFolder = true
-                            }) {
-                                HStack {
-                                    Text("Add New Folder")
-                                    Spacer()
-                                    Image(systemName: "folder.badge.plus")
-                                }
-                            }
-
-                            Button(action: {
                                 isAddHabit = true
                             }) {
                                 HStack {
-                                    Text("Add New Habit")
+                                    Text("New Habit")
                                     Spacer()
                                     Image(systemName: "book.and.wrench")
+                                }
+                            }
+                            
+                            Button(action: {
+                                isAddFolder = true
+                            }) {
+                                HStack {
+                                    Text("New Folder")
+                                    Spacer()
+                                    Image(systemName: "folder.badge.plus")
                                 }
                             }
                         }, label: {
