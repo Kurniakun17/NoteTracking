@@ -57,7 +57,7 @@ struct AddNoteView: View {
                             Button(action: {
                                 note.habit = habit
 
-                                if(title != "" && bodyText != ""){
+                                if title != "", bodyText != "" {
                                     habitViewModel.updateHabitLastLog(habit: habit)
                                 }
                             }) {
@@ -98,14 +98,15 @@ struct AddNoteView: View {
                     note.folder = folderExist
                     folderExist.notes.append(note)
                 }
-                
+
                 if let habitExist = habit {
                     note.habit = habitExist
                     habitExist.notes.append(note)
                 }
-                
-                
-                noteViewModel.add(item: note)
+
+                withAnimation {
+                    noteViewModel.add(item: note)
+                }
             }
         }
         .navigationBarTitleDisplayMode(.inline)
