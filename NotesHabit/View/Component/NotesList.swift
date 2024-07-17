@@ -57,5 +57,6 @@ struct NotesList: View {
                 .headerProminence(.increased)
             }
         }
+        .transition(.scale)
     }
 }

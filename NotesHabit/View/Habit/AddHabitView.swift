@@ -88,10 +88,12 @@ struct AddHabitView: View {
             .navigationBarItems(leading: Button("Cancel", action: {
                 presentationMode.wrappedValue.dismiss()
             }),
-            trailing: Button("Done", action: {
+                                trailing: Button("Done", action: {
                 saveHabit()
                 presentationMode.wrappedValue.dismiss()
-            }))
+            }
+                                                ).disabled(habitTitle == "")
+            )
         }
         .accentColor(.primaryRed)
         .onAppear {

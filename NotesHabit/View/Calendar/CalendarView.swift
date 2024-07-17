@@ -5,6 +5,8 @@ struct CalendarView: View {
     @State private var selectedDate = Date()
     @State private var currentWeekOffset = 0
     @State private var showDatePicker = false
+    @Environment(\.colorScheme) var colorScheme
+
     @State var isAddHabit = false
     let calendar = Calendar.current
     let dateFormatter: DateFormatter = {
@@ -88,8 +90,8 @@ struct CalendarView: View {
                     selectedDate = newDate
                     showDatePicker = false
                 }
-                .frame(width: 350)
-                .background(Color.white)
+                .frame(width: 350, height: 310)
+                .background(colorScheme == .dark ? .grayCalendar : .white)
                 .cornerRadius(10)
                 .shadow(radius: 10)
                 .offset(y: -160)
@@ -232,3 +234,17 @@ struct CalendarView: View {
     }
 }
 
+#Preview {
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: HabitModel.self, NoteModel.self, HabitModel.self, configurations: config)
+
+        SeedContainer(container: container)
+
+        return ContentView()
+            .modelContainer(container)
+
+    } catch {
+        fatalError("Error")
+    }
+}

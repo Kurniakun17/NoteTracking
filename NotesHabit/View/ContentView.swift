@@ -13,6 +13,7 @@ struct ContentView: View {
     @StateObject var folderViewModel = FolderViewModel(datasource: .shared)
     @StateObject var habitViewModel = HabitViewModel(dataSource: .shared)
 
+
     var body: some View {
         MainView()
             .environmentObject(noteViewModel)

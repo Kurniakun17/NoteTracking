@@ -1,6 +1,7 @@
 import SwiftData
 import SwiftUI
 
+
 struct MainView: View {
     @EnvironmentObject var folderViewModel: FolderViewModel
     @EnvironmentObject var habitViewModel: HabitViewModel
@@ -10,6 +11,7 @@ struct MainView: View {
     @State var isAddHabit = false
     @State private var isPersonalNotesExpanded = true
     @State private var isHabitDocumentationExpanded = true
+    @State private var searchText = ""
 
     var body: some View {
         NavigationView {
@@ -42,7 +44,6 @@ struct MainView: View {
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 12)
-                // TODO: Cara set background
                 .background(Color.gray.opacity(0.1))
 
                 // List Personal Notes and Habit Documentation
@@ -53,8 +54,7 @@ struct MainView: View {
                             let uncategorizedNotes = noteViewModel.notes.filter { $0.habit == nil && $0.folder == nil }
                             FolderRow(destination: UncategorizedView(), title: "Uncategorized Notes", count: uncategorizedNotes.count)
 
-                            ForEach(folderViewModel.folders, id: \.self) {
-                                folder in
+                            ForEach(folderViewModel.folders, id: \.self) { folder in
                                 FolderRow(destination: FolderDetail(folder: folder), title: folder.title, count: folder.notes.count)
                                     .swipeActions(edge: .trailing) {
                                         Button(action: {
@@ -74,8 +74,7 @@ struct MainView: View {
                     Section(
                         isExpanded: $isHabitDocumentationExpanded,
                         content: {
-                            ForEach(habitViewModel.habits, id: \.self) {
-                                habit in
+                            ForEach(habitViewModel.habits, id: \.self) { habit in
                                 HabitListItem(habit: habit)
                                     .swipeActions(edge: .trailing) {
                                         Button(action: {
@@ -93,6 +92,7 @@ struct MainView: View {
                     )
                 }
                 .listStyle(SidebarListStyle())
+                .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
             }
             .navigationTitle("Noted")
             .sheet(isPresented: $isAddFolder, content: {
@@ -141,7 +141,6 @@ struct MainView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
     }
 }
 
@@ -214,3 +213,14 @@ struct FolderRow<Destination: View>: View {
         fatalError("Error")
     }
 }
+
+extension View {
+    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
+        if condition {
+            transform(self)
+        } else {
+            self
+        }
+    }
+}
+

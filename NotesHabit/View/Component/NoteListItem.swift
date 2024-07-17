@@ -16,13 +16,22 @@ struct NoteListItem: View {
                     .lineLimit(1)
                     .truncationMode(.tail)
                 HStack {
-                    Text(note.createdAt.formattedString())
+                    Text(note.updatedAt.formattedString())
                         .font(.subheadline)
                     Text(note.title == "" ? "No additional text" : note.body)
                         .font(.subheadline)
                         .lineLimit(1)
                 }
-                .foregroundStyle(.gray)
+                
+                if(note.habit != nil || note.folder != nil){
+                    HStack{
+                        Image(systemName: note.habit != nil ? "book.and.wrench" : "folder")
+                        Text(note.habit != nil ? note.habit!.title : note.folder!.title)
+                    }
+                    .font(.subheadline)
+                    .foregroundStyle(.gray)
+
+                }
             }
         }
         .swipeActions(edge: .trailing) {
@@ -36,9 +45,11 @@ struct NoteListItem: View {
         }
         .swipeActions(edge: .leading) {
             Button(action: {
-                note.isFavourite.toggle()
+                withAnimation{
+                    note.isFavourite.toggle()
+                }
             }) {
-                Image(systemName: "pin")
+                Image(systemName:  note.isFavourite == false ? "pin" : "pin.slash")
             }.tint(.orange)
         }
     }
