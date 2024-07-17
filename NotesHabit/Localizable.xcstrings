@@ -4,6 +4,9 @@
     "" : {
 
     },
+    " %@" : {
+
+    },
     "%@" : {
 
     },
@@ -64,13 +67,36 @@
       }
     },
     "Add New Folder" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tambah Folder Baru"
+          }
+        }
+      }
     },
     "Add New Habit" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tambah Habit Baru"
+          }
+        }
+      }
     },
     "Add new or edit a new note to keep streak!" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tambah atau Edit Catatan Untuk Melanjutkan Rentetan"
+          }
+        }
+      }
     },
     "Add photos & videos" : {
       "localizations" : {
@@ -103,7 +129,14 @@
       }
     },
     "All Notes" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seluruh Catatan"
+          }
+        }
+      }
     },
     "Cancel" : {
       "localizations" : {
@@ -127,6 +160,16 @@
       }
     },
     "Completed" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selesai"
+          }
+        }
+      }
+    },
+    "Delete" : {
 
     },
     "Deleted Goals" : {
@@ -182,7 +225,14 @@
       }
     },
     "Every " : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setiap"
+          }
+        }
+      }
     },
     "Every %@" : {
       "extractionState" : "stale",
@@ -224,6 +274,9 @@
           }
         }
       }
+    },
+    "Find in Note" : {
+
     },
     "Folder Title" : {
       "localizations" : {
@@ -267,10 +320,24 @@
       }
     },
     "Habit Entries" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entri Habit"
+          }
+        }
+      }
     },
     "Habits" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Habit "
+          }
+        }
+      }
     },
     "Mon" : {
       "localizations" : {
@@ -283,7 +350,6 @@
       }
     },
     "New Folder" : {
-      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -294,7 +360,6 @@
       }
     },
     "New Habit" : {
-      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -355,7 +420,14 @@
       }
     },
     "Noted" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tercatat"
+          }
+        }
+      }
     },
     "Personal Notes" : {
       "extractionState" : "stale",
@@ -379,7 +451,14 @@
       }
     },
     "Pinned" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sematkan"
+          }
+        }
+      }
     },
     "Previous 7 Days" : {
       "localizations" : {
@@ -420,6 +499,12 @@
           }
         }
       }
+    },
+    "Repeat %@" : {
+
+    },
+    "Repeat on " : {
+
     },
     "Sat" : {
       "localizations" : {

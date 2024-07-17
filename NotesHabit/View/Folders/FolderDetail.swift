@@ -19,7 +19,6 @@ struct FolderDetail: View {
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
                         HStack {
-
                             Spacer()
 
                             NavigationLink(

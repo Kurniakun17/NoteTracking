@@ -11,11 +11,15 @@ import SwiftData
 import SwiftUI
 
 struct AddNoteView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var noteViewModel: NoteViewModel
+    @EnvironmentObject var habitViewModel: HabitViewModel
+    @FocusState private var isKeyboardEnabled: Bool
     @State var title = ""
     @State var bodyText: String = ""
     @State var note = NoteModel(title: "", body: "")
-    @EnvironmentObject var noteViewModel: NoteViewModel
-    @EnvironmentObject var habitViewModel: HabitViewModel
+    @State var isDone = false
+    @State var isDelete = false
     var folder: FolderModel? = nil
     var habit: HabitModel? = nil
 
@@ -33,37 +37,52 @@ struct AddNoteView: View {
                 .fontWeight(.bold)
                 .padding(.horizontal, 20)
                 .autocorrectionDisabled()
+                .focused($isKeyboardEnabled)
             Divider()
             TextEditor(text: $bodyText)
                 .autocorrectionDisabled()
                 .padding(.horizontal, 20)
                 .disabled(title == "")
+                .focused($isKeyboardEnabled)
 
             Spacer()
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                HStack {
+
+                HStack{
                     Menu(content: {
                         Button(action: {}) {
                             HStack {
                                 Text("Pin Note")
                                 Spacer()
                                 Image(systemName: "pin")
+
                             }
                         }
+
+                        Button(action: {}) {
+                            HStack {
+                                Text("Find in Note")
+                                Spacer()
+                                Image(systemName: "magnifyingglass")
+                            }
+                        }
+
+                        
                         Menu(content: {
                             ForEach(habitViewModel.habits, id: \.self) {
                                 habit in
                                 Button(action: {
                                     note.habit = habit
-                                    
+
                                     if title != "", bodyText != "" {
                                         habitViewModel.updateHabitLastLog(habit: habit)
                                     }
                                 }) {
                                     Text(habit.title)
                                 }
+
                             }
                         }, label: {
                             HStack {
@@ -73,13 +92,36 @@ struct AddNoteView: View {
                             }
                         })
                         
+                        
+                        Button(action: {
+                            withAnimation{
+                                noteViewModel.delete(item: note)
+                            }
+                            isDelete = true
+                            presentationMode.wrappedValue.dismiss()
+                            
+                        }) {
+                            HStack {
+                                Text("Delete")
+                                Spacer()
+                                Image(systemName: "trash")
+                            }
+                            .foregroundStyle(.red)
+                        }
                     }, label: {
                         Image(systemName: "ellipsis.circle")
                     })
                     
-                    // TODO: tambahin action done nya
-                    Button("Done") {
-                        
+                    if(!isDone){
+                        Button(action: {
+                            isKeyboardEnabled = false
+                            withAnimation{
+                                isDone = true
+                            }
+                        }) {
+                            Text("Done")
+                        }
+                        .transition(.scale)
                     }
                 }
             }
@@ -111,9 +153,12 @@ struct AddNoteView: View {
                     habitExist.notes.append(note)
                 }
 
-                withAnimation {
-                    noteViewModel.add(item: note)
+                if(!isDelete){
+                    withAnimation {
+                        noteViewModel.add(item: note)
+                    }
                 }
+            
             }
         }
         .navigationBarTitleDisplayMode(.inline)

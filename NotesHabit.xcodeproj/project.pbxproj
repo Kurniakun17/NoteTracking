@@ -15,7 +15,6 @@
 		408CBE542C3FF948006539DB /* GoalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CBE532C3FF948006539DB /* GoalCardView.swift */; };
 		40A3603E2C45829A0044F0CD /* ScheduleNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3603D2C45829A0044F0CD /* ScheduleNotification.swift */; };
 		40E8A2572C458E25009AA454 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A2562C458E25009AA454 /* MainView.swift */; };
-		40E8A2592C4595D0009AA454 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A2582C4595D0009AA454 /* HomeView.swift */; };
 		40E8A25B2C4613E7009AA454 /* AllNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A25A2C4613E7009AA454 /* AllNotesView.swift */; };
 		40E8A25D2C461908009AA454 /* HabitEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A25C2C461908009AA454 /* HabitEntries.swift */; };
 		40E8A2612C4619FD009AA454 /* PinnedNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8A2602C4619FD009AA454 /* PinnedNotesView.swift */; };
@@ -61,7 +60,6 @@
 		408CBE532C3FF948006539DB /* GoalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardView.swift; sourceTree = "<group>"; };
 		40A3603D2C45829A0044F0CD /* ScheduleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNotification.swift; sourceTree = "<group>"; };
 		40E8A2562C458E25009AA454 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		40E8A2582C4595D0009AA454 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		40E8A25A2C4613E7009AA454 /* AllNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesView.swift; sourceTree = "<group>"; };
 		40E8A25C2C461908009AA454 /* HabitEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEntries.swift; sourceTree = "<group>"; };
 		40E8A2602C4619FD009AA454 /* PinnedNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedNotesView.swift; sourceTree = "<group>"; };
@@ -248,9 +246,8 @@
 		F63FFB532C3E5DAD00EB8778 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F63FFB472C3E5D7700EB8778 /* ContentView.swift */,
 				40E8A2562C458E25009AA454 /* MainView.swift */,
-				40E8A2582C4595D0009AA454 /* HomeView.swift */,
+				F63FFB472C3E5D7700EB8778 /* ContentView.swift */,
 				4015BBFB2C429C0B00415C7A /* Folders */,
 				4015BBF12C40F9FF00415C7A /* Calendar */,
 				4015BBF22C41112E00415C7A /* Habit */,
@@ -367,7 +364,6 @@
 				C18E78CF2C3F19D800847A25 /* CalendarView.swift in Sources */,
 				40E8A2612C4619FD009AA454 /* PinnedNotesView.swift in Sources */,
 				C18E78D12C3F19E000847A25 /* HabitsView.swift in Sources */,
-				40E8A2592C4595D0009AA454 /* HomeView.swift in Sources */,
 				F627D3A12C43636700411E16 /* UncategorizedView.swift in Sources */,
 				408CBE542C3FF948006539DB /* GoalCardView.swift in Sources */,
 				40E8A2572C458E25009AA454 /* MainView.swift in Sources */,
@@ -531,7 +527,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NotesHabit/Preview Content\"";
-				DEVELOPMENT_TEAM = 49V8Q5W76J;
+				DEVELOPMENT_TEAM = VLB4X97QN4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -561,7 +557,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NotesHabit/Preview Content\"";
-				DEVELOPMENT_TEAM = 49V8Q5W76J;
+				DEVELOPMENT_TEAM = VLB4X97QN4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

@@ -26,6 +26,12 @@ class HabitViewModel: ObservableObject, Addable, Deletable {
         dataSource.deleteHabit(habit: item)
         habits = dataSource.fetchHabits()
     }
+    
+    func deleteNote(habit: HabitModel, item: NoteModel) {
+        if let index = habit.notes.firstIndex(where: { $0 == item }) {
+            habit.notes.remove(at: index)
+        }
+    }
 
     func updateHabitLastLog(habit: HabitModel) {
         if let habitLogged = habit.lastLog {
