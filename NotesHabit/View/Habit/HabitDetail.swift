@@ -38,10 +38,11 @@ struct HabitDetail: View {
                 HStack(spacing: 12) {
                     HStack(spacing: 4) {
                         Image(systemName: "flame.fill")
-                            .foregroundStyle(.yellow)
+                            
                         Text(String(habit.streak))
                             .fontWeight(.bold)
                     }
+                    .foregroundStyle(.orangeStreak)
                     
                     formattedText()
                 }
