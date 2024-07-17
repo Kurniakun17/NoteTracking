@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1540"
-   version = "1.8">
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES"
@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F63FFB412C3E5D7700EB8778"
-               BuildableName = "NotesHabit.app"
+               BuildableName = "Noted.app"
                BlueprintName = "NotesHabit"
                ReferencedContainer = "container:NotesHabit.xcodeproj">
             </BuildableReference>
@@ -47,7 +47,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F63FFB412C3E5D7700EB8778"
-            BuildableName = "NotesHabit.app"
+            BuildableName = "Noted.app"
             BlueprintName = "NotesHabit"
             ReferencedContainer = "container:NotesHabit.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F63FFB412C3E5D7700EB8778"
-            BuildableName = "NotesHabit.app"
+            BuildableName = "Noted.app"
             BlueprintName = "NotesHabit"
             ReferencedContainer = "container:NotesHabit.xcodeproj">
          </BuildableReference>
