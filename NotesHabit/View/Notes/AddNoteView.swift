@@ -49,6 +49,7 @@ struct AddNoteView: View {
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
+
                 HStack{
                     Menu(content: {
                         Button(action: {}) {
@@ -56,6 +57,7 @@ struct AddNoteView: View {
                                 Text("Pin Note")
                                 Spacer()
                                 Image(systemName: "pin")
+
                             }
                         }
 
@@ -80,6 +82,7 @@ struct AddNoteView: View {
                                 }) {
                                     Text(habit.title)
                                 }
+
                             }
                         }, label: {
                             HStack {
@@ -105,10 +108,6 @@ struct AddNoteView: View {
                             }
                             .foregroundStyle(.red)
                         }
-                        
-                      
-                        
-
                     }, label: {
                         Image(systemName: "ellipsis.circle")
                     })

@@ -17,18 +17,8 @@ struct UncategorizedView: View {
             .listStyle(InsetGroupedListStyle())
             .navigationTitle("Uncategorized Notes")
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Edit", action: {})
-                }
-
                 ToolbarItem(placement: .bottomBar) {
                     HStack {
-                        Button(action: {
-                            noteViewModel.addSampleNote()
-                        }) {
-                            Image(systemName: "plus")
-                        }
-
                         Spacer()
 
                         NavigationLink(
