@@ -17,17 +17,9 @@ struct AllNotesView: View {
                 .listStyle(InsetGroupedListStyle())
                 .navigationTitle("All Notes")
                 .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("Edit", action: {})
-                    }
                     
                     ToolbarItem(placement: .bottomBar) {
                         HStack {
-                            Button(action: {
-                                noteViewModel.addSampleNote()
-                            }) {
-                                Image(systemName: "plus")
-                            }
                             
                             Spacer()
                             

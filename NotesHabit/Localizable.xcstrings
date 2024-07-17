@@ -67,6 +67,7 @@
       }
     },
     "Add New Folder" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -77,6 +78,7 @@
       }
     },
     "Add New Habit" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -166,6 +168,9 @@
           }
         }
       }
+    },
+    "Delete" : {
+
     },
     "Deleted Goals" : {
       "extractionState" : "stale",
@@ -270,6 +275,9 @@
         }
       }
     },
+    "Find in Note" : {
+
+    },
     "Folder Title" : {
       "localizations" : {
         "id" : {
@@ -342,7 +350,6 @@
       }
     },
     "New Folder" : {
-      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -353,7 +360,6 @@
       }
     },
     "New Habit" : {
-      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -510,7 +516,11 @@
         }
       }
     },
+    "Scheduled" : {
+
+    },
     "Scheduled Habit" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {

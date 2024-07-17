@@ -26,4 +26,12 @@ class FolderViewModel: ObservableObject, Addable, Deletable {
         datasource.deleteFolder(folder: item)
         folders = datasource.fetchFolders()
     }
+    
+    
+    func deleteNote(folder: FolderModel, item: NoteModel) {
+        if let index = folder.notes.firstIndex(where: { $0 == item }) {
+            folder.notes.remove(at: index)
+        }
+    }
+
 }

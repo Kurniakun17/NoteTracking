@@ -19,10 +19,6 @@ struct FolderDetail: View {
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
                         HStack {
-                            Button(action: {}) {
-                                Image(systemName: "folder.badge.plus")
-                            }
-
                             Spacer()
 
                             NavigationLink(

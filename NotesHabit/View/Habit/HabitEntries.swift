@@ -19,18 +19,8 @@ struct HabitEntries: View {
                 .listStyle(InsetGroupedListStyle())
                 .navigationTitle("Habit Entries")
                 .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("Edit", action: {})
-                    }
-
                     ToolbarItem(placement: .bottomBar) {
                         HStack {
-                            Button(action: {
-                                noteViewModel.addSampleNote()
-                            }) {
-                                Image(systemName: "plus")
-                            }
-
                             Spacer()
 
                             NavigationLink(

@@ -28,11 +28,6 @@ struct PinnedNotesView: View {
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 HStack {
-                    Button(action: {
-                        isAddFolder = true
-                    }) {
-                        Image(systemName: "folder.badge.plus")
-                    }
                         
                     Spacer()
                         

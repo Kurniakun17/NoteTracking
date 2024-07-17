@@ -13,7 +13,7 @@ struct UncategorizedView: View {
     var body: some View {
         VStack(alignment: .leading) {
             NotesList(filteredNotes: noteViewModel.notes.filter { $0.folder == nil && $0.habit == nil })
-            .searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
+//            .searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
             .listStyle(InsetGroupedListStyle())
             .navigationTitle("Uncategorized Notes")
             .toolbar {

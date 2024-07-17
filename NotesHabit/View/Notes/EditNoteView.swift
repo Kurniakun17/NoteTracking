@@ -9,12 +9,17 @@ import SwiftData
 import SwiftUI
 
 struct EditNoteView: View {
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var noteViewModel: NoteViewModel
     @EnvironmentObject var habitViewModel: HabitViewModel
+    @EnvironmentObject var folderViewModel: FolderViewModel
+    @FocusState private var isKeyboardEnabled: Bool
     @State var note: NoteModel
     @State var title: String
     @State var habit: String = "Empty"
     @State var bodyText: String
+    @State var isDone = false
+    @State var isDelete = false
     @State var options = [
         "Empty",
         "Learn Swiftui 30 Minutes",
@@ -33,47 +38,87 @@ struct EditNoteView: View {
             TextEditor(text: $bodyText)
                 .autocorrectionDisabled()
                 .padding(.horizontal, 20)
-
+            
             Spacer()
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Menu(content: {
-                    Button(action: {}) {
-                        HStack {
-                            Text("Pin Note")
-                            Spacer()
-                            Image(systemName: "pin")
-                        }
-                    }
+                HStack{
                     Menu(content: {
-                        ForEach(habitViewModel.habits, id: \.self) {
-                            habit in
-                            Button(action: {
-                                note.habit = habit
-                                if title != "", bodyText != "" {
-                                    habitViewModel.updateHabitLastLog(habit: habit)
-                                }
-                            }) {
-                                Text(habit.title)
+                        Button(action: {}) {
+                            HStack {
+                                Text("Pin Note")
+                                Spacer()
+                                Image(systemName: "pin")
                             }
                         }
-                    }, label: {
-                        HStack {
-                            Text("Add to Habit")
-                            Spacer()
-                            Image(systemName: "book.and.wrench")
+                        
+                        Button(action: {}) {
+                            HStack {
+                                Text("Find in Note")
+                                Spacer()
+                                Image(systemName: "magnifyingglass")
+                            }
                         }
+                        
+                        
+                        Menu(content: {
+                            ForEach(habitViewModel.habits, id: \.self) {
+                                habit in
+                                Button(action: {
+                                    note.habit = habit
+                                    
+                                    if title != "", bodyText != "" {
+                                        habitViewModel.updateHabitLastLog(habit: habit)
+                                    }
+                                }) {
+                                    Text(habit.title)
+                                }
+                            }
+                        }, label: {
+                            HStack {
+                                Text("Add to Habit")
+                                Spacer()
+                                Image(systemName: "book.and.wrench")
+                            }
+                        })
+                        
+                        
+                        Button(action: {
+                            withAnimation{
+                                noteViewModel.delete(item: note)
+                            }
+                            isDelete = true
+                            presentationMode.wrappedValue.dismiss()
+                            
+                        }) {
+                            HStack {
+                                Text("Delete")
+                                Spacer()
+                                Image(systemName: "trash")
+                            }
+                            .foregroundStyle(.red)
+                        }
+                        
+                        
+                        
+                        
+                    }, label: {
+                        Image(systemName: "ellipsis.circle")
                     })
-
-                }, label: {
-                    Image(systemName: "ellipsis.circle")
-                })
-            }
-        }
-        .onDisappear {
-            if title == "" && bodyText == "" {
-                noteViewModel.delete(item: note)
+                    
+                    if(!isDone){
+                        Button(action: {
+                            isKeyboardEnabled = false
+                            withAnimation{
+                                isDone = true
+                            }
+                        }) {
+                            Text("Done")
+                        }
+                        .transition(.scale)
+                    }
+                }
             }
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -84,7 +129,6 @@ struct EditNoteView: View {
                 habitViewModel.updateHabitLastLog(habit: NoteHabit)
             }
         }
-
         .onChange(of: bodyText) {
             note.body = bodyText
             note.updatedAt = Date()
@@ -92,18 +136,36 @@ struct EditNoteView: View {
                 habitViewModel.updateHabitLastLog(habit: NoteHabit)
             }
         }
+        .onDisappear {
+            if (title == "" && bodyText == "") || isDelete {
+                deleteNote()
+            }
+        }
+    }
+    
+    func deleteNote(){
+        noteViewModel.delete(item: note)
+        
+        if let folderExist = note.folder {
+            folderViewModel.deleteNote(folder: folderExist, item: note)
+
+        }
+        
+        if let habitExist = note.habit {
+                habitViewModel.deleteNote(habit: habitExist, item: note)
+        }
     }
 }
 
-#Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: NoteModel.self, configurations: config)
-        let note = NoteModel(title: "testing", body: "Wow")
-
-        return EditNoteView(note: note, title: note.title, bodyText: note.body)
-            .modelContainer(container)
-    } catch {
-        fatalError("Text")
-    }
-}
+//#Preview {
+//    do {
+//        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+//        let container = try ModelContainer(for: NoteModel.self, configurations: config)
+//        let note = NoteModel(title: "testing", body: "Wow")
+//
+//        return EditNoteView(note: note, title: note.title, bodyText: note.body)
+//            .modelContainer(container)
+//    } catch {
+//        fatalError("Text")
+//    }
+//}
