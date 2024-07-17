@@ -18,7 +18,7 @@ struct NoteListItem: View {
                 HStack {
                     Text(note.updatedAt.formattedString())
                         .font(.subheadline)
-                    Text(note.title == "" ? "No additional text" : note.body)
+                    Text(note.title == "" ? String(localized: "No additional text") : note.body)
                         .font(.subheadline)
                         .lineLimit(1)
                 }

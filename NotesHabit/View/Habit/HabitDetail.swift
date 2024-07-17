@@ -23,13 +23,13 @@ struct HabitDetail: View {
     @Environment(\.colorScheme) var colorScheme
     
     let dayNames: [Int: String] = [
-        0: "Sun",
-        1: "Mon",
-        2: "Tue",
-        3: "Wed",
-        4: "Thu",
-        5: "Fri",
-        6: "Sat"
+        0: String(localized: "Sun"),
+        1: String(localized: "Mon"),
+        2: String(localized: "Tue"),
+        3: String(localized: "Wed"),
+        4: String(localized: "Thu"),
+        5: String(localized: "Fri"),
+        6: String(localized: "Sat")
     ]
     
     var body: some View {

@@ -5,8 +5,6 @@
 //  Created by Kurnia Kharisma Agung Samiadjie on 11/07/24.
 //
 
-// import RichEditorSwiftUI
-// import RichTextKit
 import SwiftData
 import SwiftUI
 

@@ -5,7 +5,7 @@ struct DatePickerView: View {
     var onDateChange: (Date) -> Void
 
     var body: some View {
-        DatePicker("Select a date", selection: $selectedDate, displayedComponents: [.date])
+        DatePicker(String(localized: "Select a date"), selection: $selectedDate, displayedComponents: [.date])
             .datePickerStyle(GraphicalDatePickerStyle())
             .labelsHidden()
             .padding()

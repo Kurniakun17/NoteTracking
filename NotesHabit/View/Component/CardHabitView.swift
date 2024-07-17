@@ -22,7 +22,7 @@ struct CardHabitView: View {
             //                .padding(.horizontal, -5)
             
             VStack(alignment: .leading, spacing: 5) {
-                Text(habit.folder?.title ?? "No Folder")
+                Text(habit.folder?.title ?? String(localized: "No Folder"))
                     .font(.caption)
                     .foregroundColor(.gray)
                 
@@ -47,10 +47,7 @@ struct CardHabitView: View {
             Spacer()
         }
         .padding()
-        //        .background(Color.white)
         .cornerRadius(10)
-        //        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 3)
-        
     }
     
     func timeString(from date: Date?) -> String {
@@ -60,7 +57,7 @@ struct CardHabitView: View {
         if let date = date {
             return formatter.string(from: date)
         } else {
-            return "Add Reminder"
+            return String(localized: "Add Reminder")
         }
     }
 }

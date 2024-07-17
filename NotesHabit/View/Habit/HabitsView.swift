@@ -31,6 +31,7 @@ struct HabitsView: View {
                 }
                 .headerProminence(.increased)
             }
+            // search habit
             .searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
             .listStyle(InsetGroupedListStyle())
             .navigationTitle("Habit Entries")
