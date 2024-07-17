@@ -47,7 +47,7 @@ struct HabitEntries: View {
         if searchText.isEmpty {
             return noteViewModel.notes.filter { $0.habit != nil }
         } else {
-            return noteViewModel.notes.filter { $0.habit != nil && $0.title.localizedCaseInsensitiveContains(searchText) }
+            return noteViewModel.notes.filter { $0.habit != nil && $0.title.localizedCaseInsensitiveContains(searchText) && $0.body.localizedCaseInsensitiveContains(searchText) }
         }
     }
 

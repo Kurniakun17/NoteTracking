@@ -10,7 +10,7 @@ struct MainView: View {
     @State var isAddHabit = false
     @State private var isPersonalNotesExpanded = true
     @State private var isHabitDocumentationExpanded = true
-//    @State private var searchText = ""
+    @State private var searchText: String = ""
 
     var body: some View {
         NavigationView {
@@ -146,19 +146,32 @@ struct MainView: View {
         .searchable(text: .constant(""), placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
     }
     
-//    var filteredData: [String] {
-//            let notes = noteViewModel.notes.map { $0.title }
-//            let habits = habitViewModel.habits.map { $0.title }
-//            let folders = folderViewModel.folders.map { $0.title }
-//            
-//            let allData = notes + habits + folders
-//            
-//            if searchText.isEmpty {
-//                return allData
-//            } else {
-//                return allData.filter { $0.localizedCaseInsensitiveContains(searchText) }
-//            }
-//        }
+    var filteredNotesByFolder: [NoteModel] {
+        if searchText.isEmpty {
+            return noteViewModel.notes.filter { $0.folder != nil }
+        } else {
+            return noteViewModel.notes.filter {
+                $0.title.localizedCaseInsensitiveContains(searchText) ||
+                ($0.folder?.title.localizedCaseInsensitiveContains(searchText) ?? false) ||
+                ($0.habit?.title.localizedCaseInsensitiveContains(searchText) ?? false) ||
+                $0.folder != nil
+            }
+        }
+    }
+    
+    var filteredNotesByHabit: [NoteModel] {
+        if searchText.isEmpty {
+            return noteViewModel.notes.filter { $0.habit != nil }
+        } else {
+            return noteViewModel.notes.filter {
+                $0.title.localizedCaseInsensitiveContains(searchText) ||
+                ($0.folder?.title.localizedCaseInsensitiveContains(searchText) ?? false) ||
+                ($0.habit?.title.localizedCaseInsensitiveContains(searchText) ?? false) ||
+                $0.habit != nil
+            }
+        }
+    }
+
 }
 
 struct SummaryItemView: View {
