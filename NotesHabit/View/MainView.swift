@@ -44,7 +44,7 @@ struct MainView: View {
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 12)
-                .background(Color.gray.opacity(0.1))
+                .background(.bgMainLight)
 
                 // List Personal Notes and Habit Documentation
                 List {

@@ -32,7 +32,9 @@ struct AddFolderView: View {
                 trailing: Button("Done", action: {
                     folderViewModel.add(item: FolderModel(title: folderTitle))
                     presentationMode.wrappedValue.dismiss()
-                }))
+                })
+                .disabled(folderTitle == "")
+            )
         }
     }
 }
