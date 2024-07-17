@@ -64,12 +64,7 @@ struct AddPhotos: View {
                         }
                         .padding(.top, -18)
                     }
-                    
                 }
-                
-                
-                
-                
             }
             .animation(.spring())
         }

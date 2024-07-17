@@ -13,10 +13,9 @@ struct GoalCard: View {
                     Text(goal.emoji)
                         .font(.system(size: 40))
                 )
-//                .padding(.horizontal, -5)
             
             VStack(alignment: .leading, spacing: 5) {
-                Text(goal.folder?.title ?? "No Folder")
+                Text(goal.folder?.title ?? String(localized: "No Folder"))
                     .font(.caption)
                     .foregroundColor(.gray)
                 
@@ -26,7 +25,6 @@ struct GoalCard: View {
                 HStack {
                     HStack {
                         Image(systemName: "flame")
-                            
                         Text("\(goal.streak)")
                     }
                     
@@ -42,9 +40,7 @@ struct GoalCard: View {
             Spacer()
         }
         .padding()
-//        .background(Color.white)
         .cornerRadius(10)
-//        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 3)
         
     }
     
@@ -55,7 +51,7 @@ struct GoalCard: View {
         if let date = date {
             return formatter.string(from: date)
         } else {
-            return "Add Reminder"
+            return String(localized: "Add Reminder")
         }
     }
 }

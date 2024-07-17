@@ -5,10 +5,24 @@
 
     },
     " %@" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
     },
     "%@" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
     },
     "%lld" : {
 
@@ -108,6 +122,16 @@
         }
       }
     },
+    "Add Reminder" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tambah Pengingat"
+          }
+        }
+      }
+    },
     "Add to Habit" : {
       "localizations" : {
         "id" : {
@@ -170,7 +194,14 @@
       }
     },
     "Delete" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hapus"
+          }
+        }
+      }
     },
     "Deleted Goals" : {
       "extractionState" : "stale",
@@ -225,12 +256,22 @@
         }
       }
     },
+    "Empty" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kosong"
+          }
+        }
+      }
+    },
     "Every " : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Setiap"
+            "value" : "Setiap "
           }
         }
       }
@@ -277,7 +318,14 @@
       }
     },
     "Find in Note" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cari di Catatan"
+          }
+        }
+      }
     },
     "Folder Title" : {
       "localizations" : {
@@ -340,6 +388,36 @@
         }
       }
     },
+    "Learn Guitar 20 Minutes" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mempelajari GItar 20 Menit"
+          }
+        }
+      }
+    },
+    "Learn Swiftui 30 Minutes" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mempelajari Swift 20 Menit"
+          }
+        }
+      }
+    },
+    "Learn Test 10 Minutes" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mempelajari Tes 20 Menit"
+          }
+        }
+      }
+    },
     "Mon" : {
       "localizations" : {
         "id" : {
@@ -390,12 +468,32 @@
         }
       }
     },
+    "No additional text" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak Ada Teks Tambahan"
+          }
+        }
+      }
+    },
     "No deleted habit" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tidak Ada Habit yang Dihapus"
+          }
+        }
+      }
+    },
+    "No Folder" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak Ada Berkas"
           }
         }
       }
@@ -421,6 +519,7 @@
       }
     },
     "Noted" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -502,10 +601,24 @@
       }
     },
     "Repeat %@" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ulangi %@"
+          }
+        }
+      }
     },
     "Repeat on " : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ulangi pada"
+          }
+        }
+      }
     },
     "Sat" : {
       "localizations" : {
@@ -518,7 +631,14 @@
       }
     },
     "Scheduled" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terjadwal"
+          }
+        }
+      }
     },
     "Scheduled Habit" : {
       "extractionState" : "stale",

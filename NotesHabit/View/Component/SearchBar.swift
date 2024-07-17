@@ -35,9 +35,6 @@ struct SearchBar: View {
                         }
                     }
                 )
-//            Button(action: {}) {
-//                Image(systemName: "square.and.pencil")
-//            }
         }
     }
 }

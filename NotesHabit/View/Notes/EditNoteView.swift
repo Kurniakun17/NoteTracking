@@ -21,10 +21,10 @@ struct EditNoteView: View {
     @State var isDone = false
     @State var isDelete = false
     @State var options = [
-        "Empty",
-        "Learn Swiftui 30 Minutes",
-        "Learn Guitar 20 Minutes",
-        "Learn Test 10 Minutes"
+        String(localized: "Empty"),
+        String(localized: "Learn Swiftui 30 Minutes"),
+        String(localized: "Learn Guitar 20 Minutes"),
+        String(localized: "Learn Test 10 Minutes")
     ]
 
     var body: some View {

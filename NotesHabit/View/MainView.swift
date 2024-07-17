@@ -20,24 +20,24 @@ struct MainView: View {
                 VStack(spacing: 12) {
                     HStack(spacing: 16) {
                         NavigationLink(destination: CalendarView()) {
-                            SummaryItemView(title: "Scheduled", count: habitViewModel.habits.count, icon: "calendar.circle.fill")
+                            SummaryItemView(title: String(localized: "Scheduled"), count: habitViewModel.habits.count, icon: "calendar.circle.fill")
                         }
                         .foregroundColor(.black)
 
                         NavigationLink(destination: PinnedNotesView()) {
-                            SummaryItemView(title: "Pinned", count: noteViewModel.notes.filter { $0.isFavourite == true }.count, icon: "pin.circle.fill")
+                            SummaryItemView(title: String(localized: "Pinned"), count: noteViewModel.notes.filter { $0.isFavourite == true }.count, icon: "pin.circle.fill")
                         }
                         .foregroundColor(.black)
                     }
 
                     HStack(spacing: 16) {
                         NavigationLink(destination: AllNotesView()) {
-                            SummaryItemView(title: "All Notes", count: noteViewModel.notes.count, icon: "tray.circle.fill")
+                            SummaryItemView(title: String(localized: "All Notes"), count: noteViewModel.notes.count, icon: "tray.circle.fill")
                         }
                         .foregroundColor(.black)
 
                         NavigationLink(destination: HabitEntries()) {
-                            SummaryItemView(title: "Habit Entries", count: noteViewModel.notes.filter { $0.habit != nil }.count, icon: "pencil.circle.fill")
+                            SummaryItemView(title: String(localized: "Habit Entries"), count: noteViewModel.notes.filter { $0.habit != nil }.count, icon: "pencil.circle.fill")
                         }
                         .foregroundColor(.black)
                     }
@@ -52,7 +52,7 @@ struct MainView: View {
                         isExpanded: $isPersonalNotesExpanded,
                         content: {
                             let uncategorizedNotes = noteViewModel.notes.filter { $0.habit == nil && $0.folder == nil }
-                            FolderRow(destination: UncategorizedView(), title: "Uncategorized Notes", count: uncategorizedNotes.count)
+                            FolderRow(destination: UncategorizedView(), title: String(localized: "Uncategorized Notes"), count: uncategorizedNotes.count)
 
                             ForEach(folderViewModel.folders, id: \.self) { folder in
                                 FolderRow(destination: FolderDetail(folder: folder), title: folder.title, count: folder.notes.count)
@@ -94,7 +94,6 @@ struct MainView: View {
                 .listStyle(SidebarListStyle())
                 .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
             }
-            .navigationTitle("Noted")
             .sheet(isPresented: $isAddFolder, content: {
                 AddFolderView()
             })
