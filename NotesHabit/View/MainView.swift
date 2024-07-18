@@ -79,7 +79,11 @@ struct MainView: View {
                                     HabitListItem(habit: habit)
                                         .swipeActions(edge: .trailing) {
                                             Button(action: {
+                                                for note in habit.notes{
+                                                    noteViewModel.delete(item: note)
+                                                }
                                                 habitViewModel.delete(item: habit)
+                                                
                                             }) {
                                                 Image(systemName: "trash")
                                             }.tint(.red)
