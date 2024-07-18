@@ -10,7 +10,6 @@ class HabitModel: Identifiable {
     var startDate = Date()
     var folder: FolderModel?
     var emoji: String
-    @Relationship(deleteRule: .cascade, inverse: \NoteModel.habit)
     var notes: [NoteModel] = []
     var time: Date?
     var isReminder = false
